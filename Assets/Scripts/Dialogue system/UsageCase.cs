@@ -76,9 +76,20 @@ public class UsageCase : MonoBehaviour
     }
     private void ChangeMainSpeaker(NarrationCharacter _MC,Emoji _emo)
     {
+        object[] _obj = new object[2] { _MC,_emo};
+        StartCoroutine("ChangeMainSpeakerAnimate", _obj);
+    }
+    public IEnumerator ChangeMainSpeakerAnimate(object[] _obj)
+    {
+        NarrationCharacter _MC = (NarrationCharacter)_obj[0];
+        Emoji _emo = (Emoji)_obj[1];
+        V_player.isLooping = false;
+        V_player.clip = _MC.Find_Clip(_emo);
         m_MainC_Image.enabled = true;
         ui_speaker.text = _MC.CharacterName;
-        V_player.clip = _MC.Find_Clip(_emo);
+        yield return new WaitForSeconds(1.5f);
+        V_player.isLooping = true;
+        V_player.clip = _MC.Find_LoopClip(_emo);
     }
     private void NarrationSet()
     {

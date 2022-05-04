@@ -25,7 +25,20 @@ public class NarrationCharacter : ScriptableObject
             }
         }
         return finalresult;
-    }    
+    }
+    public VideoClip Find_LoopClip(Emoji _emoji)
+    {
+        VideoClip finalresult = null;
+        foreach (var item in L2DList)
+        {
+            if (item.m_Emoji == _emoji)
+            {
+                finalresult = item.Loopclip;
+                return finalresult;
+            }
+        }
+        return finalresult;
+    }
 
 }
 [System.Serializable]
@@ -49,5 +62,6 @@ public enum Emoji
 public class CharacterImage
 {
     public VideoClip clip;
+    public VideoClip Loopclip;
     public Emoji m_Emoji;
 }
