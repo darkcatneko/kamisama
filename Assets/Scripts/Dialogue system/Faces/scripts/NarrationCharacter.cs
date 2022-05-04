@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 [CreateAssetMenu(menuName = "Scriptable Object/Narration/Character")]
 public class NarrationCharacter : ScriptableObject
@@ -10,16 +11,16 @@ public class NarrationCharacter : ScriptableObject
     [SerializeField]
     public int m_CharacterID;
     [SerializeField]
-    public CharacterImage[] ImageList;
+    public CharacterImage[] L2DList;
     public string CharacterName => m_CharacterName;
-    public Sprite Find_Pic(Emoji _emoji)
+    public VideoClip Find_Clip(Emoji _emoji)
     {
-        Sprite finalresult = null;
-        foreach (var item in ImageList)
+        VideoClip finalresult = null;
+        foreach (var item in L2DList)
         {
             if (item.m_Emoji == _emoji)
             {
-                finalresult = item.FacePNG;
+                finalresult = item.clip;
                 return finalresult;
             }
         }
@@ -47,6 +48,6 @@ public enum Emoji
 [System.Serializable]
 public class CharacterImage
 {
-    public Sprite FacePNG;
+    public VideoClip clip;
     public Emoji m_Emoji;
 }

@@ -8,10 +8,7 @@ public class MainTimeSystem : MonoBehaviour
     public TimeClass Time = new TimeClass();
     private void Awake()
     {
-        if (instance = null)
-        {
             instance = this;
-        }
     }
     void Start()
     {

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Video;
 
 [RequireComponent(typeof(ES_MessageSystem))]
 public class UsageCase : MonoBehaviour
@@ -18,7 +19,8 @@ public class UsageCase : MonoBehaviour
     private List<string> textList = new List<string>();
     private int textIndex = 0;
 
-    public Image m_MainC_Image;
+    public VideoPlayer V_player;
+    public RawImage m_MainC_Image;
     public TextMeshProUGUI ui_speaker;
     //兩個選項
     public GameObject ChoicePanel_2;
@@ -43,10 +45,8 @@ public class UsageCase : MonoBehaviour
         msgSys.AddSpecialCharToFuncMap("InChoise2", () => IntoChoiceSection_2(textAsset.name));
         //旁白
         msgSys.AddSpecialCharToFuncMap("N", NarrationSet);
-        //Zeru command
-        msgSys.AddSpecialCharToFuncMap("Zeru_Smile", () => ChangeMainSpeaker(FindCharacter(CharactersLists,0), Emoji.smile));
-        //Tico command
-        msgSys.AddSpecialCharToFuncMap("Tico_Smile", () => ChangeMainSpeaker(FindCharacter(CharactersLists,1), Emoji.smile));
+        //尊王
+        msgSys.AddSpecialCharToFuncMap("God_basic", () => ChangeMainSpeaker(CharactersLists[0], Emoji.smile));
     }
     public void IntoChoiceSection_2(string _PlotName)
     {
@@ -78,7 +78,7 @@ public class UsageCase : MonoBehaviour
     {
         m_MainC_Image.enabled = true;
         ui_speaker.text = _MC.CharacterName;
-        m_MainC_Image.sprite = _MC.Find_Pic(_emo);
+        V_player.clip = _MC.Find_Clip(_emo);
     }
     private void NarrationSet()
     {
