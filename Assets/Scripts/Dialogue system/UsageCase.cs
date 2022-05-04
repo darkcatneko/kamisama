@@ -22,6 +22,8 @@ public class UsageCase : MonoBehaviour
     public VideoPlayer V_player;
     public RawImage m_MainC_Image;
     public TextMeshProUGUI ui_speaker;
+
+    public RenderTexture bug;
     //兩個選項
     public GameObject ChoicePanel_2;
     public Button Choice2_1;
@@ -81,15 +83,19 @@ public class UsageCase : MonoBehaviour
     }
     public IEnumerator ChangeMainSpeakerAnimate(object[] _obj)
     {
+        ClearOutRenderTexture(bug);
         NarrationCharacter _MC = (NarrationCharacter)_obj[0];
         Emoji _emo = (Emoji)_obj[1];
+        ClearOutRenderTexture(bug);
         V_player.isLooping = false;
-        V_player.clip = _MC.Find_Clip(_emo);
+        V_player.clip = _MC.Find_Clip(_emo);        
         m_MainC_Image.enabled = true;
+        V_player.Play();
         ui_speaker.text = _MC.CharacterName;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         V_player.isLooping = true;
         V_player.clip = _MC.Find_LoopClip(_emo);
+        V_player.Play();       
     }
     private void NarrationSet()
     {
@@ -158,5 +164,13 @@ public class UsageCase : MonoBehaviour
             msgSys.SetText(textList[textIndex]);            
             textIndex++;
         }
+    }
+
+    public void ClearOutRenderTexture(RenderTexture renderTexture)
+    {
+        RenderTexture rt = RenderTexture.active;
+        RenderTexture.active = renderTexture;
+        GL.Clear(true, true, Color.clear);
+        RenderTexture.active = rt;
     }
 }

@@ -535,6 +535,7 @@ MonoBehaviour:
   V_player: {fileID: 1789415355}
   m_MainC_Image: {fileID: 1205737692}
   ui_speaker: {fileID: 568255258}
+  bug: {fileID: 8400000, guid: 0e9077a85f071514e9afb16ffa2ffb77, type: 2}
   ChoicePanel_2: {fileID: 534828403}
   Choice2_1: {fileID: 1835190095}
   Choice2_2: {fileID: 1308844770}
@@ -1407,7 +1408,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 1
   m_WaitForFirstFrame: 0
