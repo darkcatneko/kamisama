@@ -15,5 +15,6 @@ MonoBehaviour:
   m_CharacterName: 
   m_CharacterID: 0
   L2DList:
-  - clip: {fileID: 32900000, guid: f8e8c8d852453a947b2c4b783289aa66, type: 3}
+  - clip: {fileID: 32900000, guid: aa7f240051d292a409ada14b839d5210, type: 3}
+    Loopclip: {fileID: 32900000, guid: d77ab1991b5d37d4984b947a37f7733d, type: 3}
     m_Emoji: 0
