@@ -149,6 +149,10 @@ public class PlayerInformation
                 return;
         }
     }
+    public void Gain_Love_Level(int _amount)
+    {
+        Love.m_currentstat += _amount;
+    }
     
    
 
