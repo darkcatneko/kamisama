@@ -86,7 +86,7 @@ public class UsageCase : MonoBehaviour
         ClearOutRenderTexture(bug);
         NarrationCharacter _MC = (NarrationCharacter)_obj[0];
         Emoji _emo = (Emoji)_obj[1];
-        ClearOutRenderTexture(bug);
+
         V_player.isLooping = false;
         V_player.clip = _MC.Find_Clip(_emo);        
         m_MainC_Image.enabled = true;

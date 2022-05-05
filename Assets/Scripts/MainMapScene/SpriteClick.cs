@@ -23,10 +23,6 @@ public class SpriteClick : MonoBehaviour
     private void Update()
     {
         this.GetComponent<SpriteRenderer>().material.SetFloat("_Fade", fade);
-        SpriteClickAnimation.instance.Place_shader.SetFloat("_Fade", UI_fade);
-        SpriteClickAnimation.instance.ExitButton.GetComponent<RectTransform>().anchoredPosition = Exit_end;
-        SpriteClickAnimation.instance.BuffButton.GetComponent<RectTransform>().anchoredPosition = Buff_end;
-        SpriteClickAnimation.instance.ChatButton.GetComponent<RectTransform>().anchoredPosition = Chat_end;
 
     }
     private void OnMouseUp()
@@ -43,27 +39,27 @@ public class SpriteClick : MonoBehaviour
     }
     public IEnumerator ButtonClickedAnimation()
     {
-        MainSceneDataCenter.instance.status = Player_status.ButtonClicked;
-        SpriteClickAnimation.instance.BlackScreen.SetActive(true);
+        MainSceneDataCenter.instance.status = Player_status.ButtonClicked;        
         DOTween.To(() => fade, x => fade = x, 0f, 1f);
         yield return new WaitForSeconds(1f);
+        SpriteClickAnimation.instance.BlackScreen.SetActive(true);
         SpriteClickAnimation.instance.Place_image.sprite = this.GetComponent<SpriteRenderer>().sprite;
-        DOTween.To(() => UI_fade, x => UI_fade = x, 1f, 1f);
-        DOTween.To(() => Exit_end, x => Exit_end = x, SpriteClickAnimation.instance.Exit_end, 1.5f);
+        DOTween.To(() => SpriteClickAnimation.instance.Shader_Input, x => SpriteClickAnimation.instance.Shader_Input = x, 1f, 1f);
+        DOTween.To(() => SpriteClickAnimation.instance.Exit_Input, x => SpriteClickAnimation.instance.Exit_Input = x, SpriteClickAnimation.instance.Exit_end, 1.5f);
         SpriteClickAnimation.instance.ExitButton.GetComponent<Button>().onClick.AddListener(() =>
         {
             StartCoroutine("ExitButtonClickedAnimation");
         });
-        DOTween.To(() => Buff_end, x => Buff_end = x, SpriteClickAnimation.instance.Buff_end, 1.5f);
-        DOTween.To(() => Chat_end, x => Chat_end = x, SpriteClickAnimation.instance.Chat_end, 1.5f);
+        DOTween.To(() => SpriteClickAnimation.instance.Buff_Input, x => SpriteClickAnimation.instance.Buff_Input = x, SpriteClickAnimation.instance.Buff_end, 1.5f);
+        DOTween.To(() => SpriteClickAnimation.instance.Chat_Input, x => SpriteClickAnimation.instance.Chat_Input = x, SpriteClickAnimation.instance.Chat_end, 1.5f);
         yield return null;
     }
     public IEnumerator ExitButtonClickedAnimation()
     {        
-        DOTween.To(() => Exit_end, x => Exit_end = x, SpriteClickAnimation.instance.Exit_Origin, 1.5f);
-        DOTween.To(() => Buff_end, x => Buff_end = x, SpriteClickAnimation.instance.Buff_Origin, 1.5f);
-        DOTween.To(() => Chat_end, x => Chat_end = x, SpriteClickAnimation.instance.Chat_Origin, 1.5f);
-        DOTween.To(() => UI_fade, x => UI_fade = x, 0f, 1f);
+        DOTween.To(() => SpriteClickAnimation.instance.Exit_Input, x => SpriteClickAnimation.instance.Exit_Input = x, SpriteClickAnimation.instance.Exit_Origin, 1.5f);
+        DOTween.To(() => SpriteClickAnimation.instance.Buff_Input, x => SpriteClickAnimation.instance.Buff_Input = x, SpriteClickAnimation.instance.Buff_Origin, 1.5f);
+        DOTween.To(() => SpriteClickAnimation.instance.Chat_Input, x => SpriteClickAnimation.instance.Chat_Input = x, SpriteClickAnimation.instance.Chat_Origin, 1.5f);
+        DOTween.To(() => SpriteClickAnimation.instance.Shader_Input, x => SpriteClickAnimation.instance.Shader_Input = x, 0f, 1f);
         yield return new WaitForSeconds(1f);
         DOTween.To(() => fade, x => fade = x, 1f, 1f);
         SpriteClickAnimation.instance.BlackScreen.SetActive(false);

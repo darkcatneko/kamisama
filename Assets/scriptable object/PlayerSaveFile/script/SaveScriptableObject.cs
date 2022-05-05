@@ -107,7 +107,7 @@ public class PlayerInformation
             SPI.m_currentstat += Random.Range(1, Level / 5 + 1);
             DEX.m_currentstat += Random.Range(1, Level / 5 + 1);
             INT.m_currentstat += Random.Range(1, Level / 5 + 1);
-            HP.m_currentstat += Random.Range(1,  Level / 5 + 1);
+            HP.m_currentstat  += Random.Range(1, Level / 5 + 1);
             DEF.m_currentstat += Random.Range(1, Level / 5 + 1);
             ATK.m_currentstat += Random.Range(1, Level / 5 + 1);
             int chance;
@@ -149,132 +149,9 @@ public class PlayerInformation
                 return;
         }
     }
-    public void GainLevelVerTwo(int _lv, Stats _stat)
-    {
-        Level += _lv;
-        for (int i = 0; i < _lv; i++)
-        {
-            POW.m_currentstat += Level / 20 + 1;
-            SPI.m_currentstat += Level / 20 + 1;
-            DEX.m_currentstat += Level / 20 + 1;
-            INT.m_currentstat += Level / 20 + 1;
-            HP.m_currentstat  += Level / 20 + 1;
-            DEF.m_currentstat += Level / 20 + 1;
-            ATK.m_currentstat += Level / 20 + 1;
-            int chance;
-            chance = Random.Range(0, 101);
-            if (chance > 85)
-            {
-                LUK.m_currentstat += Level / 10 + 1;
-            }
-        }
-        switch (_stat)
-        {
-            case Stats.INT:
-                Yao_Wan.m_currentstat += 1;
-                INT.m_currentstat += Mathf.RoundToInt( Mathf.Sqrt(Mathf.Pow(Yao_Wan.m_currentstat,1.2f) / (Level/10 + 1)));
-                INT.m_currentstat -= Level / 20 + 1;                     
-                return;
-            case Stats.DEX:
-                Fong_Shin.m_currentstat += 1;
-                DEX.m_currentstat += Mathf.RoundToInt(Mathf.Sqrt(Mathf.Pow(Fong_Shin.m_currentstat, 1.2f) / (Level / 10+1)));
-                DEX.m_currentstat -= Level / 20 + 1;
-                return;
-            case Stats.ATK:
-                Fong_Shin.m_currentstat += 1;
-                ATK.m_currentstat += Mathf.RoundToInt(Mathf.Sqrt( Mathf.Pow(Fong_Shin.m_currentstat, 1.2f) / (Level / 10 + 1)));
-                ATK.m_currentstat -= Level / 20 + 1;
-                return;
-            case Stats.POW:
-                Kin_hua.m_currentstat += 1;
-                POW.m_currentstat += Mathf.RoundToInt(Mathf.Sqrt( Mathf.Pow(Kin_hua.m_currentstat, 1.2f) / (Level / 10 + 1)));
-                POW.m_currentstat -= Level / 20 + 1;
-                return;
-            case Stats.SPI:
-                Kin_hua.m_currentstat += 1;
-                SPI.m_currentstat += Mathf.RoundToInt(Mathf.Sqrt(Mathf.Pow(Kin_hua.m_currentstat, 1.2f) / (Level / 10 + 1)));
-                SPI.m_currentstat -= Level / 20 + 1;
-                return;
-            case Stats.HP:
-                Ron_Xiu.m_currentstat += 1;
-                HP.m_currentstat += Mathf.RoundToInt(Mathf.Sqrt(Mathf.Pow(Ron_Xiu.m_currentstat, 1.2f) / (Level / 10 + 1)));
-                HP.m_currentstat -= Level / 20 + 1;
-                return;
-            case Stats.DEF:
-                Ron_Xiu.m_currentstat += 1;
-                DEF.m_currentstat += Mathf.RoundToInt(Mathf.Sqrt(Mathf.Pow(Ron_Xiu.m_currentstat, 1.2f) / (Level / 10 + 1)));
-                DEF.m_currentstat -= Level / 20 + 1;
-                return;
-        }
-    }//´ú¸Õª©
-    public void GainLevelVerThree(int _lv, Stats _stat)
-    {
-        Level += _lv;
-        for (int i = 0; i < _lv; i++)
-        {
-            SPI.m_currentstat += 1;
-            DEX.m_currentstat += 1;
-            INT.m_currentstat += 1;
-            HP.m_currentstat  += 1;
-            DEF.m_currentstat += 1;
-            ATK.m_currentstat += 1;
-            POW.m_currentstat += 1;
-            int chance;
-            chance = Random.Range(0, 101);
-            if (chance > 85)
-            {
-                LUK.m_currentstat += Level / 10 + 1;
-            }
-        }
-        switch (_stat)
-        {
-            case Stats.INT:
-                Yao_Wan.m_currentstat += 1;
-                INT.m_currentstat += Mathf.RoundToInt(LogicLine(Yao_Wan.m_currentstat));                
-                return;
-            case Stats.DEX:
-                Fong_Shin.m_currentstat += 1;
-                DEX.m_currentstat += Mathf.RoundToInt(LogicLine(Fong_Shin.m_currentstat));
-                return;
-            case Stats.ATK:
-                Fong_Shin.m_currentstat += 1;
-                ATK.m_currentstat += Mathf.RoundToInt(LogicLine(Fong_Shin.m_currentstat));
-                return;
-            case Stats.POW:
-                Kin_hua.m_currentstat += 1;
-                POW.m_currentstat += Mathf.RoundToInt(LogicLine(Kin_hua.m_currentstat));
-                return;
-            case Stats.SPI:
-                Kin_hua.m_currentstat += 1;
-                SPI.m_currentstat += Mathf.RoundToInt(LogicLine(Kin_hua.m_currentstat));
-                return;
-            case Stats.HP:
-                Ron_Xiu.m_currentstat += 1;
-                HP.m_currentstat += Mathf.RoundToInt(LogicLine(Ron_Xiu.m_currentstat));
-                return;
-            case Stats.DEF:
-                Ron_Xiu.m_currentstat += 1;
-                DEF.m_currentstat += Mathf.RoundToInt(LogicLine(Ron_Xiu.m_currentstat));
-                return;
-        }
-    }//´ú¸Õª©
-    public float LogicLine(float x)
-    {
-        float y;
-        if (x < 24)
-        {
-            y = 3f / (1f + Mathf.Pow(2.7f, -(x * 0.02f))) * x + 1f;
-        }
-        else if( x< 40)
-        {
-            y = 6f / ((x - 15) * 0.08f);
-        }
-        else
-        {
-            y = Level / 20 ;
-        }
-        return y;
-    }
+    
+   
+
     public PlayerInformation Setup_battleInformation (PlayerInformation m_Playerstats)
     {
         PlayerInformation Battle_used;
