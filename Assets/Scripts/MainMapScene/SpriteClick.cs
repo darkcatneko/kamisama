@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class SpriteClick : MonoBehaviour
 {
@@ -36,13 +37,9 @@ public class SpriteClick : MonoBehaviour
         
     }
     private void OnMouseExit()
-    {
-        if (MainSceneDataCenter.instance.status == Player_status.FreeMove)
-        {
+    {       
             Map_Place_name.DOFade(0, 0.3f);
-            this.transform.DOScale(new Vector3(1f, 1f, 0), 0.3f);
-        }
-        
+            this.transform.DOScale(new Vector3(1f, 1f, 0), 0.3f);                
     }
 
     private void OnMouseUp()
@@ -54,7 +51,9 @@ public class SpriteClick : MonoBehaviour
     }
     public IEnumerator ButtonClickedAnimation()
     {
-        MainSceneDataCenter.instance.status = Player_status.ButtonClicked;        
+
+        MainSceneDataCenter.instance.status = Player_status.ButtonClicked;
+        SetUPButtonFunction(_Place);
         DOTween.To(() => fade, x => fade = x, 0f, 1f);
         yield return new WaitForSeconds(1f);
         SpriteClickAnimation.instance.BlackScreen.SetActive(true);
@@ -64,14 +63,15 @@ public class SpriteClick : MonoBehaviour
         SpriteClickAnimation.instance.ExitButton.GetComponent<Button>().onClick.AddListener(() =>
         {
             StartCoroutine("ExitButtonClickedAnimation");
-        });
+        });        
         DOTween.To(() => SpriteClickAnimation.instance.Buff_Input, x => SpriteClickAnimation.instance.Buff_Input = x, SpriteClickAnimation.instance.Buff_end, 1.5f);
         DOTween.To(() => SpriteClickAnimation.instance.Chat_Input, x => SpriteClickAnimation.instance.Chat_Input = x, SpriteClickAnimation.instance.Chat_end, 1.5f);
         DOTween.To(() => SpriteClickAnimation.instance.Flag_Input, x => SpriteClickAnimation.instance.Flag_Input = x, SpriteClickAnimation.instance.Flag_end, 1.5f);
         yield return null;
     }
     public IEnumerator ExitButtonClickedAnimation()
-    {        
+    {
+        ClearFunction();
         DOTween.To(() => SpriteClickAnimation.instance.Exit_Input, x => SpriteClickAnimation.instance.Exit_Input = x, SpriteClickAnimation.instance.Exit_Origin, 1.5f);
         DOTween.To(() => SpriteClickAnimation.instance.Buff_Input, x => SpriteClickAnimation.instance.Buff_Input = x, SpriteClickAnimation.instance.Buff_Origin, 1.5f);
         DOTween.To(() => SpriteClickAnimation.instance.Chat_Input, x => SpriteClickAnimation.instance.Chat_Input = x, SpriteClickAnimation.instance.Chat_Origin, 1.5f);
@@ -86,7 +86,7 @@ public class SpriteClick : MonoBehaviour
 
     public void SetUPButtonFunction(Stats _stat)
     {
-        if ((int)_stat < 8)//七個地標
+        if ((int)_stat < 7)//七個地標
         {
             SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.AddListener(
                 () =>
@@ -106,35 +106,184 @@ public class SpriteClick : MonoBehaviour
                     switch (_stat)
                     {
                         case Stats.POW:
-                            MainSceneDataCenter.instance.dialogue_Data_Object.The_NodePad_Be_read = "Sen_Nong_Chat";
+                            Into_Dialogue("Sen_Nong_Chat");
                             return;
                         case Stats.SPI:
-                            MainSceneDataCenter.instance.dialogue_Data_Object.The_NodePad_Be_read = "Wood_Carving_Chat";
+                            Into_Dialogue("Wood_Carving_Chat");
                             return;
                         case Stats.DEX:
-                            MainSceneDataCenter.instance.dialogue_Data_Object.The_NodePad_Be_read = "Bench_Chat";
+                            Into_Dialogue("Bench_Chat");
                             return;
                         case Stats.INT:
-                            MainSceneDataCenter.instance.dialogue_Data_Object.The_NodePad_Be_read = "Market_Chat";
+                            Into_Dialogue("Market_Chat");
                             return;
                         case Stats.HP:
-                            MainSceneDataCenter.instance.dialogue_Data_Object.The_NodePad_Be_read = "Bar_Chat";
+                            Into_Dialogue("Bar_Chat");
                             return;
                         case Stats.DEF:
-                            MainSceneDataCenter.instance.dialogue_Data_Object.The_NodePad_Be_read = "Unagi_Chat";
+                            Into_Dialogue("Unagi_Chat");
                             return;
                         case Stats.ATK:
-                            MainSceneDataCenter.instance.dialogue_Data_Object.The_NodePad_Be_read = "Yong_Chuan_Chat";
+                            Into_Dialogue("Yong_Chuan_Chat");
                             return;
                     }
+                    //未完待續
                 }
                 );
             SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.AddListener(
                 () =>
                 {
-
+                    if (MainSceneDataCenter.instance.Player_save.FlagCount>0)
+                    {
+                        MainTimeSystem.instance.Time.PlusTime();
+                        MainSceneDataCenter.instance.Player_save.FlagCount--;
+                        MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
+                        //演出
+                        StartCoroutine("ExitButtonClickedAnimation");
+                        SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
+                    }
+                    else
+                    {                        
+                        SpriteClickAnimation.instance.FlagButton.transform.DOShakePosition(0.5f,15f);
+                    }
                 }
                 );
         }
+        else if ((int)_stat == 7)
+        {
+            //改buff區的圖片
+            SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.AddListener(
+                () =>
+                {
+                    if (MainSceneDataCenter.instance.Player_save.Can_Get_Flag == true)
+                    {
+                        MainSceneDataCenter.instance.Player_save.FlagCount = 3;
+                        MainSceneDataCenter.instance.Player_save.Can_Get_Flag = false;
+                        switch (MainTimeSystem.instance.Time.day)//進入西蘿殿每日劇情
+                        {
+                            case 1:
+                                Into_Dialogue("Loli_Home_day_1");
+                                return;
+                            case 2:
+                                Into_Dialogue("Loli_Home_day_2");
+                                return;
+                            case 3:
+                                Into_Dialogue("Loli_Home_day_3");
+                                return;
+                            case 4:
+                                Into_Dialogue("Loli_Home_day_4");
+                                return;
+                            case 5:
+                                Into_Dialogue("Loli_Home_day_5");
+                                return;
+                            case 6:
+                                Into_Dialogue("Loli_Home_day_6");
+                                return;
+                            case 7:
+                                Into_Dialogue("Loli_Home_day_7");
+                                return;
+                        }
+                    }
+                    else
+                    {
+                        SpriteClickAnimation.instance.BuffButton.transform.DOShakePosition(0.5f, 15f);
+                    }
+                }
+                );
+            SpriteClickAnimation.instance.ChatButton.GetComponent<Button>().onClick.AddListener(
+                () =>
+                {
+                    MainSceneDataCenter.instance.Player_save.m_Player.Gain_Love_Level(2);
+                    MainTimeSystem.instance.Time.PlusTime();
+                    
+                    Into_Dialogue("Loli_Home_Chat");
+
+                    //未完待續
+                }
+                );
+            SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.AddListener(
+                () =>
+                {
+                    if (MainSceneDataCenter.instance.Player_save.FlagCount > 0)
+                    {
+                        MainTimeSystem.instance.Time.PlusTime();
+                        MainSceneDataCenter.instance.Player_save.FlagCount--;
+                        MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
+                        //演出
+                        StartCoroutine("ExitButtonClickedAnimation");
+                        SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
+                    }
+                    else
+                    {
+                        SpriteClickAnimation.instance.FlagButton.transform.DOShakePosition(0.5f, 15f);
+                    }
+                }
+                );
+        }
+        else if ((int)_stat > 7 )
+        {
+            //改buff區的圖片
+            SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.AddListener(
+                () =>
+                {
+                    //開啟技能獲取介面
+                }
+                );
+            SpriteClickAnimation.instance.ChatButton.GetComponent<Button>().onClick.AddListener(
+                () =>
+                {
+                    MainSceneDataCenter.instance.Player_save.m_Player.Gain_Love_Level(2);
+                    MainTimeSystem.instance.Time.PlusTime();
+
+                    switch (_stat)
+                    {
+                        case Stats.Yao_Wan:
+                            Into_Dialogue("Yao_Wan_Chat");
+                            return;
+                        case Stats.Fong_Shin:
+                            Into_Dialogue("Fong_Shin_Chat");
+                            return;
+                        case Stats.Kin_hua:
+                            Into_Dialogue("Kin_hua_Chat");
+                            return;
+                        case Stats.Ron_Xiu:
+                            Into_Dialogue("Ron_Xiu_Chat");
+                            return;
+                    }
+                    //未完待續
+                }
+                );
+            SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.AddListener(
+                () =>
+                {
+                    if (MainSceneDataCenter.instance.Player_save.FlagCount > 0)
+                    {
+                        MainTimeSystem.instance.Time.PlusTime();
+                        MainSceneDataCenter.instance.Player_save.FlagCount--;
+                        MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
+                        //演出
+                        StartCoroutine("ExitButtonClickedAnimation");
+                        SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
+                    }
+                    else
+                    {
+                        SpriteClickAnimation.instance.FlagButton.transform.DOShakePosition(0.5f, 15f);
+                    }
+                }
+                );
+        }
+    }
+    //切劇情模式的function
+    public void Into_Dialogue(string _plot_name)
+    {
+        ClearFunction();
+        MainSceneDataCenter.instance.dialogue_Data_Object.The_NodePad_Be_read = _plot_name;
+        SceneManager.LoadScene(1);
+    }
+    public void ClearFunction()
+    {
+        SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        SpriteClickAnimation.instance.ChatButton.GetComponent<Button>().onClick.RemoveAllListeners();
     }
 }

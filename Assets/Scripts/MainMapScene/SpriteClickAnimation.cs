@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SpriteClickAnimation : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class SpriteClickAnimation : MonoBehaviour
     public GameObject BuffButton; public Vector2 Buff_Origin; public Vector2 Buff_end = new Vector3(452,-180); public Vector2 Buff_Input;
     public GameObject ChatButton; public Vector2 Chat_Origin; public Vector2 Chat_end = new Vector3(452, 90); public Vector2 Chat_Input;
     public GameObject FlagButton; public Vector2 Flag_Origin; public Vector2 Flag_end = new Vector3(452, 90); public Vector2 Flag_Input;
+
+    public TextMeshProUGUI FlagCount;
 
     private void Awake()
     {
@@ -40,6 +43,7 @@ public class SpriteClickAnimation : MonoBehaviour
        BuffButton.GetComponent<RectTransform>().anchoredPosition = Buff_Input;
        ChatButton.GetComponent<RectTransform>().anchoredPosition = Chat_Input;
        FlagButton.GetComponent<RectTransform>().anchoredPosition = Flag_Input;
+        FlagCount.text = MainSceneDataCenter.instance.Player_save.FlagCount + "/3";
     }
     
 }

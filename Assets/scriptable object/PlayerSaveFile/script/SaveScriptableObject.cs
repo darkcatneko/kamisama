@@ -11,7 +11,8 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
     public string savePath;
     public TimeClass TimeSaveData;
     public PlayerInformation m_Player;
-    public bool[] MapFlagCheck = new bool[14];
+    public bool[] MapFlagCheck = new bool[14];public bool Can_Get_Flag = true;
+    public int FlagCount = 0; 
     void Start()
     {
         
@@ -50,6 +51,9 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
         TimeSaveData.day = 1;
         TimeSaveData.time = 8;
         m_Player = new PlayerInformation();
+        MapFlagCheck = new bool[14];
+        FlagCount = 0;
+        Can_Get_Flag = true;
     }
     public void OnAfterDeserialize()
     {
@@ -171,8 +175,7 @@ public class PlayerInformation
 public enum Stats
 {
     POW,//法術防禦力
-    SPI,//法術攻擊力
-    LUK,//擲杯的成功率
+    SPI,//法術攻擊力    
     DEX,//迴避率
     INT,//MP上限
     HP,//HP
@@ -183,6 +186,7 @@ public enum Stats
     Fong_Shin,//風神
     Kin_hua,//金華
     Ron_Xiu,//榕樹
+    LUK,//擲杯的成功率
 }
 [System.Serializable]
 public class PlayerStats

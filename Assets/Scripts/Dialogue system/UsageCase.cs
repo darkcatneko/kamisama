@@ -18,7 +18,6 @@ public class UsageCase : MonoBehaviour
     public TextAsset textAsset;
     private List<string> textList = new List<string>();
     private int textIndex = 0;
-
     public VideoPlayer V_player;
     public RawImage m_MainC_Image;
     public TextMeshProUGUI ui_speaker;
@@ -30,17 +29,14 @@ public class UsageCase : MonoBehaviour
     public Button Choice2_2;
 
     public List<NarrationCharacter> CharactersLists;
+    public Dialogue_Data_Object dialogueOBJ;
+    public SaveScriptableObject _playerSave;
 
     void Start()
     {
         msgSys = this.GetComponent<ES_MessageSystem>();
-        if (uiText == null)
-        {
-            Debug.LogError("UIText Component not assign.");
-        }
-        else
-            //ReadTextDataFromAsset(textAsset);
 
+        textAsset = FindNotePad(dialogueOBJ.The_NodePad_Be_read);
         //add special chars and functions in other component.
         msgSys.AddSpecialCharToFuncMap("UsageCase", CustomizedFunction);
         //進選項
@@ -49,13 +45,20 @@ public class UsageCase : MonoBehaviour
         msgSys.AddSpecialCharToFuncMap("N", NarrationSet);
         //尊王
         msgSys.AddSpecialCharToFuncMap("God_basic", () => ChangeMainSpeaker(CharactersLists[0], Emoji.smile));
+        if (uiText == null)
+        {
+            Debug.LogError("UIText Component not assign.");
+        }
+        else
+        ReadTextDataFromAsset(textAsset);
+        dialogueOBJ.Clear();
     }
     public void IntoChoiceSection_2(string _PlotName)
     {
         ChoicePanel_2.SetActive(true);
         switch (_PlotName)
         {
-            case "Opening":
+            case "Loli_Home_day_1":
                 SetChoiceButtonFunction(Choice2_1, "i choice a", "1-1");
                 SetChoiceButtonFunction(Choice2_2, "i choice b", "1-2");
                 return;
@@ -133,10 +136,6 @@ public class UsageCase : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            ReadTextDataFromAsset(textAsset);
-        }
         if (Input.GetKeyDown(KeyCode.S))
         {
             //You can sending the messages from strings or text-based files.
@@ -172,5 +171,11 @@ public class UsageCase : MonoBehaviour
         RenderTexture.active = renderTexture;
         GL.Clear(true, true, Color.clear);
         RenderTexture.active = rt;
+    }
+    public TextAsset FindNotePad(string _str)
+    {
+        TextAsset T;
+        T = Resources.Load<TextAsset>("TextAsset/" + _str);
+        return T;
     }
 }

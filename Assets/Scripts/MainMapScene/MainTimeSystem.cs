@@ -34,6 +34,7 @@ public class TimeClass
         if (time>=23)
         {
             day++;
+            MainSceneDataCenter.instance.Player_save.Can_Get_Flag = true;
             time = 8;
         }
     }

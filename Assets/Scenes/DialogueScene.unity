@@ -531,7 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiText: {fileID: 1616386690}
-  textAsset: {fileID: 4900000, guid: bb090f0b688f0ed4b9d3738fd575dda1, type: 3}
+  textAsset: {fileID: 0}
   V_player: {fileID: 1789415355}
   m_MainC_Image: {fileID: 1205737692}
   ui_speaker: {fileID: 568255258}
@@ -541,6 +541,7 @@ MonoBehaviour:
   Choice2_2: {fileID: 1308844770}
   CharactersLists:
   - {fileID: 11400000, guid: 5f0218ba437de644583ce64c361e719e, type: 2}
+  dialogueOBJ: {fileID: 11400000, guid: f30d8c5f482616340929be19b1ec0cdb, type: 2}
 --- !u!114 &507043651
 MonoBehaviour:
   m_ObjectHideFlags: 0

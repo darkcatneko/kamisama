@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Loading Scene.unity
     guid: c5462fa5680816a468758178eb3e8245
+  - enabled: 1
+    path: Assets/Scenes/DialogueScene.unity
+    guid: 0cec5839bece27047a18234100b207fc
+  - enabled: 1
+    path: Assets/Scenes/MainMap.unity
+    guid: 535b958dc7cba9a43a14edb80ecda77b
   m_configObjects: {}
