@@ -1714,6 +1714,22 @@ MonoBehaviour:
   Volume: 0
   AutoSave: 1
   CheckBox: {fileID: 750327453}
+  FileLocker:
+  - {fileID: 11400000, guid: 279cc9c8359398d4c8d95d238827a17f, type: 2}
+  - {fileID: 11400000, guid: a526314b5fc4c514b95acadb3c77e23d, type: 2}
+  - {fileID: 11400000, guid: feb9d612af5d88e49b2f1b99be8d4ac6, type: 2}
+  - {fileID: 11400000, guid: f0bf04ea09bfa7a4ca36f0207a61eb29, type: 2}
+  - {fileID: 11400000, guid: 620c2edffe16b3043aabbaa4377e8da9, type: 2}
+  - {fileID: 11400000, guid: 04f50e238a310384dbcc887a2ef97fd2, type: 2}
+  - {fileID: 11400000, guid: adc09bca45be95e4f984bc2946e60562, type: 2}
+  - {fileID: 11400000, guid: 710616711b730ce4993226a705927084, type: 2}
+  - {fileID: 11400000, guid: 6c556bd7cfa638a4eb928ac8f09a45a1, type: 2}
+  - {fileID: 11400000, guid: 34b315354d19519408c522c19ab81f93, type: 2}
+  - {fileID: 11400000, guid: 9fa58bc2a3324c44ebfe4db29b035b54, type: 2}
+  - {fileID: 11400000, guid: 2394bfab72645974fba4d305a48a2f8e, type: 2}
+  GameUseData: {fileID: 11400000, guid: beec8b3c85e5b9e46b73d58a15768ccf, type: 2}
+  NewGameUseData: {fileID: 11400000, guid: a79d4939ad0db6d42b372c6df31d0b7b, type: 2}
+  dialogueOBJ: {fileID: 11400000, guid: f30d8c5f482616340929be19b1ec0cdb, type: 2}
 --- !u!1 &750327451
 GameObject:
   m_ObjectHideFlags: 0

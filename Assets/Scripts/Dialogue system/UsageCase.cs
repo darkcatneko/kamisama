@@ -12,11 +12,14 @@ using UnityEngine.Video;
 public class UsageCase : MonoBehaviour
 {
     private bool On_choice = false;
+    private bool On_VideoPlay = false;
 
     private ES_MessageSystem msgSys;
     public TextMeshProUGUI uiText;
     public TextAsset textAsset;
+    [SerializeField]
     private List<string> textList = new List<string>();
+    [SerializeField]
     private int textIndex = 0;
     public VideoPlayer V_player;
     public RawImage m_MainC_Image;
@@ -37,6 +40,8 @@ public class UsageCase : MonoBehaviour
         msgSys = this.GetComponent<ES_MessageSystem>();
 
         textAsset = FindNotePad(dialogueOBJ.The_NodePad_Be_read);
+        //
+        msgSys.AddSpecialCharToFuncMap("END", EndDialogue);
         //add special chars and functions in other component.
         msgSys.AddSpecialCharToFuncMap("UsageCase", CustomizedFunction);
         //進選項
@@ -44,7 +49,9 @@ public class UsageCase : MonoBehaviour
         //旁白
         msgSys.AddSpecialCharToFuncMap("N", NarrationSet);
         //尊王
-        msgSys.AddSpecialCharToFuncMap("God_basic", () => ChangeMainSpeaker(CharactersLists[0], Emoji.smile));
+        msgSys.AddSpecialCharToFuncMap("God_smile", () => ChangeMainSpeaker(CharactersLists[0], Emoji.smile));
+        msgSys.AddSpecialCharToFuncMap("God_shock", () => ChangeMainSpeaker(CharactersLists[0], Emoji.shock));
+        //
         if (uiText == null)
         {
             Debug.LogError("UIText Component not assign.");
@@ -59,6 +66,10 @@ public class UsageCase : MonoBehaviour
         switch (_PlotName)
         {
             case "Loli_Home_day_1":
+                SetChoiceButtonFunction(Choice2_1, "i choice a", "1-1");
+                SetChoiceButtonFunction(Choice2_2, "i choice b", "1-2");
+                return;
+            case "Opening":
                 SetChoiceButtonFunction(Choice2_1, "i choice a", "1-1");
                 SetChoiceButtonFunction(Choice2_2, "i choice b", "1-2");
                 return;
@@ -81,12 +92,14 @@ public class UsageCase : MonoBehaviour
     }
     private void ChangeMainSpeaker(NarrationCharacter _MC,Emoji _emo)
     {
+        StopAllCoroutines();
         object[] _obj = new object[2] { _MC,_emo};
         StartCoroutine("ChangeMainSpeakerAnimate", _obj);
     }
     public IEnumerator ChangeMainSpeakerAnimate(object[] _obj)
     {
         ClearOutRenderTexture(bug);
+        On_VideoPlay = true;
         NarrationCharacter _MC = (NarrationCharacter)_obj[0];
         Emoji _emo = (Emoji)_obj[1];
 
@@ -96,7 +109,8 @@ public class UsageCase : MonoBehaviour
         V_player.Play();
         ui_speaker.text = _MC.CharacterName;
         yield return new WaitForSeconds(2f);
-        V_player.isLooping = true;
+        On_VideoPlay = false;
+        V_player.isLooping = true; 
         V_player.clip = _MC.Find_LoopClip(_emo);
         V_player.Play();       
     }
@@ -145,7 +159,7 @@ public class UsageCase : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && On_choice == false)
+        if (Input.GetKeyDown(KeyCode.Space) && On_choice == false && On_VideoPlay == false)
         {
             //Continue the messages, stoping by [w] or [lr] keywords.
             msgSys.Next();
@@ -177,5 +191,13 @@ public class UsageCase : MonoBehaviour
         TextAsset T;
         T = Resources.Load<TextAsset>("TextAsset/" + _str);
         return T;
+    }
+    public void EndDialogue()
+    {
+        SceneManager.LoadScene(2);
+    }
+    private void OnApplicationQuit()
+    {
+        _playerSave.Clear();
     }
 }

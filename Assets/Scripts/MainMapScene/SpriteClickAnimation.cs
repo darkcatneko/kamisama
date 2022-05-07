@@ -17,6 +17,8 @@ public class SpriteClickAnimation : MonoBehaviour
     public GameObject BuffButton; public Vector2 Buff_Origin; public Vector2 Buff_end = new Vector3(452,-180); public Vector2 Buff_Input;
     public GameObject ChatButton; public Vector2 Chat_Origin; public Vector2 Chat_end = new Vector3(452, 90); public Vector2 Chat_Input;
     public GameObject FlagButton; public Vector2 Flag_Origin; public Vector2 Flag_end = new Vector3(452, 90); public Vector2 Flag_Input;
+    public GameObject SkillButton; public Vector2 Skill_Origin; public Vector2 Skill_end = new Vector3(452, 90); public Vector2 Skill_Input;
+    public Image panel;
 
     public TextMeshProUGUI FlagCount;
 
@@ -30,10 +32,12 @@ public class SpriteClickAnimation : MonoBehaviour
         Buff_Origin = BuffButton.GetComponent<RectTransform>().anchoredPosition;
         Chat_Origin = ChatButton.GetComponent<RectTransform>().anchoredPosition;
         Flag_Origin = FlagButton.GetComponent<RectTransform>().anchoredPosition;
+        Skill_Origin = SkillButton.GetComponent<RectTransform>().anchoredPosition;
         Exit_Input = Exit_Origin;
         Buff_Input = Buff_Origin;
         Chat_Input = Chat_Origin;
         Flag_Input = Flag_Origin;
+        Skill_Input = Skill_Origin;
     }
     // Update is called once per frame
     void Update()
@@ -43,6 +47,7 @@ public class SpriteClickAnimation : MonoBehaviour
        BuffButton.GetComponent<RectTransform>().anchoredPosition = Buff_Input;
        ChatButton.GetComponent<RectTransform>().anchoredPosition = Chat_Input;
        FlagButton.GetComponent<RectTransform>().anchoredPosition = Flag_Input;
+        SkillButton.GetComponent<RectTransform>().anchoredPosition = Skill_Input;
         FlagCount.text = MainSceneDataCenter.instance.Player_save.FlagCount + "/3";
     }
     

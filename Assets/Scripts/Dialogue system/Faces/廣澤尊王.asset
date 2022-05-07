@@ -18,3 +18,6 @@ MonoBehaviour:
   - clip: {fileID: 32900000, guid: aa7f240051d292a409ada14b839d5210, type: 3}
     Loopclip: {fileID: 32900000, guid: d77ab1991b5d37d4984b947a37f7733d, type: 3}
     m_Emoji: 0
+  - clip: {fileID: 32900000, guid: db1f21ca94ebc354b93541984ce3e742, type: 3}
+    Loopclip: {fileID: 32900000, guid: 2a71dbf8d7443994fafec732417da0cd, type: 3}
+    m_Emoji: 1

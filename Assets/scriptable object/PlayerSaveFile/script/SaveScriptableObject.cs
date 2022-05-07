@@ -8,11 +8,17 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(fileName = "NewSaveFile", menuName = "SaveData/Data")]
 public class SaveScriptableObject : ScriptableObject, ISerializationCallbackReceiver
 {
+    public bool Newtogame = true;
+
     public string savePath;
     public TimeClass TimeSaveData;
     public PlayerInformation m_Player;
     public bool[] MapFlagCheck = new bool[14];public bool Can_Get_Flag = true;
-    public int FlagCount = 0; 
+    public int FlagCount = 0;
+
+    public int Now_Playing_Scene;
+    public string Now_Watching_Plot;
+    public int Now_Watching_Sentence;
     void Start()
     {
         
@@ -48,6 +54,7 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
     [ContextMenu("Clear")]
     public void Clear()
     {
+        Newtogame = true;
         TimeSaveData.day = 1;
         TimeSaveData.time = 8;
         m_Player = new PlayerInformation();

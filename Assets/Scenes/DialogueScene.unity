@@ -532,6 +532,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiText: {fileID: 1616386690}
   textAsset: {fileID: 0}
+  textList: []
+  textIndex: 0
   V_player: {fileID: 1789415355}
   m_MainC_Image: {fileID: 1205737692}
   ui_speaker: {fileID: 568255258}
@@ -542,6 +544,7 @@ MonoBehaviour:
   CharactersLists:
   - {fileID: 11400000, guid: 5f0218ba437de644583ce64c361e719e, type: 2}
   dialogueOBJ: {fileID: 11400000, guid: f30d8c5f482616340929be19b1ec0cdb, type: 2}
+  _playerSave: {fileID: 11400000, guid: beec8b3c85e5b9e46b73d58a15768ccf, type: 2}
 --- !u!114 &507043651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1301,7 +1304,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

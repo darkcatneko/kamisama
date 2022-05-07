@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MainTimeSystem : MonoBehaviour
 {
+    public TextMeshProUGUI Day_Text;
+    public TextMeshProUGUI Time_Text;
+
     public static MainTimeSystem instance;//ฟWล้
     public TimeClass Time;
     private void Awake()
@@ -18,7 +22,8 @@ public class MainTimeSystem : MonoBehaviour
     
     void Update()
     {
-        
+        Day_Text.text = Time.day.ToString();
+        Time_Text.text = Time.time.ToString()+":00";
     }
 }
 [System.Serializable]

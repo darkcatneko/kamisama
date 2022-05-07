@@ -19,6 +19,12 @@ public class Loading_scene_UI : MonoBehaviour
     //是否啟用autosave
     public bool AutoSave = true;
     public Toggle CheckBox;
+    //存檔櫃
+    public SaveScriptableObject[] FileLocker;
+    public SaveScriptableObject GameUseData;
+    public SaveScriptableObject NewGameUseData;
+
+    public Dialogue_Data_Object dialogueOBJ;
     private void Awake()
     {
         if (this != null)
@@ -52,7 +58,13 @@ public class Loading_scene_UI : MonoBehaviour
     }
     public void NewGameButtonClicked()//未寫
     {
-
+        GameUseData.Clear();
+        GameUseData = NewGameUseData;
+        if (GameUseData.Newtogame == true)
+        {
+            dialogueOBJ.The_NodePad_Be_read = "Opening";
+            SceneManager.LoadScene(1);
+        }
     }
     public void SaveDataClicked()//未寫
     {
