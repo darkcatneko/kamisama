@@ -9,7 +9,6 @@ public class SpriteClickAnimation : MonoBehaviour
     public static SpriteClickAnimation instance;//獨體
     //物件
     public GameObject BlackScreen;
-    public Image Place_image;
     public Material Place_shader;
     public float Shader_Input;
     //按鈕設置
@@ -18,6 +17,10 @@ public class SpriteClickAnimation : MonoBehaviour
     public GameObject ChatButton; public Vector2 Chat_Origin; public Vector2 Chat_end = new Vector3(452, 90); public Vector2 Chat_Input;
     public GameObject FlagButton; public Vector2 Flag_Origin; public Vector2 Flag_end = new Vector3(452, 90); public Vector2 Flag_Input;
     public GameObject SkillButton; public Vector2 Skill_Origin; public Vector2 Skill_end = new Vector3(452, 90); public Vector2 Skill_Input;
+    //圖片icon設置
+    public GameObject Map_Pictures; public Vector2 Map_Pictures_origin; public Vector2 Map_Pictures_end;
+    public Image Map_little_icon;public Image Map_icon_name;
+
     public Image panel;
 
     public TextMeshProUGUI FlagCount;
@@ -33,6 +36,7 @@ public class SpriteClickAnimation : MonoBehaviour
         Chat_Origin = ChatButton.GetComponent<RectTransform>().anchoredPosition;
         Flag_Origin = FlagButton.GetComponent<RectTransform>().anchoredPosition;
         Skill_Origin = SkillButton.GetComponent<RectTransform>().anchoredPosition;
+        Map_Pictures_origin = Map_Pictures.GetComponent<RectTransform>().anchoredPosition;
         Exit_Input = Exit_Origin;
         Buff_Input = Buff_Origin;
         Chat_Input = Chat_Origin;

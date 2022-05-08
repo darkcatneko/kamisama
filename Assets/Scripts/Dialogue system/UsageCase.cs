@@ -66,18 +66,18 @@ public class UsageCase : MonoBehaviour
         switch (_PlotName)
         {
             case "Loli_Home_day_1":
-                SetChoiceButtonFunction(Choice2_1, "i choice a", "1-1");
-                SetChoiceButtonFunction(Choice2_2, "i choice b", "1-2");
+                SetChoiceButtonFunction(Choice2_1, "i choice a", "1-1",1);
+                SetChoiceButtonFunction(Choice2_2, "i choice b", "1-2",9);
                 return;
             case "Opening":
-                SetChoiceButtonFunction(Choice2_1, "i choice a", "1-1");
-                SetChoiceButtonFunction(Choice2_2, "i choice b", "1-2");
+                SetChoiceButtonFunction(Choice2_1, "i choice a", "1-1",1);
+                SetChoiceButtonFunction(Choice2_2, "i choice b", "1-2",9);
                 return;
             default:
                 return;
         }
     }
-    public void SetChoiceButtonFunction(Button _target,string _choice,string _ConnectPlotName)
+    public void SetChoiceButtonFunction(Button _target,string _choice,string _ConnectPlotName,int _love_it_get)
     {
         On_choice = true;
         _target.GetComponentInChildren<Text>().text = _choice;
@@ -85,6 +85,7 @@ public class UsageCase : MonoBehaviour
         { 
             textAsset = (Resources.Load<TextAsset>("TextAsset/" + _ConnectPlotName)); 
             On_choice = false; msgSys.Next(); ReadTextDataFromAsset(textAsset);
+            _playerSave.m_Player.Gain_Love_Level(_love_it_get);
             Choice2_1.onClick.RemoveAllListeners();
             Choice2_2.onClick.RemoveAllListeners();
             ChoicePanel_2.SetActive(false);
