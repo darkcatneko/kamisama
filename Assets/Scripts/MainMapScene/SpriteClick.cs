@@ -54,14 +54,11 @@ public class SpriteClick : MonoBehaviour
     }
     public IEnumerator ButtonClickedAnimation()
     {
-
         MainSceneDataCenter.instance.status = Player_status.ButtonClicked;
         SetUPButtonFunction(_Place);
         DOTween.To(() => fade, x => fade = x, 0f, 1f);    
         yield return new WaitForSeconds(1f);
         SpriteClickAnimation.instance.BlackScreen.SetActive(true);
-
-
         SpriteClickAnimation.instance.panel.DOFade(0.76f, 1f);
         SpriteClickAnimation.instance.Map_little_icon.sprite = this.GetComponent<SpriteRenderer>().sprite;
         SpriteClickAnimation.instance.Map_Pictures.GetComponent<Image>().sprite = Resources.Load<Sprite>("MapRealPicture/RealPic" + (int)_Place);
@@ -71,13 +68,25 @@ public class SpriteClick : MonoBehaviour
         DOTween.To(() => SpriteClickAnimation.instance.Exit_Input, x => SpriteClickAnimation.instance.Exit_Input = x, SpriteClickAnimation.instance.Exit_end, 1.5f);
         SpriteClickAnimation.instance.ExitButton.GetComponent<Button>().onClick.AddListener(() =>
         {
+        if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
+            {
             StartCoroutine("ExitButtonClickedAnimation");
-        });        
-        DOTween.To(() => SpriteClickAnimation.instance.Buff_Input, x => SpriteClickAnimation.instance.Buff_Input = x, SpriteClickAnimation.instance.Buff_end, 1.5f);
-        DOTween.To(() => SpriteClickAnimation.instance.Chat_Input, x => SpriteClickAnimation.instance.Chat_Input = x, SpriteClickAnimation.instance.Chat_end, 1.5f);
-        DOTween.To(() => SpriteClickAnimation.instance.Flag_Input, x => SpriteClickAnimation.instance.Flag_Input = x, SpriteClickAnimation.instance.Flag_end, 1.5f);
-        yield return new WaitForSeconds(0.3f);
-        DOTween.To(() => SpriteClickAnimation.instance.Shader_Input, x => SpriteClickAnimation.instance.Shader_Input = x, 1f, 1.3f);
+            }
+            
+        });
+        DOTween.To(() => SpriteClickAnimation.instance.Buff_Input, x => SpriteClickAnimation.instance.Buff_Input = x, SpriteClickAnimation.instance.Buff_Middle, 1f);
+        DOTween.To(() => SpriteClickAnimation.instance.Chat_Input, x => SpriteClickAnimation.instance.Chat_Input = x, SpriteClickAnimation.instance.Chat_Middle, 1f);
+        DOTween.To(() => SpriteClickAnimation.instance.Flag_Input, x => SpriteClickAnimation.instance.Flag_Input = x, SpriteClickAnimation.instance.Flag_Middle, 1f);
+        DOTween.To(() => SpriteClickAnimation.instance.Shader_Input, x => SpriteClickAnimation.instance.Shader_Input = x, 1f, 0.7f);
+        yield return new WaitForSeconds(1f);
+        SpriteClickAnimation.instance.Loading = true;
+        SpriteClickAnimation.instance.BuffButton.SetActive(true);
+        SpriteClickAnimation.instance.FlagButton.SetActive(true);
+        SpriteClickAnimation.instance.ChatButton.SetActive(true);
+        SetUpButttonImage(_Place);
+        DOTween.To(() => SpriteClickAnimation.instance.Buff_Input, x => SpriteClickAnimation.instance.Buff_Input = x, SpriteClickAnimation.instance.Buff_end, 0.5f);
+        DOTween.To(() => SpriteClickAnimation.instance.Chat_Input, x => SpriteClickAnimation.instance.Chat_Input = x, SpriteClickAnimation.instance.Chat_end, 0.5f);
+        DOTween.To(() => SpriteClickAnimation.instance.Flag_Input, x => SpriteClickAnimation.instance.Flag_Input = x, SpriteClickAnimation.instance.Flag_end, 0.5f);   
         yield return null;
     }
     public IEnumerator ExitButtonClickedAnimation()
@@ -93,16 +102,17 @@ public class SpriteClick : MonoBehaviour
         DOTween.To(() => SpriteClickAnimation.instance.Shader_Input, x => SpriteClickAnimation.instance.Shader_Input = x, 0f, 1f);
         yield return new WaitForSeconds(1f);
         DOTween.To(() => fade, x => fade = x, 1f, 1f);
-        SpriteClickAnimation.instance.BlackScreen.SetActive(false);
         MainSceneDataCenter.instance.status = Player_status.FreeMove;
+        SpriteClickAnimation.instance.Loading = false;
+        SpriteClickAnimation.instance.BlackScreen.SetActive(false);
         yield return null;
     }
 
     public void SetUPButtonFunction(Stats _stat)
     {
-        SpriteClickAnimation.instance.ChatButton.GetComponent<Image>().DOFade(1, 0.1f);
+        SpriteClickAnimation.instance.ChatButton.SetActive(true);
         if ((int)_stat < 7)//七個地標
-        {
+        {            
             SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.AddListener(
                 () =>
                 {
@@ -111,7 +121,7 @@ public class SpriteClick : MonoBehaviour
                         MainSceneDataCenter.instance.Player_save.m_Player.GainLevel(1, _stat);//執行動作
                         StartCoroutine("ExitButtonClickedAnimation");
                         //進入戰鬥
-                        MainTimeSystem.instance.Time.PlusTime();
+                        MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
                         SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.RemoveAllListeners();
                     }                   
                 }
@@ -122,7 +132,7 @@ public class SpriteClick : MonoBehaviour
                     if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
                     {
                         MainSceneDataCenter.instance.Player_save.m_Player.Gain_Love_Level(2);
-                        MainTimeSystem.instance.Time.PlusTime();
+                        MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
                         switch (_stat)
                         {
                             case Stats.POW:
@@ -159,7 +169,7 @@ public class SpriteClick : MonoBehaviour
                     {
                         if (MainSceneDataCenter.instance.Player_save.FlagCount > 0)
                         {
-                            MainTimeSystem.instance.Time.PlusTime();
+                            MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
                             StartCoroutine("MinusFlag");
                             MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
                             //演出
@@ -176,7 +186,8 @@ public class SpriteClick : MonoBehaviour
         }
         else if ((int)_stat == 7)
         {
-            //改buff區的圖片
+            
+            
             SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.AddListener(
                 () =>
                 {
@@ -185,6 +196,7 @@ public class SpriteClick : MonoBehaviour
                         if (MainSceneDataCenter.instance.Player_save.Can_Get_Flag == true)
                         {
                             MainSceneDataCenter.instance.Player_save.FlagCount = 3;
+                            MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
                             MainSceneDataCenter.instance.Player_save.Can_Get_Flag = false;
                             switch (MainTimeSystem.instance.Time.day)//進入西蘿殿每日劇情
                             {
@@ -217,8 +229,7 @@ public class SpriteClick : MonoBehaviour
                         }
                     } 
                 }
-                );
-            SpriteClickAnimation.instance.ChatButton.GetComponent<Image>().DOFade(0, 0.1f);
+                );           
             SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.AddListener(
                 () =>
                 {
@@ -226,7 +237,7 @@ public class SpriteClick : MonoBehaviour
                     {
                         if (MainSceneDataCenter.instance.Player_save.FlagCount > 0&&MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat]==false)
                         {
-                            MainTimeSystem.instance.Time.PlusTime();
+                            MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
                             StartCoroutine("MinusFlag");
                             MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
                             //演出
@@ -243,7 +254,7 @@ public class SpriteClick : MonoBehaviour
         }
         else if ((int)_stat > 7 )
         {
-            //改buff區的圖片
+            
             SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.AddListener(
                 () =>
                 {
@@ -259,7 +270,7 @@ public class SpriteClick : MonoBehaviour
                     if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
                     {
                         MainSceneDataCenter.instance.Player_save.m_Player.Gain_Love_Level(2);
-                        MainTimeSystem.instance.Time.PlusTime();
+                        MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
 
                         switch (_stat)
                         {
@@ -288,7 +299,7 @@ public class SpriteClick : MonoBehaviour
                     {
                         if (MainSceneDataCenter.instance.Player_save.FlagCount > 0)
                         {
-                            MainTimeSystem.instance.Time.PlusTime();
+                            MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
                             StartCoroutine("MinusFlag");
                             MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
                             //演出
@@ -344,5 +355,23 @@ public class SpriteClick : MonoBehaviour
     }
     
     #endregion
-
+    public void SetUpButttonImage(Stats _stat)
+    {
+        if ((int)_stat < 7)//七個地標
+        {
+            SpriteClickAnimation.instance.BuffButtonPic.sprite = Resources.Load<Sprite>("main scene/UI/choice UI/Training_ICON");
+            SpriteClickAnimation.instance.BuffButtonName.sprite = Resources.Load<Sprite>("main scene/UI/choice UI/TrainingName");
+        }
+        else if ((int)_stat == 7)
+        {
+            SpriteClickAnimation.instance.ChatButton.SetActive(false);
+            SpriteClickAnimation.instance.BuffButtonPic.sprite = Resources.Load<Sprite>("main scene/UI/choice UI/RealChatting_Icon");
+            SpriteClickAnimation.instance.BuffButtonName.sprite = Resources.Load<Sprite>("main scene/UI/choice UI/RealChattingName");
+        }
+        else if ((int)_stat > 7)
+        {
+            SpriteClickAnimation.instance.BuffButtonPic.sprite = Resources.Load<Sprite>("main scene/UI/choice UI/Temple_Icon");
+            SpriteClickAnimation.instance.BuffButtonName.sprite = Resources.Load<Sprite>("main scene/UI/choice UI/TempleName");
+        }
+    }
 }

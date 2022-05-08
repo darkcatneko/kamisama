@@ -7,23 +7,26 @@ using TMPro;
 public class SpriteClickAnimation : MonoBehaviour
 {
     public static SpriteClickAnimation instance;//獨體
+    public bool Loading = false;//圖片參考用bool
     //物件
     public GameObject BlackScreen;
     public Material Place_shader;
     public float Shader_Input;
     //按鈕設置
-    public GameObject ExitButton; public Vector2 Exit_Origin; public Vector2 Exit_end = new Vector3(-446,379); public Vector2 Exit_Input;
-    public GameObject BuffButton; public Vector2 Buff_Origin; public Vector2 Buff_end = new Vector3(452,-180); public Vector2 Buff_Input;
-    public GameObject ChatButton; public Vector2 Chat_Origin; public Vector2 Chat_end = new Vector3(452, 90); public Vector2 Chat_Input;
-    public GameObject FlagButton; public Vector2 Flag_Origin; public Vector2 Flag_end = new Vector3(452, 90); public Vector2 Flag_Input;
+    public GameObject ExitButton; public Vector2 Exit_Origin; public Vector2 Exit_end = new Vector3(-446,379); public Vector2 Exit_Input; 
+    public GameObject BuffButton; public Vector2 Buff_Origin; public Vector2 Buff_end = new Vector3(452,-180); public Vector2 Buff_Input; public Vector2 Buff_Middle;
+    public GameObject ChatButton; public Vector2 Chat_Origin; public Vector2 Chat_end = new Vector3(452, 90); public Vector2 Chat_Input; public Vector2 Chat_Middle;
+    public GameObject FlagButton; public Vector2 Flag_Origin; public Vector2 Flag_end = new Vector3(452, 90); public Vector2 Flag_Input; public Vector2 Flag_Middle;
     public GameObject SkillButton; public Vector2 Skill_Origin; public Vector2 Skill_end = new Vector3(452, 90); public Vector2 Skill_Input;
     //圖片icon設置
     public GameObject Map_Pictures; public Vector2 Map_Pictures_origin; public Vector2 Map_Pictures_end;
     public Image Map_little_icon;public Image Map_icon_name;
-
+    //button宣告
+    public Image BuffButtonPic;
+    public Image BuffButtonName;
     public Image panel;
 
-    public TextMeshProUGUI FlagCount;
+
 
     private void Awake()
     {
@@ -51,8 +54,7 @@ public class SpriteClickAnimation : MonoBehaviour
        BuffButton.GetComponent<RectTransform>().anchoredPosition = Buff_Input;
        ChatButton.GetComponent<RectTransform>().anchoredPosition = Chat_Input;
        FlagButton.GetComponent<RectTransform>().anchoredPosition = Flag_Input;
-        SkillButton.GetComponent<RectTransform>().anchoredPosition = Skill_Input;
-        FlagCount.text = MainSceneDataCenter.instance.Player_save.FlagCount + "/3";
+       SkillButton.GetComponent<RectTransform>().anchoredPosition = Skill_Input;
     }
     
 }

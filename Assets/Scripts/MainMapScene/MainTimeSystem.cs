@@ -22,7 +22,8 @@ public class MainTimeSystem : MonoBehaviour
     
     void Update()
     {
-        Day_Text.text = Time.day.ToString();
+        Time = MainSceneDataCenter.instance.Player_save.TimeSaveData;
+        Day_Text.text = Time.day.ToString()+" /";
         Time_Text.text = Time.time.ToString()+":00";
     }
 }

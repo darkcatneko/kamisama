@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class MainSceneDataCenter : MonoBehaviour
 {
+    
     public SaveScriptableObject Player_save;
     public Dialogue_Data_Object dialogue_Data_Object;
     public static MainSceneDataCenter instance;
