@@ -50,7 +50,7 @@ public class PlayerData
 public class test2 : MonoBehaviour
 {
     [SerializeField] 
-    public PlayerData m_player = new PlayerData();
+    public  PlayerData m_player = new PlayerData();
     void Start()
     {
         Debug.Log(m_player.Get_Amount(Source_type.money));
@@ -61,7 +61,7 @@ public class test2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-           m_player.AddValue(Source_type.people,5);
+           m_player.AddValue(Source_type.people,5);         
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
