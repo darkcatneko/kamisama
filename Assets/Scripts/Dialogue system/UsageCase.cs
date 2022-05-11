@@ -44,6 +44,22 @@ public class UsageCase : MonoBehaviour
         _playerSave.Load();
         _playerSave.Now_Playing_Scene = 1;
         textAsset = FindNotePad(dialogueOBJ.The_NodePad_Be_read);
+        //背景指令碼宣告
+        msgSys.AddSpecialCharToFuncMap("BG_Sen_Nong", () => { ChangeBackground("BG_Sen_Nong"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Wood_Carving", () => { ChangeBackground("BG_Wood_Carving"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Bench", () => { ChangeBackground("BG_Bench"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Market", () => { ChangeBackground("BG_Market"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Bar", () => { ChangeBackground("BG_Bar"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Unagi", () => { ChangeBackground("BG_Unagi"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Yong_Chuan", () => { ChangeBackground("BG_Yong_Chuan"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Loli_Home", () => { ChangeBackground("BG_Loli_Home"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Loli_Home_inside", () => { ChangeBackground("BG_Loli_Home_inside"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Yao_Wan", () => { ChangeBackground("BG_Yao_Wan"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Fong_Shin", () => { ChangeBackground("BG_Fong_Shin"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Kin_hua", () => { ChangeBackground("BG_Kin_hua"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Ron_Xiu", () => { ChangeBackground("BG_Ron_Xiu"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Office", () => { ChangeBackground("BG_Office"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Res_Area", () => { ChangeBackground("BG_Res_Area"); });
         //結束新手劇情
         msgSys.AddSpecialCharToFuncMap("OldGame", ()=> { _playerSave.Newtogame = false; _playerSave.Save(); });
         //結束劇情
