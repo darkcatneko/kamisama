@@ -222,6 +222,19 @@ public class UsageCase : MonoBehaviour
         sceneOBJ.Status = FileStatus.choosingPlay;
         SceneManager.LoadScene(3);
     }
+    public void SavingButtonPress()
+    {
+        dialogueOBJ.The_NodePad_Be_read = textAsset.name;
+        dialogueOBJ.WhichLineItRead = textIndex;
+        sceneOBJ.LastScene = 1;
+        sceneOBJ.Status = FileStatus.choosingSave;
+        _playerSave.Save();
+        SceneManager.LoadScene(3);
+    }
+    public void BackToTitle()
+    {
+        SceneManager.LoadScene(0);
+    }
     private void OnApplicationQuit()
     {
         _playerSave.Clear();
