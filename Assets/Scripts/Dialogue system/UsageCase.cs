@@ -33,14 +33,19 @@ public class UsageCase : MonoBehaviour
 
     public List<NarrationCharacter> CharactersLists;
     public Dialogue_Data_Object dialogueOBJ;
+    public SceneControllerOBJ sceneOBJ;
     public SaveScriptableObject _playerSave;
 
     void Start()
     {
-        msgSys = this.GetComponent<ES_MessageSystem>();
 
+        msgSys = this.GetComponent<ES_MessageSystem>();
+        _playerSave.Load();
+        _playerSave.Now_Playing_Scene = 1;
         textAsset = FindNotePad(dialogueOBJ.The_NodePad_Be_read);
-        //
+        //結束新手劇情
+        msgSys.AddSpecialCharToFuncMap("OldGame", ()=> { _playerSave.Newtogame = false; _playerSave.Save(); });
+        //結束劇情
         msgSys.AddSpecialCharToFuncMap("END", EndDialogue);
         //add special chars and functions in other component.
         msgSys.AddSpecialCharToFuncMap("UsageCase", CustomizedFunction);
@@ -57,7 +62,7 @@ public class UsageCase : MonoBehaviour
             Debug.LogError("UIText Component not assign.");
         }
         else
-        ReadTextDataFromAsset(textAsset);
+        ReadTextDataFromAssetLoading(textAsset, dialogueOBJ.WhichLineItRead);
         dialogueOBJ.Clear();
     }
     public void IntoChoiceSection_2(string _PlotName)
@@ -135,6 +140,17 @@ public class UsageCase : MonoBehaviour
             textList.Add(line);
         }
     }
+    public void ReadTextDataFromAssetLoading(TextAsset _textAsset,int _line)
+    {
+        textList.Clear();
+        textList = new List<string>();
+        textIndex = _line;
+        var lineTextData = _textAsset.text.Split('\n');
+        foreach (string line in lineTextData)
+        {
+            textList.Add(line);
+        }
+    }
     public NarrationCharacter FindCharacter(List<NarrationCharacter> _list, int _id)
     {
         NarrationCharacter _my_c;
@@ -195,7 +211,16 @@ public class UsageCase : MonoBehaviour
     }
     public void EndDialogue()
     {
-        SceneManager.LoadScene(2);
+        _playerSave.Save();
+        SceneManager.LoadScene(2);        
+    }
+    public void LoadingButtonPress()
+    {
+        dialogueOBJ.The_NodePad_Be_read = textAsset.name;
+        dialogueOBJ.WhichLineItRead = textIndex;
+        sceneOBJ.LastScene = 1;
+        sceneOBJ.Status = FileStatus.choosingPlay;
+        SceneManager.LoadScene(3);
     }
     private void OnApplicationQuit()
     {

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2955f239969af74409a2cf76975ac392, type: 3}
   m_Name: Save1
   m_EditorClassIdentifier: 
-  savePath: 
+  Newtogame: 1
+  savePath: /SaveFile1.save
   TimeSaveData:
     day: 1
     time: 8
@@ -65,6 +66,6 @@ MonoBehaviour:
   MapFlagCheck: 0000000000000000000000000000
   Can_Get_Flag: 1
   FlagCount: 0
-  Now_Playing_Scene: 0
-  Now_Watching_Plot: 
+  Now_Playing_Scene: 2
+  Now_Watching_Plot: Opening
   Now_Watching_Sentence: 0

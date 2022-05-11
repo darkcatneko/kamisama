@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1273174, g: 0.13414761, b: 0.12107885, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -865,6 +865,7 @@ MonoBehaviour:
   CharactersLists:
   - {fileID: 11400000, guid: 5f0218ba437de644583ce64c361e719e, type: 2}
   dialogueOBJ: {fileID: 11400000, guid: f30d8c5f482616340929be19b1ec0cdb, type: 2}
+  sceneOBJ: {fileID: 11400000, guid: 23e865d35ffb6fc4ba46d74dfca8f60e, type: 2}
   _playerSave: {fileID: 11400000, guid: beec8b3c85e5b9e46b73d58a15768ccf, type: 2}
 --- !u!114 &507043651
 MonoBehaviour:
@@ -908,7 +909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &534828404
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1912,7 +1913,7 @@ GameObject:
   - component: {fileID: 1330680382}
   - component: {fileID: 1330680381}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: load
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1982,7 +1983,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1330680382}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 507043650}
+        m_TargetAssemblyTypeName: UsageCase, Assembly-CSharp
+        m_MethodName: LoadingButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1330680382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2152,7 +2165,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -157, y: 170}
+  m_AnchoredPosition: {x: -165, y: 172}
   m_SizeDelta: {x: 1011.6354, y: 143.8038}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1631352639
@@ -2588,7 +2601,7 @@ GameObject:
   - component: {fileID: 1853788416}
   - component: {fileID: 1853788415}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2827,7 +2840,7 @@ GameObject:
   - component: {fileID: 2069089950}
   - component: {fileID: 2069089949}
   m_Layer: 5
-  m_Name: Button
+  m_Name: save
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2851,7 +2864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 880, y: -256}
+  m_AnchoredPosition: {x: 879.2, y: -256}
   m_SizeDelta: {x: 350, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2069089949

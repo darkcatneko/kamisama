@@ -54,8 +54,7 @@ public class SpriteClick : MonoBehaviour
     }
     public IEnumerator ButtonClickedAnimation()
     {
-        MainSceneDataCenter.instance.status = Player_status.ButtonClicked;
-        SetUPButtonFunction(_Place);
+        MainSceneDataCenter.instance.status = Player_status.ButtonClicked;        
         DOTween.To(() => fade, x => fade = x, 0f, 1f);    
         yield return new WaitForSeconds(1f);
         SpriteClickAnimation.instance.BlackScreen.SetActive(true);
@@ -82,11 +81,13 @@ public class SpriteClick : MonoBehaviour
         SpriteClickAnimation.instance.Loading = true;
         SpriteClickAnimation.instance.BuffButton.SetActive(true);
         SpriteClickAnimation.instance.FlagButton.SetActive(true);
-        SpriteClickAnimation.instance.ChatButton.SetActive(true);
-        SetUpButttonImage(_Place);
+        SpriteClickAnimation.instance.ChatButton.SetActive(true);        
         DOTween.To(() => SpriteClickAnimation.instance.Buff_Input, x => SpriteClickAnimation.instance.Buff_Input = x, SpriteClickAnimation.instance.Buff_end, 0.5f);
         DOTween.To(() => SpriteClickAnimation.instance.Chat_Input, x => SpriteClickAnimation.instance.Chat_Input = x, SpriteClickAnimation.instance.Chat_end, 0.5f);
-        DOTween.To(() => SpriteClickAnimation.instance.Flag_Input, x => SpriteClickAnimation.instance.Flag_Input = x, SpriteClickAnimation.instance.Flag_end, 0.5f);   
+        DOTween.To(() => SpriteClickAnimation.instance.Flag_Input, x => SpriteClickAnimation.instance.Flag_Input = x, SpriteClickAnimation.instance.Flag_end, 0.5f);
+        SetUpButttonImage(_Place);
+        yield return new WaitForSeconds(0.5f);
+        SetUPButtonFunction(_Place);        
         yield return null;
     }
     public IEnumerator ExitButtonClickedAnimation()
@@ -110,9 +111,9 @@ public class SpriteClick : MonoBehaviour
 
     public void SetUPButtonFunction(Stats _stat)
     {
-        SpriteClickAnimation.instance.ChatButton.SetActive(true);
         if ((int)_stat < 7)//七個地標
-        {            
+        {
+            SpriteClickAnimation.instance.ChatButton.SetActive(true);
             SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.AddListener(
                 () =>
                 {
@@ -167,7 +168,7 @@ public class SpriteClick : MonoBehaviour
                 {
                     if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
                     {
-                        if (MainSceneDataCenter.instance.Player_save.FlagCount > 0)
+                        if (MainSceneDataCenter.instance.Player_save.FlagCount > 0 && MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] == false)
                         {
                             MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
                             StartCoroutine("MinusFlag");
@@ -186,8 +187,7 @@ public class SpriteClick : MonoBehaviour
         }
         else if ((int)_stat == 7)
         {
-            
-            
+            SpriteClickAnimation.instance.ChatButton.SetActive(false);
             SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.AddListener(
                 () =>
                 {
@@ -223,9 +223,10 @@ public class SpriteClick : MonoBehaviour
                                     return;
                             }
                         }
-                        else
+                        if (MainSceneDataCenter.instance.Player_save.Can_Get_Flag == false)
                         {
                             SpriteClickAnimation.instance.BuffButton.transform.DOShakePosition(0.5f, 15f);
+                            Debug.Log(2);
                         }
                     } 
                 }
@@ -247,6 +248,7 @@ public class SpriteClick : MonoBehaviour
                         else
                         {
                             SpriteClickAnimation.instance.FlagButton.transform.DOShakePosition(0.5f, 15f);
+                            Debug.Log(2);
                         }
                     }   
                 }
@@ -254,7 +256,7 @@ public class SpriteClick : MonoBehaviour
         }
         else if ((int)_stat > 7 )
         {
-            
+            SpriteClickAnimation.instance.ChatButton.SetActive(true);
             SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.AddListener(
                 () =>
                 {
@@ -297,7 +299,7 @@ public class SpriteClick : MonoBehaviour
                 {
                     if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
                     {
-                        if (MainSceneDataCenter.instance.Player_save.FlagCount > 0)
+                        if (MainSceneDataCenter.instance.Player_save.FlagCount > 0 && MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] == false)
                         {
                             MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
                             StartCoroutine("MinusFlag");
@@ -306,7 +308,7 @@ public class SpriteClick : MonoBehaviour
                             StartCoroutine("ExitButtonClickedAnimation");
                             SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
                         }
-                        else
+                        else 
                         {
                             SpriteClickAnimation.instance.FlagButton.transform.DOShakePosition(0.5f, 15f);
                         }
@@ -320,6 +322,8 @@ public class SpriteClick : MonoBehaviour
     {
         ClearFunction();
         MainSceneDataCenter.instance.dialogue_Data_Object.The_NodePad_Be_read = _plot_name;
+        MainSceneDataCenter.instance.dialogue_Data_Object.WhichLineItRead = 0;
+        MainSceneDataCenter.instance.Player_save.Save();
         SceneManager.LoadScene(1);
     }
     public void ClearFunction()

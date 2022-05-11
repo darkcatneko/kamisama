@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a602d89cedf75184db732190d2f2cf7d, type: 3}
-  m_Name: Dialogue_data
+  m_Script: {fileID: 11500000, guid: 388fbf92645dc0f418be1125fd0e4b34, type: 3}
+  m_Name: scene_obj
   m_EditorClassIdentifier: 
-  The_NodePad_Be_read: 
-  WhichLineItRead: 0
-  Love_Point: 0
+  LastScene: 0
+  Status: 0

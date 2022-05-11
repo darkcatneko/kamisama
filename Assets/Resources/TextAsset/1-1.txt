@@ -1,1 +1,1 @@
-我選了A[w][END]
+我選了A[w][OldGame][END]
