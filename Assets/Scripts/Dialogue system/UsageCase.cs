@@ -17,6 +17,7 @@ public class UsageCase : MonoBehaviour
     private ES_MessageSystem msgSys;
     public TextMeshProUGUI uiText;
     public TextAsset textAsset;
+    public SpriteRenderer Background;
     [SerializeField]
     private List<string> textList = new List<string>();
     [SerializeField]
@@ -95,6 +96,10 @@ public class UsageCase : MonoBehaviour
             Choice2_2.onClick.RemoveAllListeners();
             ChoicePanel_2.SetActive(false);
         });           
+    }
+    private void ChangeBackground(string _picname)
+    {
+        Background.sprite = Resources.Load<Sprite>("DialogueBackground/"+_picname);
     }
     private void ChangeMainSpeaker(NarrationCharacter _MC,Emoji _emo)
     {
