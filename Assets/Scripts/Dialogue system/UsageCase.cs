@@ -70,11 +70,11 @@ public class UsageCase : MonoBehaviour
         ChoicePanel_2.SetActive(true);
         switch (_PlotName)
         {
-            case "Loli_Home_day_1":
-                SetChoiceButtonFunction(Choice2_1, "i choice a", "1-1",1);
-                SetChoiceButtonFunction(Choice2_2, "i choice b", "1-2",9);
-                return;
             case "Opening":
+                SetChoiceButtonFunction(Choice2_1, "總之先問問她怎麼了", "0-1-A", 10);
+                SetChoiceButtonFunction(Choice2_2, "就這麼繞過去", "0-1-B", 0);
+                return;
+            case "Loli_Home_day_1":
                 SetChoiceButtonFunction(Choice2_1, "i choice a", "1-1",1);
                 SetChoiceButtonFunction(Choice2_2, "i choice b", "1-2",9);
                 return;
