@@ -8,10 +8,18 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(fileName = "NewSaveFile", menuName = "SaveData/Data")]
 public class SaveScriptableObject : ScriptableObject, ISerializationCallbackReceiver
 {
+    public bool Newtogame = true;
+
     public string savePath;
     public TimeClass TimeSaveData;
     public PlayerInformation m_Player;
     public bool[] MapFlagCheck = new bool[14];
+    public bool Can_Get_Flag = true;
+    public int FlagCount = 0;
+
+    public int Now_Playing_Scene = 2;
+    public string Now_Watching_Plot = "Opening";
+    public int Now_Watching_Sentence;
     void Start()
     {
         
@@ -21,6 +29,39 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
     void Update()
     {
         
+    }
+    public string GetInformationString()
+    {
+        return "LV:" + m_Player.Level.ToString() + " Day:" + TimeSaveData.day.ToString() + " Time:" + TimeSaveData.time.ToString() + ":00\n" + "NewData:" + Newtogame.ToString();
+    }
+    public void EqualFunction(SaveScriptableObject a, SaveScriptableObject b)
+    {
+        a.Newtogame = b.Newtogame;
+        a.TimeSaveData.day = b.TimeSaveData.day;
+        a.TimeSaveData.time = b.TimeSaveData.time;
+        a.m_Player.Level = b.m_Player.Level;
+        a.m_Player.POW.m_currentstat = b.m_Player.POW.m_currentstat;
+        a.m_Player.SPI.m_currentstat = b.m_Player.SPI.m_currentstat;
+        a.m_Player.LUK.m_currentstat = b.m_Player.LUK.m_currentstat;
+        a.m_Player.DEX.m_currentstat = b.m_Player.DEX.m_currentstat;
+        a.m_Player.INT.m_currentstat = b.m_Player.INT.m_currentstat;
+        a.m_Player.HP.m_currentstat = b.m_Player.HP.m_currentstat;
+        a.m_Player.DEF.m_currentstat = b.m_Player.DEF.m_currentstat;
+        a.m_Player.ATK.m_currentstat = b.m_Player.ATK.m_currentstat;
+        a.m_Player.Love.m_currentstat = b.m_Player.Love.m_currentstat;
+        a.m_Player.Yao_Wan.m_currentstat = b.m_Player.Yao_Wan.m_currentstat;
+        a.m_Player.Fong_Shin.m_currentstat = b.m_Player.Fong_Shin.m_currentstat;
+        a.m_Player.Kin_hua.m_currentstat = b.m_Player.Kin_hua.m_currentstat;
+        a.m_Player.Ron_Xiu.m_currentstat = b.m_Player.Ron_Xiu.m_currentstat;
+        for (int i = 0; i < a.MapFlagCheck.Length; i++)
+        {
+            a.MapFlagCheck[i] = b.MapFlagCheck[i];
+        }
+        a.FlagCount = b.FlagCount;
+        a.Now_Playing_Scene = b.Now_Playing_Scene;
+        a.Now_Watching_Plot = b.Now_Watching_Plot;
+        a.Now_Watching_Sentence = b.Now_Watching_Sentence;
+        a.Can_Get_Flag = b.Can_Get_Flag;
     }
     [ContextMenu("Save")]
     public void Save()
@@ -47,9 +88,13 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
     [ContextMenu("Clear")]
     public void Clear()
     {
+        Newtogame = true;
         TimeSaveData.day = 1;
         TimeSaveData.time = 8;
         m_Player = new PlayerInformation();
+        MapFlagCheck = new bool[14];
+        FlagCount = 0;
+        Can_Get_Flag = true;
     }
     public void OnAfterDeserialize()
     {
@@ -149,6 +194,10 @@ public class PlayerInformation
                 return;
         }
     }
+    public void Gain_Love_Level(int _amount)
+    {
+        Love.m_currentstat += _amount;
+    }
     
    
 
@@ -162,13 +211,14 @@ public class PlayerInformation
         Battle_used.Mana_regen_speed = 5;
         return Battle_used;
     }
+    
+    
 }
 [System.Serializable]
 public enum Stats
 {
     POW,//法術防禦力
-    SPI,//法術攻擊力
-    LUK,//擲杯的成功率
+    SPI,//法術攻擊力    
     DEX,//迴避率
     INT,//MP上限
     HP,//HP
@@ -179,6 +229,7 @@ public enum Stats
     Fong_Shin,//風神
     Kin_hua,//金華
     Ron_Xiu,//榕樹
+    LUK,//擲杯的成功率
 }
 [System.Serializable]
 public class PlayerStats

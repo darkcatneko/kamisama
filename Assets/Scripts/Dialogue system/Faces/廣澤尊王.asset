@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420a65928180026499c1e1615f3539af, type: 3}
   m_Name: "\u5EE3\u6FA4\u5C0A\u738B"
   m_EditorClassIdentifier: 
-  m_CharacterName: 
+  m_CharacterName: "\u5EE3\u6FA4\u5C0A\u738B"
   m_CharacterID: 0
   L2DList:
-  - clip: {fileID: 32900000, guid: aa7f240051d292a409ada14b839d5210, type: 3}
-    Loopclip: {fileID: 32900000, guid: d77ab1991b5d37d4984b947a37f7733d, type: 3}
+  - clip: {fileID: 32900000, guid: 6d41109b569a35f47af2c56fbf3393b0, type: 3}
+    Loopclip: {fileID: 32900000, guid: b04a13af68d753d45b3e88f14a700308, type: 3}
     m_Emoji: 0
+  - clip: {fileID: 32900000, guid: db1f21ca94ebc354b93541984ce3e742, type: 3}
+    Loopclip: {fileID: 32900000, guid: 2a71dbf8d7443994fafec732417da0cd, type: 3}
+    m_Emoji: 1

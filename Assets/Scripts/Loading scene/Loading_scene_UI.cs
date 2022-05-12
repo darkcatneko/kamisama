@@ -10,7 +10,6 @@ public class Loading_scene_UI : MonoBehaviour
 
     //製作三層關係
     public GameObject Buttons;
-    public GameObject SaveFiles;
     public GameObject Setting;
     //音量調整
     public Slider Sound;
@@ -19,6 +18,12 @@ public class Loading_scene_UI : MonoBehaviour
     //是否啟用autosave
     public bool AutoSave = true;
     public Toggle CheckBox;
+    //存檔櫃
+    public SaveScriptableObject GameUseData;
+    public SaveScriptableObject NewGameUseData;
+
+    public Dialogue_Data_Object dialogueOBJ;
+    public SceneControllerOBJ sceneOBJ;
     private void Awake()
     {
         if (this != null)
@@ -50,9 +55,13 @@ public class Loading_scene_UI : MonoBehaviour
         Volume = Sound.value;
         audioSource.volume = Volume;
     }
-    public void NewGameButtonClicked()//未寫
+    public void NewGameButtonClicked()
     {
-
+        GameUseData.EqualFunction(GameUseData, NewGameUseData);
+        GameUseData.Save();
+        dialogueOBJ.The_NodePad_Be_read = "Opening";
+        dialogueOBJ.WhichLineItRead = 0;
+        SceneManager.LoadScene(1);
     }
     public void SaveDataClicked()//未寫
     {
@@ -60,12 +69,15 @@ public class Loading_scene_UI : MonoBehaviour
     }
     public void SceneChangeTest()//測試用 正式版會刪掉
     {
+        sceneOBJ.LastScene = 1;
+        sceneOBJ.Status = FileStatus.choosingPlay;
         SceneManager.LoadScene(1);
     }
     public void PlayButtonClicked()
     {
-        Buttons.SetActive(false);
-        SaveFiles.SetActive(true);
+        sceneOBJ.LastScene = 0;
+        sceneOBJ.Status = FileStatus.choosingPlay;
+        SceneManager.LoadScene(3);
     }
     public void SettingButtonClicked()
     {
@@ -79,7 +91,6 @@ public class Loading_scene_UI : MonoBehaviour
     public void ToMainScreen()
     {
         Buttons.SetActive(true);
-        SaveFiles.SetActive(false);
         Setting.SetActive(false);
     }
 }

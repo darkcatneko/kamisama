@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2955f239969af74409a2cf76975ac392, type: 3}
+  m_Name: Save6
+  m_EditorClassIdentifier: 
+  Newtogame: 1
+  savePath: /SaveFile6.save
+  TimeSaveData:
+    day: 1
+    time: 8
+    Get_Flag: 0
+  m_Player:
+    Level: 1
+    Mana_regen_speed: 0
+    Current_MP: 0
+    Current_HP: 0
+    MaxHP: 0
+    POW:
+      m_stat: 0
+      m_currentstat: 1
+    SPI:
+      m_stat: 1
+      m_currentstat: 1
+    LUK:
+      m_stat: 12
+      m_currentstat: 1
+    DEX:
+      m_stat: 2
+      m_currentstat: 1
+    INT:
+      m_stat: 3
+      m_currentstat: 1
+    HP:
+      m_stat: 4
+      m_currentstat: 1
+    DEF:
+      m_stat: 5
+      m_currentstat: 1
+    ATK:
+      m_stat: 6
+      m_currentstat: 1
+    Love:
+      m_stat: 7
+      m_currentstat: 1
+    Yao_Wan:
+      m_stat: 8
+      m_currentstat: 1
+    Fong_Shin:
+      m_stat: 9
+      m_currentstat: 1
+    Kin_hua:
+      m_stat: 10
+      m_currentstat: 1
+    Ron_Xiu:
+      m_stat: 11
+      m_currentstat: 1
+  MapFlagCheck: 0000000000000000000000000000
+  Can_Get_Flag: 1
+  FlagCount: 0
+  Now_Playing_Scene: 2
+  Now_Watching_Plot: Opening
+  Now_Watching_Sentence: 0

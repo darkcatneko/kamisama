@@ -45,6 +45,7 @@ public class NarrationCharacter : ScriptableObject
 public enum Emoji
     {
        smile,
+       shock,
        whisper,
        nervous,
        sigh,

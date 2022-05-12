@@ -25,15 +25,15 @@ public class CamZoom : MonoBehaviour
     }
     void setDistance()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        if (Input.GetAxis("Mouse ScrollWheel") < 0&& MainSceneDataCenter.instance.status == Player_status.FreeMove)
         {
             sc += 0.1f;
-            sc = Mathf.Clamp(sc, 4f, 5f);
+            sc = Mathf.Clamp(sc, 4f, 6.5f);
         }
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0&& MainSceneDataCenter.instance.status == Player_status.FreeMove)
         {
             sc -= 0.1f;
-            sc = Mathf.Clamp(sc, 4f, 5f);
+            sc = Mathf.Clamp(sc, 4f, 6.5f);
         }
 
     }

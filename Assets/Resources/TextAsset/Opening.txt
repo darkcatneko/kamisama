@@ -1,0 +1,3 @@
+[God_shock][test]我今天好餓阿，有沒有東西吃啊?[w]
+[test][N]沒有[w]我這麼回答著[w][God_smile]不行不行，吾輩真的快血糖降到最低點了[w]
+[test]請選擇[InChoise2][w]
