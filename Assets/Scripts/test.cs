@@ -5,14 +5,13 @@ using DG.Tweening;
 using UnityEngine.SceneManagement;
 public class test : MonoBehaviour
 {
-    private void Start()
-    {
-        DOTween.Clear(true);
-    }
-    public void MathTest()
-    {
+    
+    
 
-        SceneManager.LoadScene(0);
-    }
 }
+public class player
+{
+   
+}
+
 

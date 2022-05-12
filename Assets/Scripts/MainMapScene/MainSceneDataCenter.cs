@@ -9,6 +9,7 @@ public class MainSceneDataCenter : MonoBehaviour
 {
     
     public SaveScriptableObject Player_save;
+    public SkillDatabaseOBJ m_SkillDatabaseOBJ;
     public Dialogue_Data_Object dialogue_Data_Object;
     public SceneControllerOBJ sceneOBJ;
     public static MainSceneDataCenter instance;
