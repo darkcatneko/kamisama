@@ -79,6 +79,14 @@ public class MainSceneDataCenter : MonoBehaviour
         Player_save.Save();
         SceneManager.LoadScene(3);
     }
+    public void TitleButtonClicked()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void QuitButtonClicked()
+    {
+        Application.Quit();
+    }
 }
 [System.Serializable]
 public enum Player_status

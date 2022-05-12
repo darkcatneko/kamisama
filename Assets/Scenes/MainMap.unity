@@ -4902,9 +4902,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 178179509}
+      - m_Target: {fileID: 178179503}
         m_TargetAssemblyTypeName: test, Assembly-CSharp
-        m_MethodName: MathTest
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6941,7 +6941,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1902422033}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 178179507}
+        m_TargetAssemblyTypeName: MainSceneDataCenter, Assembly-CSharp
+        m_MethodName: QuitButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1902422033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7450,7 +7462,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2001045628}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 178179507}
+        m_TargetAssemblyTypeName: MainSceneDataCenter, Assembly-CSharp
+        m_MethodName: TitleButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2001045628
 MonoBehaviour:
   m_ObjectHideFlags: 0
