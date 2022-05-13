@@ -11,6 +11,7 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
     public bool Newtogame = true;
 
     public string savePath;
+    public string SaveDate;
     public TimeClass TimeSaveData;
     public PlayerInformation m_Player;
     public int[] SkillBackPack = new int[10];

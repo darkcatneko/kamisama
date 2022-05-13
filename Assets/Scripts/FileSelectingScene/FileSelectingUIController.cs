@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 [System.Serializable]
 public enum FileStatus
 {
@@ -11,9 +12,14 @@ public enum FileStatus
 }
 public class FileSelectingUIController : MonoBehaviour
 {
+    public int page = 1;
+
     public List<Button> FileButtons;
     public List<Button> RemoveButtons;
-    public List<Text> Informations;
+    public List<TextMeshProUGUI> Level;
+    public List<TextMeshProUGUI> GameDay;
+    public List<TextMeshProUGUI> GameTime;
+    public List<TextMeshProUGUI> systemTime;
     public List<SaveScriptableObject> FileCabnit;
     public SaveScriptableObject GameUseData;
     public SaveScriptableObject NewGameUseData;
@@ -29,7 +35,7 @@ public class FileSelectingUIController : MonoBehaviour
         for (int i = 0; i < FileButtons.Count; i++)
         {
             ButtonFunctionSet(i);
-            SetInformation(i);
+            SetInformationVer2(i);
             RemoveButtonSet(i);
         }
         GameUseData.Load();
@@ -68,22 +74,26 @@ public class FileSelectingUIController : MonoBehaviour
         {
             FileCabnit[_id].Clear();
             FileCabnit[_id].EqualFunction(FileCabnit[_id], GameUseData);
+            FileCabnit[_id].SaveDate = System.DateTime.Now.Year.ToString()+ " / "+ System.DateTime.Now.Month.ToString() + " / " + System.DateTime.Now.Day.ToString();
             FileCabnit[_id].Save();
             FileCabnit[_id].Load();
-            SetInformation(_id);                
+            SetInformationVer2(_id);                
         }
     }
     public void ButtonFunctionSet(int _id)
     {
         FileButtons[_id].onClick.AddListener(() => SelectThisFile(_id));
     }
-    public void SetInformation(int _id)
+    public void SetInformationVer2(int _id)
     {
-        Informations[_id].text ="ID:"+_id.ToString()+"\n"+ FileCabnit[_id].GetInformationString();
+        Level[_id].text = FileCabnit[_id].m_Player.Level.ToString();
+        GameDay[_id].text = "Day" + FileCabnit[_id].TimeSaveData.day.ToString();
+        GameTime[_id].text = "/ " + FileCabnit[_id].TimeSaveData.time.ToString() + ":00";
+        systemTime[_id].text = FileCabnit[_id].SaveDate;
     }
     public void RemoveButtonSet(int _id)
     {
-        RemoveButtons[_id].onClick.AddListener(() => { FileCabnit[_id].EqualFunction(FileCabnit[_id], NewGameUseData);FileCabnit[_id].Save(); SetInformation(_id); });
+        RemoveButtons[_id].onClick.AddListener(() => { FileCabnit[_id].EqualFunction(FileCabnit[_id], NewGameUseData);FileCabnit[_id].Save(); SetInformationVer2(_id); });
     }
     public void ExitButtonClick()
     {
@@ -101,5 +111,33 @@ public class FileSelectingUIController : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+    }
+    public void OnNextPageClick()
+    {
+        foreach (var item in FileCabnit)
+        {
+            item.Load();
+        }
+        for (int i = 0; i < FileButtons.Count; i++)
+        {
+            ButtonFunctionSet(i+6);
+            SetInformationVer2(i+6);
+            RemoveButtonSet(i+6);
+        }
+        GameUseData.Load();
+    }
+    public void OnLastPageClick ()
+    {
+        foreach (var item in FileCabnit)
+        {
+            item.Load();
+        }
+        for (int i = 0; i < FileButtons.Count; i++)
+        {
+            ButtonFunctionSet(i);
+            SetInformationVer2(i);
+            RemoveButtonSet(i);
+        }
+        GameUseData.Load();
     }
 }
