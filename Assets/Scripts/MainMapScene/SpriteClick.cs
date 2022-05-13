@@ -70,8 +70,7 @@ public class SpriteClick : MonoBehaviour
         if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
             {
             StartCoroutine("ExitButtonClickedAnimation");
-            }
-            
+            }            
         });
         DOTween.To(() => SpriteClickAnimation.instance.Buff_Input, x => SpriteClickAnimation.instance.Buff_Input = x, SpriteClickAnimation.instance.Buff_Middle, 1f);
         DOTween.To(() => SpriteClickAnimation.instance.Chat_Input, x => SpriteClickAnimation.instance.Chat_Input = x, SpriteClickAnimation.instance.Chat_Middle, 1f);
