@@ -18,7 +18,6 @@ public class FileSelectingUIController : MonoBehaviour
     public List<Button> RemoveButtons;
     public List<TextMeshProUGUI> Level;
     public List<TextMeshProUGUI> GameDay;
-    public List<TextMeshProUGUI> GameTime;
     public List<TextMeshProUGUI> systemTime;
     public List<SaveScriptableObject> FileCabnit;
     public SaveScriptableObject GameUseData;
@@ -86,14 +85,13 @@ public class FileSelectingUIController : MonoBehaviour
     }
     public void SetInformationVer2(int _id)
     {
-        Level[_id].text = FileCabnit[_id].m_Player.Level.ToString();
-        GameDay[_id].text = "Day" + FileCabnit[_id].TimeSaveData.day.ToString();
-        GameTime[_id].text = "/ " + FileCabnit[_id].TimeSaveData.time.ToString() + ":00";
+        Level[_id].text = "LV."+FileCabnit[_id].m_Player.Level.ToString();
+        GameDay[_id].text = "Day" + FileCabnit[_id].TimeSaveData.day.ToString()+ " / " + FileCabnit[_id].TimeSaveData.time.ToString() + ":00";
         systemTime[_id].text = FileCabnit[_id].SaveDate;
     }
     public void RemoveButtonSet(int _id)
     {
-        RemoveButtons[_id].onClick.AddListener(() => { FileCabnit[_id].EqualFunction(FileCabnit[_id], NewGameUseData);FileCabnit[_id].Save(); SetInformationVer2(_id); });
+        RemoveButtons[_id].onClick.AddListener(() => { FileCabnit[_id].EqualFunction(FileCabnit[_id], NewGameUseData);FileCabnit[_id].SaveDate = ""; FileCabnit[_id].Save(); SetInformationVer2(_id); });
     }
     public void ExitButtonClick()
     {

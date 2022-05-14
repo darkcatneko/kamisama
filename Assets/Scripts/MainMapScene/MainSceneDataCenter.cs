@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MainSceneDataCenter : MonoBehaviour
 {
-    
+    public GameObject VolumePanel;
+
     public SaveScriptableObject Player_save;
     public SkillDatabaseOBJ m_SkillDatabaseOBJ;
     public Dialogue_Data_Object dialogue_Data_Object;
@@ -88,6 +89,20 @@ public class MainSceneDataCenter : MonoBehaviour
     {
         Application.Quit();
     }
+    public void VolumeButtonClicked()
+    {
+        if (VolumePanel.activeSelf == false)
+        {
+            MainSceneDataCenter.instance.status = Player_status.VolumeSetting;
+            VolumePanel.SetActive(true);
+        }
+        else
+        {
+            MainSceneDataCenter.instance.status = Player_status.Setting;
+            VolumePanel.SetActive(false);
+        }
+        
+    }
 }
 [System.Serializable]
 public enum Player_status
@@ -95,5 +110,6 @@ public enum Player_status
     FreeMove,
     ButtonClicked,
     Setting,
+    VolumeSetting,
 }
 

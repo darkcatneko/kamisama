@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0169498c93e7d4d49a934d814551b1e2, type: 3}
-  m_Name: FireBall
+  m_Name: Blizzard
   m_EditorClassIdentifier: 
-  SkillName: "\u706B\u7403\u8853"
-  ID: 1
+  SkillName: "\u66B4\u98A8\u96EA"
+  ID: 2
   skillVariable: 0
   m_eightTrigrams: 7
   stats: 0
   ManaCost: 0
-  SkillPic: {fileID: 21300000, guid: 1fc3ead612f38104f8059bf4358fcbd0, type: 3}
-  SkillDescribe: this fire ball is very deadly
+  SkillPic: {fileID: 21300000, guid: e240fc25d616c314d82e99c1cdeb7605, type: 3}
+  SkillDescribe: 
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}

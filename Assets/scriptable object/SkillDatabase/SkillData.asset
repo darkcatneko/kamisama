@@ -14,3 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillData:
   - {fileID: 11400000, guid: 6665e744882631c41a96234858863127, type: 2}
+  - {fileID: 11400000, guid: 2a2fee2eeb7400b459070c4f054bcce3, type: 2}
+  - {fileID: 11400000, guid: 3b000a7a529c5c34fbf4ff882ae429c4, type: 2}
+  - {fileID: 11400000, guid: a66915c315dfe434b87091fa790ed428, type: 2}
+  - {fileID: 11400000, guid: 87c9568904503c441a33b4825b18725c, type: 2}
+  - {fileID: 11400000, guid: 75052cb22a7dd5b45ab7da2ee5a79f90, type: 2}
+  - {fileID: 11400000, guid: 0612839bc4f1ecb4f8390a4301a183bc, type: 2}
+  - {fileID: 11400000, guid: b3abcd71b8043f740954ac4897c4b5fb, type: 2}

@@ -12,7 +12,7 @@ public class SkillDatabaseOBJ : ScriptableObject
         {
             if (SkillData[i].ID == _id)
             {
-                return SkillData[_id];
+                return SkillData[i];
             }
         }
         return null;

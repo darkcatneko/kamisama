@@ -17,19 +17,22 @@ public class SettingButtonInteraction : MonoBehaviour
     }
     public void GearButtonClicked ()
     {
+        if (MainSceneDataCenter.instance.status != Player_status.VolumeSetting)
+        {
+            if (MainSceneDataCenter.instance.status != Player_status.Setting)
+            {
+                temp = MainSceneDataCenter.instance.status;
+                MainSceneDataCenter.instance.status = Player_status.Setting;
+                DOTween.To(() => { return Setting_Buttons.GetComponent<RectTransform>().anchoredPosition; }, v => { Setting_Buttons.GetComponent<RectTransform>().anchoredPosition = v; }, End_Position, 1f);
+            }
+            else if (MainSceneDataCenter.instance.status == Player_status.Setting)
+            {
+                MainSceneDataCenter.instance.status = temp;
+                temp = Player_status.FreeMove;
+                DOTween.To(() => { return Setting_Buttons.GetComponent<RectTransform>().anchoredPosition; }, v => { Setting_Buttons.GetComponent<RectTransform>().anchoredPosition = v; }, Origin_Pos, 1f);
+            }
+        }
         
-        if (MainSceneDataCenter.instance.status != Player_status.Setting)
-        {
-            temp = MainSceneDataCenter.instance.status;
-            MainSceneDataCenter.instance.status = Player_status.Setting;
-            DOTween.To(() => { return Setting_Buttons.GetComponent<RectTransform>().anchoredPosition; }, v => { Setting_Buttons.GetComponent<RectTransform>().anchoredPosition = v; }, End_Position, 1f);
-        }
-        else if(MainSceneDataCenter.instance.status == Player_status.Setting)
-        {
-            MainSceneDataCenter.instance.status = temp;
-            temp = Player_status.FreeMove;
-            DOTween.To(() => { return Setting_Buttons.GetComponent<RectTransform>().anchoredPosition; }, v => { Setting_Buttons.GetComponent<RectTransform>().anchoredPosition = v; }, Origin_Pos, 1f);
-        }
     }
     
 }
