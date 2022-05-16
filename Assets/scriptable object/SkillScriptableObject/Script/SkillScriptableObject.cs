@@ -12,8 +12,11 @@ public class SkillScriptableObject : ScriptableObject
     public Stats stats;
     public float ManaCost;
     public Sprite SkillPic;
+    public Sprite SkillCardPic;
     [TextArea(15, 20)]
     public string SkillDescribe;
+    [TextArea(15, 20)]
+    public string SkillLearnWay;
     public GameObject AnimationPrefab;
     public GameObject FieldPrefab;
 }

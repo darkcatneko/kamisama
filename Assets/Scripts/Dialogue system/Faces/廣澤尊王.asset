@@ -15,12 +15,15 @@ MonoBehaviour:
   m_CharacterName: "\u5EE3\u6FA4\u5C0A\u738B"
   m_CharacterID: 0
   L2DList:
-  - clip: {fileID: 32900000, guid: deaf8ca6e81cbf142987fdb9c7e54ae5, type: 3}
-    Loopclip: {fileID: 32900000, guid: 4924f9a24d4d4b24d9425cb94ae3d97b, type: 3}
+  - clip: {fileID: 32900000, guid: 503788c7f85560140a3569a7df070c92, type: 3}
+    Loopclip: {fileID: 32900000, guid: 51633d5d14494e447a0233114e3dbef4, type: 3}
     m_Emoji: 0
-  - clip: {fileID: 32900000, guid: 363aac36b97b84945aef552e00fc15b4, type: 3}
-    Loopclip: {fileID: 32900000, guid: 279302298ef6e5a43aabc4ce05346547, type: 3}
+  - clip: {fileID: 32900000, guid: 5709820d9619dcc499580d65f8796650, type: 3}
+    Loopclip: {fileID: 32900000, guid: 9edbff9ff44f36b4582cd4d2005b73b8, type: 3}
     m_Emoji: 1
-  - clip: {fileID: 32900000, guid: ed20598ec96be404ba23091b53a966d8, type: 3}
-    Loopclip: {fileID: 32900000, guid: 489d6834f1ff0bc498933d25f5150fdf, type: 3}
-    m_Emoji: 10
+  - clip: {fileID: 32900000, guid: 4e1bd97fcc3c7ba47bc1f1728f21b426, type: 3}
+    Loopclip: {fileID: 32900000, guid: 2066cad6d9cbf314e865373871d49fe6, type: 3}
+    m_Emoji: 11
+  - clip: {fileID: 32900000, guid: e5ae25e3c7da9dd4783cdb53bd985d23, type: 3}
+    Loopclip: {fileID: 32900000, guid: 4cc788bd250557d4aa0d4f677ea87b44, type: 3}
+    m_Emoji: 4

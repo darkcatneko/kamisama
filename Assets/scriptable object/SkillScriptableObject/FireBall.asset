@@ -19,6 +19,8 @@ MonoBehaviour:
   stats: 0
   ManaCost: 0
   SkillPic: {fileID: 21300000, guid: 1fc3ead612f38104f8059bf4358fcbd0, type: 3}
-  SkillDescribe: this fire ball is very deadly
+  SkillCardPic: {fileID: 21300000, guid: 0bd0494108bb7144f9066e118a9a2e07, type: 3}
+  SkillDescribe: "\u5C0F\u5FC3\u706B\u71ED"
+  SkillLearnWay: LickYourASS1
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}

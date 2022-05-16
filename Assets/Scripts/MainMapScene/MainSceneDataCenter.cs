@@ -19,6 +19,8 @@ public class MainSceneDataCenter : MonoBehaviour
     public GameObject Flag1;
     public GameObject Flag2;
     public GameObject Flag3;
+
+    public GameObject SkillPanel;
     private void Awake()
     {
         instance = this;
@@ -80,7 +82,8 @@ public class MainSceneDataCenter : MonoBehaviour
         sceneOBJ.Status = FileStatus.choosingSave;
         Player_save.Save();
         SceneManager.LoadScene(3);
-    }
+    }   
+    
     public void TitleButtonClicked()
     {
         SceneManager.LoadScene(0);
@@ -103,6 +106,19 @@ public class MainSceneDataCenter : MonoBehaviour
         }
         
     }
+    public void SkillButtonClick()
+    {        
+        if (status == Player_status.SkillInterface)
+        {
+            status = Player_status.FreeMove;
+            SkillPanel.SetActive(false);
+        }
+        else if(status == Player_status.FreeMove)
+        {
+            status = Player_status.SkillInterface;
+            SkillPanel.SetActive(true);
+        }
+    }
 }
 [System.Serializable]
 public enum Player_status
@@ -111,5 +127,6 @@ public enum Player_status
     ButtonClicked,
     Setting,
     VolumeSetting,
+    SkillInterface,
 }
 

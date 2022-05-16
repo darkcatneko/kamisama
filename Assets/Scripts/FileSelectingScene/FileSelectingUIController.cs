@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 [System.Serializable]
 public enum FileStatus
 {
@@ -12,7 +13,8 @@ public enum FileStatus
 }
 public class FileSelectingUIController : MonoBehaviour
 {
-    public int page = 1;
+    public int page = 1;public GameObject MiddlePoint;public Button Page1Button; public Button Page2Button;public Image RotateImage;
+    public  int times;
 
     public List<Button> FileButtons;
     public List<Button> RemoveButtons;
@@ -110,32 +112,37 @@ public class FileSelectingUIController : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-    public void OnNextPageClick()
+
+    public void RotatePic()
     {
-        foreach (var item in FileCabnit)
-        {
-            item.Load();
-        }
-        for (int i = 0; i < FileButtons.Count; i++)
-        {
-            ButtonFunctionSet(i+6);
-            SetInformationVer2(i+6);
-            RemoveButtonSet(i+6);
-        }
-        GameUseData.Load();
+        RotateImage.transform.DOLocalRotate(new Vector3(0, 0, 180), 0.5f);
     }
-    public void OnLastPageClick ()
+    public void OnPage1Click()
     {
-        foreach (var item in FileCabnit)
+       
+        if (page == 2 && MiddlePoint.GetComponent<RectTransform>().anchoredPosition == new Vector2(-2260, 0))
         {
-            item.Load();
+            DOTween.To(() => { return MiddlePoint.GetComponent<RectTransform>().anchoredPosition; }, v => { MiddlePoint.GetComponent<RectTransform>().anchoredPosition = v; }, new Vector2(0, 0), 0.5f);
+            RotateImage.transform.DOLocalRotate(new Vector3(0, 0, 180), 0.5f);            
+            Sprite temp = Page1Button.GetComponent<Image>().sprite;
+            Page1Button.GetComponent<Image>().sprite = Page2Button.GetComponent<Image>().sprite;
+            Page2Button.GetComponent<Image>().sprite = temp;
+            page = 1;
         }
-        for (int i = 0; i < FileButtons.Count; i++)
+        
+    }
+    public void OnPage2Click ()
+    {
+        
+        if (page == 1 && MiddlePoint.GetComponent<RectTransform>().anchoredPosition == new Vector2(0, 0))
         {
-            ButtonFunctionSet(i);
-            SetInformationVer2(i);
-            RemoveButtonSet(i);
+            DOTween.To(() => { return MiddlePoint.GetComponent<RectTransform>().anchoredPosition; }, v => { MiddlePoint.GetComponent<RectTransform>().anchoredPosition = v; }, new Vector2(-2260, 0), 0.5f);
+            RotateImage.transform.DOLocalRotate(new Vector3(0, 0, 360 ), 0.5f);
+            Sprite temp = Page1Button.GetComponent<Image>().sprite;
+            Page1Button.GetComponent<Image>().sprite = Page2Button.GetComponent<Image>().sprite;
+            Page2Button.GetComponent<Image>().sprite = temp;
+            page = 2;
         }
-        GameUseData.Load();
+        
     }
 }

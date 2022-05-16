@@ -19,6 +19,8 @@ MonoBehaviour:
   stats: 0
   ManaCost: 0
   SkillPic: {fileID: 21300000, guid: e240fc25d616c314d82e99c1cdeb7605, type: 3}
+  SkillCardPic: {fileID: 21300000, guid: 0bd0494108bb7144f9066e118a9a2e07, type: 3}
   SkillDescribe: 
+  SkillLearnWay: LickYourASS2
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}
