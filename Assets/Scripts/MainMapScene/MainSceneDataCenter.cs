@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class MainSceneDataCenter : MonoBehaviour
 {
-    
+    public GameObject VolumePanel;
+
     public SaveScriptableObject Player_save;
+    public SkillDatabaseOBJ m_SkillDatabaseOBJ;
     public Dialogue_Data_Object dialogue_Data_Object;
     public SceneControllerOBJ sceneOBJ;
     public static MainSceneDataCenter instance;
@@ -17,6 +19,8 @@ public class MainSceneDataCenter : MonoBehaviour
     public GameObject Flag1;
     public GameObject Flag2;
     public GameObject Flag3;
+
+    public GameObject SkillPanel;
     private void Awake()
     {
         instance = this;
@@ -78,6 +82,42 @@ public class MainSceneDataCenter : MonoBehaviour
         sceneOBJ.Status = FileStatus.choosingSave;
         Player_save.Save();
         SceneManager.LoadScene(3);
+    }   
+    
+    public void TitleButtonClicked()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void QuitButtonClicked()
+    {
+        Application.Quit();
+    }
+    public void VolumeButtonClicked()
+    {
+        if (VolumePanel.activeSelf == false)
+        {
+            MainSceneDataCenter.instance.status = Player_status.VolumeSetting;
+            VolumePanel.SetActive(true);
+        }
+        else
+        {
+            MainSceneDataCenter.instance.status = Player_status.Setting;
+            VolumePanel.SetActive(false);
+        }
+        
+    }
+    public void SkillButtonClick()
+    {        
+        if (status == Player_status.SkillInterface)
+        {
+            status = Player_status.FreeMove;
+            SkillPanel.SetActive(false);
+        }
+        else if(status == Player_status.FreeMove)
+        {
+            status = Player_status.SkillInterface;
+            SkillPanel.SetActive(true);
+        }
     }
 }
 [System.Serializable]
@@ -86,5 +126,7 @@ public enum Player_status
     FreeMove,
     ButtonClicked,
     Setting,
+    VolumeSetting,
+    SkillInterface,
 }
 

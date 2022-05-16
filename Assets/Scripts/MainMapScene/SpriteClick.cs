@@ -54,9 +54,10 @@ public class SpriteClick : MonoBehaviour
     }
     public IEnumerator ButtonClickedAnimation()
     {
-        MainSceneDataCenter.instance.status = Player_status.ButtonClicked;        
-        DOTween.To(() => fade, x => fade = x, 0f, 1f);    
-        yield return new WaitForSeconds(1f);
+        MainSceneDataCenter.instance.status = Player_status.ButtonClicked;
+        //DOTween.To(() => fade, x => fade = x, 0f, 1f);
+        this.transform.DOPunchScale(new Vector3(0.5f, 0.5f, 1f),0.4f,1);
+        yield return new WaitForSeconds(0.4f);
         SpriteClickAnimation.instance.BlackScreen.SetActive(true);
         SpriteClickAnimation.instance.panel.DOFade(0.76f, 1f);
         SpriteClickAnimation.instance.Map_little_icon.sprite = this.GetComponent<SpriteRenderer>().sprite;
@@ -70,8 +71,7 @@ public class SpriteClick : MonoBehaviour
         if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
             {
             StartCoroutine("ExitButtonClickedAnimation");
-            }
-            
+            }            
         });
         DOTween.To(() => SpriteClickAnimation.instance.Buff_Input, x => SpriteClickAnimation.instance.Buff_Input = x, SpriteClickAnimation.instance.Buff_Middle, 1f);
         DOTween.To(() => SpriteClickAnimation.instance.Chat_Input, x => SpriteClickAnimation.instance.Chat_Input = x, SpriteClickAnimation.instance.Chat_Middle, 1f);
@@ -92,8 +92,7 @@ public class SpriteClick : MonoBehaviour
     }
     public IEnumerator ExitButtonClickedAnimation()
     {
-        ClearFunction();        
-        SpriteClickAnimation.instance.panel.DOFade(0f, 1f);
+        ClearFunction();                       
         DOTween.To(() => { return SpriteClickAnimation.instance.Map_Pictures.GetComponent<RectTransform>().anchoredPosition; }, v => { SpriteClickAnimation.instance.Map_Pictures.GetComponent<RectTransform>().anchoredPosition = v; }, SpriteClickAnimation.instance.Map_Pictures_origin, 1f);
         DOTween.To(() => SpriteClickAnimation.instance.Skill_Input, x => SpriteClickAnimation.instance.Skill_Input = x, SpriteClickAnimation.instance.Skill_Origin, 1.5f);
         DOTween.To(() => SpriteClickAnimation.instance.Exit_Input, x => SpriteClickAnimation.instance.Exit_Input = x, SpriteClickAnimation.instance.Exit_Origin, 1.5f);
@@ -102,9 +101,11 @@ public class SpriteClick : MonoBehaviour
         DOTween.To(() => SpriteClickAnimation.instance.Flag_Input, x => SpriteClickAnimation.instance.Flag_Input = x, SpriteClickAnimation.instance.Flag_Origin, 1.5f);
         DOTween.To(() => SpriteClickAnimation.instance.Shader_Input, x => SpriteClickAnimation.instance.Shader_Input = x, 0f, 1f);
         yield return new WaitForSeconds(1f);
-        DOTween.To(() => fade, x => fade = x, 1f, 1f);
+        SpriteClickAnimation.instance.panel.DOFade(0f, 0.5f);
         MainSceneDataCenter.instance.status = Player_status.FreeMove;
+        //DOTween.To(() => fade, x => fade = x, 1f, 1f);        
         SpriteClickAnimation.instance.Loading = false;
+        yield return new WaitForSeconds(0.5f);
         SpriteClickAnimation.instance.BlackScreen.SetActive(false);
         yield return null;
     }

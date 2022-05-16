@@ -11,9 +11,12 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
     public bool Newtogame = true;
 
     public string savePath;
+    public string SaveDate;
     public TimeClass TimeSaveData;
     public PlayerInformation m_Player;
+    public int[] SkillBackPack = new int[10];
     public bool[] MapFlagCheck = new bool[14];
+    public bool[] SkillUnlockCheck = new bool[100];
     public bool Can_Get_Flag = true;
     public int FlagCount = 0;
 
@@ -57,6 +60,14 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
         {
             a.MapFlagCheck[i] = b.MapFlagCheck[i];
         }
+        for (int i = 0; i < a.SkillBackPack.Length; i++)
+        {
+            a.SkillBackPack[i] = b.SkillBackPack[i];
+        }
+        for (int i = 0; i < a.SkillUnlockCheck.Length; i++)
+        {
+            a.SkillUnlockCheck[i] = b.SkillUnlockCheck[i];
+        }
         a.FlagCount = b.FlagCount;
         a.Now_Playing_Scene = b.Now_Playing_Scene;
         a.Now_Watching_Plot = b.Now_Watching_Plot;
@@ -93,6 +104,9 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
         TimeSaveData.time = 8;
         m_Player = new PlayerInformation();
         MapFlagCheck = new bool[14];
+        SkillUnlockCheck = new bool[100];
+        SkillUnlockCheck[0] = true;
+        SkillBackPack = new int[10];
         FlagCount = 0;
         Can_Get_Flag = true;
     }

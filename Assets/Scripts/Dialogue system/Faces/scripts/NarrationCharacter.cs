@@ -48,6 +48,7 @@ public enum Emoji
        shock,
        whisper,
        nervous,
+       angry,
        sigh,
        disgust,
        promise,

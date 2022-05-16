@@ -45,6 +45,7 @@ public class UsageCase : MonoBehaviour
         _playerSave.Now_Playing_Scene = 1;
         textAsset = FindNotePad(dialogueOBJ.The_NodePad_Be_read);
         //背景指令碼宣告
+        msgSys.AddSpecialCharToFuncMap("test", () => { ChangeBackground("test"); });
         msgSys.AddSpecialCharToFuncMap("BG_Sen_Nong", () => { ChangeBackground("BG_Sen_Nong"); });
         msgSys.AddSpecialCharToFuncMap("BG_Wood_Carving", () => { ChangeBackground("BG_Wood_Carving"); });
         msgSys.AddSpecialCharToFuncMap("BG_Bench", () => { ChangeBackground("BG_Bench"); });
@@ -249,6 +250,8 @@ public class UsageCase : MonoBehaviour
         dialogueOBJ.WhichLineItRead = textIndex;
         sceneOBJ.LastScene = 1;
         sceneOBJ.Status = FileStatus.choosingSave;
+        _playerSave.Now_Watching_Sentence = dialogueOBJ.WhichLineItRead;
+        _playerSave.Now_Watching_Plot = dialogueOBJ.The_NodePad_Be_read;
         _playerSave.Save();
         SceneManager.LoadScene(3);
     }

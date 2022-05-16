@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0169498c93e7d4d49a934d814551b1e2, type: 3}
+  m_Name: RainDeath
+  m_EditorClassIdentifier: 
+  SkillName: "\u6B7B\u821E"
+  ID: 7
+  skillVariable: 0
+  m_eightTrigrams: 7
+  stats: 0
+  ManaCost: 0
+  SkillPic: {fileID: 21300000, guid: 889b713a548971c4985ae8564042f0ce, type: 3}
+  SkillCardPic: {fileID: 21300000, guid: 0bd0494108bb7144f9066e118a9a2e07, type: 3}
+  SkillDescribe: 
+  SkillLearnWay: LickYourASS7
+  AnimationPrefab: {fileID: 0}
+  FieldPrefab: {fileID: 0}
