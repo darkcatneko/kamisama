@@ -25,9 +25,19 @@ public class SpriteClickAnimation : MonoBehaviour
     public Image BuffButtonPic;
     public Image BuffButtonName;
     public Image panel;
-
-
-
+    //玩家提升等級演出
+    public GameObject LevelUpPanel;
+    public TextMeshProUGUI Player_stats;
+    public TextMeshProUGUI BeforePlayer;
+    public TextMeshProUGUI NowPlayer;
+    public Vector2 stats_original;
+    public Vector2 stats_end;
+    //玩家獲得技能演出
+    public GameObject SkillPanel;
+    public Image SkillPic;
+    public TextMeshProUGUI SkillName;
+    public Vector2 skillpanel_original;
+    public Vector2 skillpanel_end;
     private void Awake()
     {
         instance = this;
@@ -40,6 +50,8 @@ public class SpriteClickAnimation : MonoBehaviour
         Flag_Origin = FlagButton.GetComponent<RectTransform>().anchoredPosition;
         Skill_Origin = SkillButton.GetComponent<RectTransform>().anchoredPosition;
         Map_Pictures_origin = Map_Pictures.GetComponent<RectTransform>().anchoredPosition;
+        stats_original = LevelUpPanel.GetComponent<RectTransform>().anchoredPosition;
+        skillpanel_original = SkillPanel.GetComponent<RectTransform>().anchoredPosition;
         Exit_Input = Exit_Origin;
         Buff_Input = Buff_Origin;
         Chat_Input = Chat_Origin;
@@ -56,5 +68,4 @@ public class SpriteClickAnimation : MonoBehaviour
        FlagButton.GetComponent<RectTransform>().anchoredPosition = Flag_Input;
        SkillButton.GetComponent<RectTransform>().anchoredPosition = Skill_Input;
     }
-    
 }

@@ -120,10 +120,10 @@ public class FileSelectingUIController : MonoBehaviour
     public void OnPage1Click()
     {
        
-        if (page == 2 && MiddlePoint.GetComponent<RectTransform>().anchoredPosition == new Vector2(-2260, 0))
+        if (page == 2 )
         {
             DOTween.To(() => { return MiddlePoint.GetComponent<RectTransform>().anchoredPosition; }, v => { MiddlePoint.GetComponent<RectTransform>().anchoredPosition = v; }, new Vector2(0, 0), 0.5f);
-            RotateImage.transform.DOLocalRotate(new Vector3(0, 0, 180), 0.5f);            
+            RotateImage.transform.DOLocalRotate(new Vector3(0, 0, 0), 0.5f);            
             Sprite temp = Page1Button.GetComponent<Image>().sprite;
             Page1Button.GetComponent<Image>().sprite = Page2Button.GetComponent<Image>().sprite;
             Page2Button.GetComponent<Image>().sprite = temp;
@@ -134,10 +134,10 @@ public class FileSelectingUIController : MonoBehaviour
     public void OnPage2Click ()
     {
         
-        if (page == 1 && MiddlePoint.GetComponent<RectTransform>().anchoredPosition == new Vector2(0, 0))
+        if (page == 1 )
         {
             DOTween.To(() => { return MiddlePoint.GetComponent<RectTransform>().anchoredPosition; }, v => { MiddlePoint.GetComponent<RectTransform>().anchoredPosition = v; }, new Vector2(-2260, 0), 0.5f);
-            RotateImage.transform.DOLocalRotate(new Vector3(0, 0, 360 ), 0.5f);
+            RotateImage.transform.DOLocalRotate(new Vector3(0, 0, 180 ), 0.5f);
             Sprite temp = Page1Button.GetComponent<Image>().sprite;
             Page1Button.GetComponent<Image>().sprite = Page2Button.GetComponent<Image>().sprite;
             Page2Button.GetComponent<Image>().sprite = temp;

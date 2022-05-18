@@ -7,20 +7,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0169498c93e7d4d49a934d814551b1e2, type: 3}
-  m_Name: FireBall
+  m_Script: {fileID: 11500000, guid: 12bad26cda68ea446987d965dce82a35, type: 3}
+  m_Name: smite
   m_EditorClassIdentifier: 
-  SkillName: "\u706B\u7403\u8853"
+  Temple: 0
+  m_Skilltype: 0
+  SkillName: "\u91CD\u64CA"
   ID: 1
   skillVariable: 0
-  m_eightTrigrams: 7
-  stats: 0
-  ManaCost: 0
+  m_eightTrigrams: 3
+  stats: 6
+  ManaCost: 5
   SkillPic: {fileID: 21300000, guid: 1fc3ead612f38104f8059bf4358fcbd0, type: 3}
-  SkillCardPic: {fileID: 21300000, guid: 0bd0494108bb7144f9066e118a9a2e07, type: 3}
-  SkillDescribe: "\u5C0F\u5FC3\u706B\u71ED"
-  SkillLearnWay: LickYourASS1
+  SkillCardPic: {fileID: 21300000, guid: 1fc3ead612f38104f8059bf4358fcbd0, type: 3}
+  SkillDescribe: "\u72E0\u72E0\u7684\u5F80\u5C0D\u65B9\u63CD\u4E0B\u53BB"
+  SkillLearnWay: Lv1
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}
+  LevelUpCondition: 01000000
+  UnlockLevel: 1

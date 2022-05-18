@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-[CreateAssetMenu(fileName = "NewSkill", menuName = "Skill")]
-public class SkillScriptableObject : ScriptableObject
+
+public abstract class SkillScriptableObject : ScriptableObject
 {
+    public Stats Temple;
+    public SkillType m_Skilltype;
     public string SkillName;
     public int ID;
     public SkillVariable skillVariable;
@@ -19,4 +22,11 @@ public class SkillScriptableObject : ScriptableObject
     public string SkillLearnWay;
     public GameObject AnimationPrefab;
     public GameObject FieldPrefab;
+    public int[] LevelUpCondition;
+}
+public enum SkillType
+{
+    BasicSkill,
+    TempleSkill,
+    SpecialSkill,
 }
