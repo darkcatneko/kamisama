@@ -179,6 +179,9 @@ public class SpriteClick : MonoBehaviour
                             StartCoroutine("MinusFlag");
                             MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
                             //ºt¥X
+                            GameObject flag = Instantiate<GameObject>(SpriteClickAnimation.instance.flagprefab,new Vector3(10.31f,10.82f,0),Quaternion.identity);
+                            Transform[] T = this.GetComponentsInChildren<Transform>();
+                            flag.GetComponent<Flaganimation>().Startflaganimation(T[2].position);
                             StartCoroutine("ExitButtonClickedAnimation",1);
                             SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
                         }

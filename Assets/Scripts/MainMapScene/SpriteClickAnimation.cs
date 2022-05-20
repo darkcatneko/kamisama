@@ -38,6 +38,7 @@ public class SpriteClickAnimation : MonoBehaviour
     public TextMeshProUGUI SkillName;
     public Vector2 skillpanel_original;
     public Vector2 skillpanel_end;
+    public GameObject flagprefab ;
     private void Awake()
     {
         instance = this;
