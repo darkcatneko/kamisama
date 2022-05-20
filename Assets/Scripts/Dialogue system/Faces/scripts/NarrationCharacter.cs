@@ -59,6 +59,7 @@ public enum Emoji
        majime,
        thinking,
        wordless,
+       shy,
 }
 [System.Serializable]
 public class CharacterImage
