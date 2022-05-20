@@ -33,7 +33,7 @@ public class Flaganimation : MonoBehaviour
 
         //transform.DOPunchScale(new Vector3(0.8f, 0.8f, 0.8f), 0.3f);
         
-        transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.9f).SetEase(Ease.OutBounce);
+        transform.DOScale(new Vector3(0.35f, 0.35f, 0.35f), 0.9f).SetEase(Ease.OutBounce);
 
         //yield return new WaitForSeconds(0.005f);
 
