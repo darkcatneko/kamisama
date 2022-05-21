@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c7f4b85bbdfc24d8886cb96b2a0e89, type: 3}
+  m_Name: TaiwanOni
+  m_EditorClassIdentifier: 
+  BossGameObjectPrefab: {fileID: 0}
+  BossPicture: {fileID: 0}
+  BossStats:
+  - m_stat: 4
+    m_currentstat: 0
+  - m_stat: 6
+    m_currentstat: 0
+  - m_stat: 5
+    m_currentstat: 0
+  - m_stat: 1
+    m_currentstat: 0
+  - m_stat: 0
+    m_currentstat: 0

@@ -26,10 +26,10 @@ public class MainSceneDataCenter : MonoBehaviour
         instance = this;
     }
     void Start()
-    {
-        CheckFlag();
+    {        
         DOTween.Clear(true);
         Player_save.Load();
+        CheckFlag();
         Player_save.Now_Playing_Scene = 2;
     }
 
@@ -46,27 +46,27 @@ public class MainSceneDataCenter : MonoBehaviour
     {
         if (Player_save.FlagCount == 3)
         {
-            Flag3.GetComponent<Image>().color = new Color(1,1,1,1);
+            Flag1.GetComponent<Image>().color = new Color(1,1,1,1);
             Flag2.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-            Flag1.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            Flag3.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         }
         else if (instance.Player_save.FlagCount == 2)
         {
-            Flag3.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            Flag1.GetComponent<Image>().color = new Color(1, 1, 1, 1);
             Flag2.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-            Flag1.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+            Flag3.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         }
         else if (instance.Player_save.FlagCount == 1)
         {
-            Flag3.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            Flag1.GetComponent<Image>().color = new Color(1, 1, 1, 1);
             Flag2.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-            Flag1.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+            Flag3.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         }
         else
         {
-            Flag3.GetComponent<Image>().color = new Color(1, 1, 1, 0);
-            Flag2.GetComponent<Image>().color = new Color(1, 1, 1, 0);
             Flag1.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+            Flag2.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+            Flag3.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         }
     }
     public void LoadingButtonPress()

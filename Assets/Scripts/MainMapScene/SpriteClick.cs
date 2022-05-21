@@ -23,7 +23,7 @@ public class SpriteClick : MonoBehaviour
         Buff_end = SpriteClickAnimation.instance.Buff_Origin;
         Chat_end = SpriteClickAnimation.instance.Chat_Origin;
         Skill_end = SpriteClickAnimation.instance.Skill_Origin;
-        
+        FlagPicUpdate();
     }
     private void Update()
     {
@@ -179,9 +179,7 @@ public class SpriteClick : MonoBehaviour
                             StartCoroutine("MinusFlag");
                             MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
                             //演出
-                            GameObject flag = Instantiate<GameObject>(SpriteClickAnimation.instance.flagprefab,new Vector3(10.31f,10.82f,0),Quaternion.identity);
-                            Transform[] T = this.GetComponentsInChildren<Transform>();
-                            flag.GetComponent<Flaganimation>().Startflaganimation(T[2].position);
+                            ADDFlag();
                             StartCoroutine("ExitButtonClickedAnimation",1);
                             SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
                         }
@@ -250,9 +248,7 @@ public class SpriteClick : MonoBehaviour
                             StartCoroutine("MinusFlag");
                             MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
                             //演出
-                            GameObject flag = Instantiate<GameObject>(SpriteClickAnimation.instance.flagprefab, new Vector3(10.31f, 10.82f, 0), Quaternion.identity);
-                            Transform[] T = this.GetComponentsInChildren<Transform>();
-                            flag.GetComponent<Flaganimation>().Startflaganimation(T[2].position);
+                            ADDFlag();
                             StartCoroutine("ExitButtonClickedAnimation",1);
                             SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
                         }
@@ -316,9 +312,7 @@ public class SpriteClick : MonoBehaviour
                             StartCoroutine("MinusFlag");
                             MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
                             //演出
-                            GameObject flag = Instantiate<GameObject>(SpriteClickAnimation.instance.flagprefab, new Vector3(10.31f, 10.82f, 0), Quaternion.identity);
-                            Transform[] T = this.GetComponentsInChildren<Transform>();
-                            flag.GetComponent<Flaganimation>().Startflaganimation(T[2].position);
+                            ADDFlag();
                             StartCoroutine("ExitButtonClickedAnimation",1);
                             SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
                         }
@@ -461,6 +455,20 @@ public class SpriteClick : MonoBehaviour
         {
             SpriteClickAnimation.instance.BuffButtonPic.sprite = Resources.Load<Sprite>("main scene/UI/choice UI/Temple_Icon");
             SpriteClickAnimation.instance.BuffButtonName.sprite = Resources.Load<Sprite>("main scene/UI/choice UI/TempleName");
+        }
+    }
+    public void ADDFlag()
+    {
+        GameObject flag = Instantiate<GameObject>(SpriteClickAnimation.instance.flagprefab, new Vector3(10.31f, 10.82f, 0), Quaternion.identity);
+        Transform[] T = this.GetComponentsInChildren<Transform>();
+        flag.GetComponent<Flaganimation>().Startflaganimation(T[2].position);
+        MainTimeSystem.instance.FlagPrefabs.Add(flag);
+    }
+    public void FlagPicUpdate()
+    {
+        if (MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_Place] == true)
+        {
+            Invoke("ADDFlag", 0.5f);
         }
     }
 }
