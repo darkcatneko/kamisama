@@ -10,6 +10,7 @@ public class MainTimeSystem : MonoBehaviour
 
     public static MainTimeSystem instance;//獨體
     public TimeClass Time;
+    public List<GameObject> FlagPrefabs;
     private void Awake()
     {
             instance = this;
@@ -26,6 +27,18 @@ public class MainTimeSystem : MonoBehaviour
         Day_Text.text = Time.day.ToString()+" /";
         Time_Text.text = Time.time.ToString()+":00";
     }
+    public void ReloadFlags()
+    {
+        foreach (var item in FlagPrefabs)
+        {
+            Destroy(item);
+        }
+        for (int i = 0; i < MainSceneDataCenter.instance.Player_save.MapFlagCheck.Length; i++)
+        {
+            MainSceneDataCenter.instance.Player_save.MapFlagCheck[i] = false;
+        }
+    }
+
 }
 [System.Serializable]
 
@@ -39,9 +52,12 @@ public class TimeClass
         time++;
         if (time>=23)
         {
+            MainTimeSystem.instance.ReloadFlags();
             day++;
             MainSceneDataCenter.instance.Player_save.Can_Get_Flag = true;
             time = 8;
+            MainSceneDataCenter.instance.Player_save.Save();
+            //進入戰鬥
         }
     }
     
