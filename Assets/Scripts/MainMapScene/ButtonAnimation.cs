@@ -27,6 +27,7 @@ public class ButtonAnimation : MonoBehaviour
             ButtonPicture.color = new Color(1, 1, 1, 0);
             ButtonName.color = new Color(1, 1, 1, 0);
             ButtonBackGround.color = new Color(1, 1, 1, 0);
+
         }
         else
         {

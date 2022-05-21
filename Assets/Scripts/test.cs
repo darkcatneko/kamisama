@@ -16,6 +16,18 @@ public class test : MonoBehaviour
         Buttonse.GetComponent<AudioSource>().volume = VolumeMaster.All * VolumeMaster.SoundEffect;
         Buttonse.GetComponent<SimpleDestroy>().CallDestroy(Buttonse.GetComponent<AudioSource>().clip.length);
     }
+    public void FlipSE()
+    {
+        GameObject Buttonse = Instantiate<GameObject>(Resources.Load<GameObject>("cardSE"), transform.position, Quaternion.identity);
+        Buttonse.GetComponent<AudioSource>().volume = VolumeMaster.All * VolumeMaster.SoundEffect;
+        Buttonse.GetComponent<SimpleDestroy>().CallDestroy(Buttonse.GetComponent<AudioSource>().clip.length);
+    }
+    public void OnSlectSE()
+    {
+        GameObject Buttonse = Instantiate<GameObject>(Resources.Load<GameObject>("slectSE"), transform.position, Quaternion.identity);
+        Buttonse.GetComponent<AudioSource>().volume = VolumeMaster.All * VolumeMaster.SoundEffect;
+        Buttonse.GetComponent<SimpleDestroy>().CallDestroy(Buttonse.GetComponent<AudioSource>().clip.length);
+    }
 }
 public class player
 {
