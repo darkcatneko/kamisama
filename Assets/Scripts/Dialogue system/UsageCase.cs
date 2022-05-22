@@ -73,6 +73,13 @@ public class UsageCase : MonoBehaviour
         msgSys.AddSpecialCharToFuncMap("N", NarrationSet);
         //尊王
         msgSys.AddSpecialCharToFuncMap("God_smile", () => ChangeMainSpeaker(CharactersLists[0], Emoji.smile));
+        msgSys.AddSpecialCharToFuncMap("God_happy", () => ChangeMainSpeaker(CharactersLists[0], Emoji.happy));
+        msgSys.AddSpecialCharToFuncMap("God_serious", () => ChangeMainSpeaker(CharactersLists[0], Emoji.serious));
+        msgSys.AddSpecialCharToFuncMap("God_angry", () => ChangeMainSpeaker(CharactersLists[0], Emoji.angry));
+        msgSys.AddSpecialCharToFuncMap("God_sad", () => ChangeMainSpeaker(CharactersLists[0], Emoji.sad));
+        msgSys.AddSpecialCharToFuncMap("God_nervous", () => ChangeMainSpeaker(CharactersLists[0], Emoji.nervous));
+        msgSys.AddSpecialCharToFuncMap("God_shy", () => ChangeMainSpeaker(CharactersLists[0], Emoji.shy));
+        msgSys.AddSpecialCharToFuncMap("God_doya", () => ChangeMainSpeaker(CharactersLists[0], Emoji.doya));
         msgSys.AddSpecialCharToFuncMap("God_shock", () => ChangeMainSpeaker(CharactersLists[0], Emoji.shock));
         //
         if (uiText == null)

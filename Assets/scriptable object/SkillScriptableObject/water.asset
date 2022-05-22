@@ -7,24 +7,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12bad26cda68ea446987d965dce82a35, type: 3}
-  m_Name: soulneedle
+  m_Name: water
   m_EditorClassIdentifier: 
   Temple: 0
   m_Skilltype: 0
-  SkillName: "\u7A7F\u9B42\u91DD"
-  ID: 5
+  SkillName: "\u516B\u5366\u638C:\u67D4\u6C34"
+  ID: 26
   skillVariable: 0
-  m_eightTrigrams: 0
-  stats: 0
-  ManaCost: 5
-  SkillPic: {fileID: 0}
-  SkillCardPic: {fileID: 0}
+  m_eightTrigrams: 2
+  stats: 6
+  ManaCost: 9
+  SkillPic: {fileID: 21300000, guid: 301a5f7a192e3714b95fac8fa8dead61, type: 3}
+  SkillCardPic: {fileID: 21300000, guid: 301a5f7a192e3714b95fac8fa8dead61, type: 3}
   SkillDescribe: 
   SkillLearnWay: 
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}
-  LevelUpCondition: 07000000
-  UnlockLevel: 7
+  LevelUpCondition: 
+  UnlockLevel: 0
