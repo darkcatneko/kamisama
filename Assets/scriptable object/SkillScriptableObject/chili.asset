@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12bad26cda68ea446987d965dce82a35, type: 3}
-  m_Name: smite
+  m_Name: chili
   m_EditorClassIdentifier: 
   Temple: 0
   m_Skilltype: 0
-  SkillName: "\u91CD\u64CA"
-  ID: 1
+  SkillName: "\u8FA3\u6912\u7684\u50B3\u4EBA"
+  ID: 34
   skillVariable: 0
-  m_eightTrigrams: 3
-  stats: 6
-  ManaCost: 5
-  SkillPic: {fileID: 21300000, guid: c27c20457e03a354a8ae1ce7a0fa6739, type: 3}
-  SkillCardPic: {fileID: 21300000, guid: c27c20457e03a354a8ae1ce7a0fa6739, type: 3}
-  SkillDescribe: "\u72E0\u72E0\u7684\u5F80\u5C0D\u65B9\u63CD\u4E0B\u53BB"
-  SkillLearnWay: Lv1
+  m_eightTrigrams: 2
+  stats: 1
+  ManaCost: 20
+  SkillPic: {fileID: 21300000, guid: 3a4368336ef58ff438ff3853b94295c6, type: 3}
+  SkillCardPic: {fileID: 21300000, guid: 3a4368336ef58ff438ff3853b94295c6, type: 3}
+  SkillDescribe: 
+  SkillLearnWay: 
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}
-  LevelUpCondition: 01000000
-  UnlockLevel: 1
+  LevelUpCondition: 
+  UnlockLevel: 0

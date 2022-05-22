@@ -60,6 +60,8 @@ public enum Emoji
        thinking,
        wordless,
        shy,
+       serious,
+       sad,
 }
 [System.Serializable]
 public class CharacterImage

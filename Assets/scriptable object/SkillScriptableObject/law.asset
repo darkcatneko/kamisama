@@ -7,24 +7,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12bad26cda68ea446987d965dce82a35, type: 3}
-  m_Name: SheepCall
+  m_Name: law
   m_EditorClassIdentifier: 
   Temple: 0
   m_Skilltype: 0
-  SkillName: "\u7F8A\u7FA4\u4E4B\u559A"
-  ID: 7
-  skillVariable: 1
-  m_eightTrigrams: 3
-  stats: 5
-  ManaCost: 5
-  SkillPic: {fileID: 0}
-  SkillCardPic: {fileID: 0}
+  SkillName: "\u5C0A\u738B\u4EE4\u4E0B!\u5224!"
+  ID: 19
+  skillVariable: 0
+  m_eightTrigrams: 2
+  stats: 1
+  ManaCost: 10
+  SkillPic: {fileID: 21300000, guid: 9c4383261da8f744d9543a56bd8e29bc, type: 3}
+  SkillCardPic: {fileID: 21300000, guid: 9c4383261da8f744d9543a56bd8e29bc, type: 3}
   SkillDescribe: 
   SkillLearnWay: 
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}
-  LevelUpCondition: 0a000000
-  UnlockLevel: 10
+  LevelUpCondition: 
+  UnlockLevel: 0
