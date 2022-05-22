@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class VolumeController : MonoBehaviour
 {
+    
     public AudioSource Music;
     public VolumeDataCenter m_VolumeDataCenter;
     public Slider AllBar;
@@ -12,6 +13,7 @@ public class VolumeController : MonoBehaviour
     public Slider BGM_Bar;
 
     public float StartVolume;
+   
     private void Start()
     {
        StartVolume = Music.volume;

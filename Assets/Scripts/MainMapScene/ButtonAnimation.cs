@@ -14,6 +14,7 @@ public class ButtonAnimation : MonoBehaviour
     {
         ButtonName.rectTransform.DOScale(new Vector3(1.3f,1.3f,0), 0.3f);
         ButtonBackGround.sprite = Resources.Load<Sprite>("main scene/UI/choice UI/Hover_Pic");
+        MainSceneDataCenter.instance._semaster.OnSlectSE();
     }
     public void OnpointerExit()
     {
@@ -34,6 +35,7 @@ public class ButtonAnimation : MonoBehaviour
             ButtonPicture.color = new Color(1, 1, 1, 1);
             ButtonName.color = new Color(1, 1, 1, 1);
             ButtonBackGround.color = new Color(1, 1, 1, 1);
+            
         }
     }
 }

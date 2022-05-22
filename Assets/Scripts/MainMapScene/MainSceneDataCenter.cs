@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class MainSceneDataCenter : MonoBehaviour
 {
     public GameObject VolumePanel;
+    public SEmaster _semaster;
 
     public SaveScriptableObject Player_save;
     public SkillDatabaseOBJ m_SkillDatabaseOBJ;

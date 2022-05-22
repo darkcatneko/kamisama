@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Loading_scene_UI : MonoBehaviour
 {
     public static Loading_scene_UI instance; //獨體
+    public SEmaster _semaster;
 
     //製作三層關係
     public GameObject Buttons;
