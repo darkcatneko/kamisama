@@ -8,7 +8,7 @@ public class SkillPanelController : MonoBehaviour
 {
     public TextMeshProUGUI PlayerStatsInt;
     public TextMeshProUGUI PlayerLevel;
-
+    public GameObject SkillBarPrefab;
     public List<GameObject> SkillBackPackButtons;
     public List<GameObject> SkillBoardButtons;
     private int[] intarray = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -18,11 +18,12 @@ public class SkillPanelController : MonoBehaviour
     public int OnPage = 1;
     public Image SkillBoard;
     public TextMeshProUGUI HowtoGetSkill;
+    public Transform Contents;
     void Start()
     {
-        for (int i = 0; i < SkillBoardButtons.Count; i++)
+        for (int i = 1; i < 38; i++)
         {
-            SetSkillBoard(i+1,i);
+            GenSkillBoard(i);
         }
         SetSkillBackButton();
     }
@@ -34,17 +35,16 @@ public class SkillPanelController : MonoBehaviour
     }
     public void SetPlayerInformation(TextMeshProUGUI _text)
     {
-        PlayerLevel.text = MainSceneDataCenter.instance.Player_save.m_Player.Level.ToString();
-        _text.text = 
+        PlayerLevel.text = "LV."+MainSceneDataCenter.instance.Player_save.m_Player.Level.ToString();
+        _text.text =
             MainSceneDataCenter.instance.Player_save.m_Player.HP.m_currentstat.ToString() + "\n"
-           +MainSceneDataCenter.instance.Player_save.m_Player.ATK.m_currentstat.ToString()+"\n"
+           + MainSceneDataCenter.instance.Player_save.m_Player.ATK.m_currentstat.ToString() + "\n"
            + MainSceneDataCenter.instance.Player_save.m_Player.DEF.m_currentstat.ToString() + "\n"
            + MainSceneDataCenter.instance.Player_save.m_Player.POW.m_currentstat.ToString() + "\n"
            + MainSceneDataCenter.instance.Player_save.m_Player.SPI.m_currentstat.ToString() + "\n"
            + MainSceneDataCenter.instance.Player_save.m_Player.DEX.m_currentstat.ToString() + "\n"
-           + MainSceneDataCenter.instance.Player_save.m_Player.INT.m_currentstat.ToString() + "\n"
-           + MainSceneDataCenter.instance.Player_save.m_Player.LUK.m_currentstat.ToString() + "\n"
-           + MainSceneDataCenter.instance.Player_save.m_Player.Love.m_currentstat.ToString();
+           + MainSceneDataCenter.instance.Player_save.m_Player.INT.m_currentstat.ToString()+ "\n"
+           + MainSceneDataCenter.instance.Player_save.m_Player.LUK.m_currentstat.ToString() + "\n";
     }
     public void SetSkillBackButton()
     {        
@@ -53,11 +53,12 @@ public class SkillPanelController : MonoBehaviour
             Debug.Log(i);
             if (MainSceneDataCenter.instance.Player_save.SkillBackPack[i] == 0)
             {
-                SkillBackPackButtons[i].GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillPicture/None");//無技能的圖片
+                SkillBackPackButtons[i].GetComponentsInChildren<Image>()[1].color = new Color(1, 1, 1, 0);
             }
             else
             {
-                SkillBackPackButtons[i].GetComponent<Image>().sprite = MainSceneDataCenter.instance.m_SkillDatabaseOBJ.GetSkillInformation(MainSceneDataCenter.instance.Player_save.SkillBackPack[i]).SkillPic;                
+                SkillBackPackButtons[i].GetComponentsInChildren<Image>()[1].color = new Color(1, 1, 1, 1);
+                SkillBackPackButtons[i].GetComponentsInChildren<Image>()[1].sprite = MainSceneDataCenter.instance.m_SkillDatabaseOBJ.GetSkillInformation(MainSceneDataCenter.instance.Player_save.SkillBackPack[i]).SkillPic;                
             }            
         }
     }
@@ -77,11 +78,12 @@ public class SkillPanelController : MonoBehaviour
     {
         if (MainSceneDataCenter.instance.Player_save.SkillBackPack[focus] == 0)
         {
-            SkillBackPackButtons[focus].GetComponent<Image>().sprite = Resources.Load<Sprite>("SkillPicture/None");//無技能的圖片
+            SkillBackPackButtons[focus].GetComponentsInChildren<Image>()[1].color = new Color(1, 1, 1, 0);
         }
         else
         {
-            SkillBackPackButtons[focus].GetComponent<Image>().sprite = MainSceneDataCenter.instance.m_SkillDatabaseOBJ.GetSkillInformation(MainSceneDataCenter.instance.Player_save.SkillBackPack[focus]).SkillPic;            
+            SkillBackPackButtons[focus].GetComponentsInChildren<Image>()[1].color = new Color(1, 1, 1, 1);
+            SkillBackPackButtons[focus].GetComponentsInChildren<Image>()[1].sprite = MainSceneDataCenter.instance.m_SkillDatabaseOBJ.GetSkillInformation(MainSceneDataCenter.instance.Player_save.SkillBackPack[focus]).SkillPic;            
         }
     }
 
@@ -109,28 +111,54 @@ public class SkillPanelController : MonoBehaviour
                 }
             });
     }
+    public void GenSkillBoard(int _skillid)
+    {
+        GameObject SkillBT = Instantiate<GameObject>(SkillBarPrefab, transform.position, Quaternion.identity, Contents);
+        SkillBT.GetComponentsInChildren<Image>()[1].sprite = FindTrigrams(MainSceneDataCenter.instance.m_SkillDatabaseOBJ.GetSkillInformation(_skillid).m_eightTrigrams);
+        SkillBT.GetComponentInChildren<TextMeshProUGUI>().text = MainSceneDataCenter.instance.m_SkillDatabaseOBJ.GetSkillInformation(_skillid).SkillName;
+        SkillBT.GetComponent<Button>().onClick.AddListener(
+            () =>
+            {
+                FocusSkill = _skillid;
+                if (MainSceneDataCenter.instance.Player_save.SkillUnlockCheck[_skillid - 1] != true)
+                {
+                    SkillBoard.sprite = Resources.Load<Sprite>("SkillPicture/NoneCard");//無技能的圖片
+                    HowtoGetSkill.text = MainSceneDataCenter.instance.m_SkillDatabaseOBJ.GetSkillInformation(_skillid).SkillLearnWay;
+                }
+                else
+                {
+                    SkillBoard.sprite = MainSceneDataCenter.instance.m_SkillDatabaseOBJ.GetSkillInformation(_skillid).SkillCardPic;
+                    HowtoGetSkill.text = "";
+                }
+            });
+        SkillBoardButtons.Add(SkillBT);
+    }
     public void EquipButtonPress()
     {
         Equip(FocusNum, FocusSkill);
     }
     public void Equip(int FocusBackPack, int FocusSkill)
     {
-        if (MainSceneDataCenter.instance.Player_save.SkillUnlockCheck[FocusSkill - 1] == true)
+        if (FocusSkill!=0)
         {
-            for (int i = 0; i < MainSceneDataCenter.instance.Player_save.SkillBackPack.Length; i++)
+            if (MainSceneDataCenter.instance.Player_save.SkillUnlockCheck[FocusSkill - 1] == true)
             {
-                if (MainSceneDataCenter.instance.Player_save.SkillBackPack[i] == FocusSkill)
+                for (int i = 0; i < MainSceneDataCenter.instance.Player_save.SkillBackPack.Length; i++)
                 {
-                    MainSceneDataCenter.instance.Player_save.SkillBackPack[i] = 0;
-                    MainSceneDataCenter.instance.Player_save.SkillBackPack[FocusBackPack] = FocusSkill;
-                    SetSkillBackButtonUpdate(FocusNum);
-                    SetSkillBackButtonUpdate(i);
-                    return;
+                    if (MainSceneDataCenter.instance.Player_save.SkillBackPack[i] == FocusSkill)
+                    {
+                        MainSceneDataCenter.instance.Player_save.SkillBackPack[i] = 0;
+                        MainSceneDataCenter.instance.Player_save.SkillBackPack[FocusBackPack] = FocusSkill;
+                        SetSkillBackButtonUpdate(FocusNum);
+                        SetSkillBackButtonUpdate(i);
+                        return;
+                    }
                 }
+                MainSceneDataCenter.instance.Player_save.SkillBackPack[FocusBackPack] = FocusSkill;
+                SetSkillBackButtonUpdate(FocusNum);
             }
-            MainSceneDataCenter.instance.Player_save.SkillBackPack[FocusBackPack] = FocusSkill;
-            SetSkillBackButtonUpdate(FocusNum);
         }
+        
         Debug.Log("白癡7414");
     }
 }

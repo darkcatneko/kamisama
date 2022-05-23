@@ -9,5 +9,15 @@
 
 
 請選擇[InChoise2][w]adcefghijklnmopqrstuvwxyz1234567890 ;:/ABCDEFGHIJKLNMOPQRSTUVWXYZ屁眼派對暴風雪火球術鹹魚趴辣椒拳製冰機光線死舞星爆氣流斬
+血量
+物攻
+物防
+魔攻
+魔防
+迴避
+智慧
+幸運
+
+
 
 
