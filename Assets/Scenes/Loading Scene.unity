@@ -564,7 +564,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 659285853}
         m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
-        m_MethodName: GenSE
+        m_MethodName: GencrossSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1381,7 +1381,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 659285853}
         m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
-        m_MethodName: GenSE
+        m_MethodName: GencrossSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1804,7 +1804,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 659285853}
         m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
-        m_MethodName: GenSE
+        m_MethodName: GencrossSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2139,7 +2139,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 659285853}
         m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
-        m_MethodName: GenSE
+        m_MethodName: GencrossSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

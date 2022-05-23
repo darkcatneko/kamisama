@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4633245}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 178179512}
+        m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
+        m_MethodName: OnSlectSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4633245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +454,18 @@ MonoBehaviour:
       - m_Target: {fileID: 178179507}
         m_TargetAssemblyTypeName: MainSceneDataCenter, Assembly-CSharp
         m_MethodName: SkillButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 178179512}
+        m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
+        m_MethodName: FlipSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1947,6 +1971,7 @@ GameObject:
   - component: {fileID: 178179509}
   - component: {fileID: 178179510}
   - component: {fileID: 178179511}
+  - component: {fileID: 178179512}
   m_Layer: 0
   m_Name: system
   m_TagString: Untagged
@@ -2059,6 +2084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VolumePanel: {fileID: 431998416}
+  _semaster: {fileID: 178179512}
   Player_save: {fileID: 11400000, guid: beec8b3c85e5b9e46b73d58a15768ccf, type: 2}
   m_SkillDatabaseOBJ: {fileID: 11400000, guid: f6d03e220547b814a8ad014ed741e228, type: 2}
   dialogue_Data_Object: {fileID: 11400000, guid: f30d8c5f482616340929be19b1ec0cdb, type: 2}
@@ -2208,6 +2234,19 @@ MonoBehaviour:
   SE_Bar: {fileID: 403621610}
   BGM_Bar: {fileID: 1388583698}
   StartVolume: 0
+--- !u!114 &178179512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178179503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b280c1b30616cb48aec9d10aea0bc14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VolumeMaster: {fileID: 11400000, guid: 8e97d2f197081df40ab1f62977073ea6, type: 2}
 --- !u!1001 &181969682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7589,6 +7628,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 178179512}
+        m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
+        m_MethodName: OnSlectSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &952295909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12721,6 +12772,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1085291850}
         m_TargetAssemblyTypeName: SettingButtonInteraction, Assembly-CSharp
         m_MethodName: GearButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 178179512}
+        m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
+        m_MethodName: GenSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
