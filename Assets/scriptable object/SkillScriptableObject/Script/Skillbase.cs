@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Skillbase : MonoBehaviour
 {
-   public float Smite_Skill(PlayerStats _stats)
+    public List<UnityAction> SkillActionList;
+    private void Awake()
+    {
+        SkillActionList.Insert(1, ()=> Smite_Skill()); 
+        
+    }
+    public float Smite_Skill()
     {
         float dmg = 0;
         //¦©Å]¤O
@@ -36,4 +43,4 @@ public enum SkillVariable
     Instance,
     Field,
 }
-public delegate int CoolSkill(PlayerStats _stats);
+

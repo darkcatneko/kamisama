@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityEngine.Events;
 
 public abstract class BossBase : ScriptableObject
 {
@@ -9,5 +9,5 @@ public abstract class BossBase : ScriptableObject
     public GameObject BossGameObjectPrefab;
     public Sprite BossPicture;
     public List<PlayerStats> BossStats;
-    public List<Action> BossAttackSkill;
+    public List<UnityAction> BossAttackSkill;
 }
