@@ -26,5 +26,5 @@ MonoBehaviour:
   SkillLearnWay: 
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}
-  LevelUpCondition: 
+  LevelUpCondition: 00000000
   UnlockLevel: 0

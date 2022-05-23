@@ -264,8 +264,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: GOODJOB
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ceed8887a96b684fb8e6680ecfdfe04, type: 2}
-  m_sharedMaterial: {fileID: -3174352074451681125, guid: 1ceed8887a96b684fb8e6680ecfdfe04, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dae18b76b654e304ab6905611ef7a5d2, type: 2}
+  m_sharedMaterial: {fileID: -7446974827067318603, guid: dae18b76b654e304ab6905611ef7a5d2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

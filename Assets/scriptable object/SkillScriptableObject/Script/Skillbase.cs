@@ -27,22 +27,21 @@ public class Skillbase : MonoBehaviour
     public void Smite_Skill()
     {
         if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
-        {
-            if (MainBattleSystem.instance.BattleUseStats.Current_MP < 5)//確認魔力量
-            {
-                Debug.Log("白癡7414");
-            }
-            else
-            {
-                MainBattleSystem.instance.MinusMana(5);
-                //確認陣上是否有陣法
+        {            
+                MainBattleSystem.instance.MinusMana(5);//扣魔
+                if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]!=null)//確認陣上是否有陣法
+                {
+                    Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);
+                }
                 //做動作
                 //生成特效
-                //確認爆擊
+                MainBattleSystem.instance.CritCheck();//確認爆擊
+                //爆擊動畫
                 //確認王的閃避
                 //輸出一個傷害值
+                //傷害回饋
                 Debug.Log("BBBBBB");
-            }
+            
         }
               
     }
