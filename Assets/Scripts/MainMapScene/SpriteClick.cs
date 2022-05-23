@@ -50,9 +50,8 @@ public class SpriteClick : MonoBehaviour
         if (camScroll.instance.startPoint == camScroll.instance.endPoint&&MainSceneDataCenter.instance.status == Player_status.FreeMove)
         {         
             StartCoroutine("ButtonClickedAnimation");
-            GameObject Buttonse = Instantiate<GameObject>(Resources.Load<GameObject>("buttonSE"), transform.position, Quaternion.identity);
-            Buttonse.GetComponent<SimpleDestroy>().CallDestroy(Buttonse.GetComponent<AudioSource>().clip.length);
 
+            MainSceneDataCenter.instance._semaster.GenSE();
         }
     }
     public IEnumerator ButtonClickedAnimation()

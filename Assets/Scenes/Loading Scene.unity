@@ -562,6 +562,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 659285853}
+        m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
+        m_MethodName: GenSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &441092299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,6 +1036,7 @@ GameObject:
   - component: {fileID: 659285849}
   - component: {fileID: 659285848}
   - component: {fileID: 659285852}
+  - component: {fileID: 659285853}
   m_Layer: 5
   m_Name: Loading_UI
   m_TagString: Untagged
@@ -1125,6 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6da4c0b90f3ceb45851321e70bce7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _semaster: {fileID: 659285853}
   Buttons: {fileID: 1859293183}
   Setting: {fileID: 488458590}
   Sound: {fileID: 1837697943}
@@ -1136,6 +1150,19 @@ MonoBehaviour:
   NewGameUseData: {fileID: 11400000, guid: a79d4939ad0db6d42b372c6df31d0b7b, type: 2}
   dialogueOBJ: {fileID: 11400000, guid: f30d8c5f482616340929be19b1ec0cdb, type: 2}
   sceneOBJ: {fileID: 11400000, guid: 23e865d35ffb6fc4ba46d74dfca8f60e, type: 2}
+--- !u!114 &659285853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659285847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b280c1b30616cb48aec9d10aea0bc14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VolumeMaster: {fileID: 11400000, guid: 8e97d2f197081df40ab1f62977073ea6, type: 2}
 --- !u!1 &750327451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,6 +1370,18 @@ MonoBehaviour:
       - m_Target: {fileID: 659285852}
         m_TargetAssemblyTypeName: Loading_scene_UI, Assembly-CSharp
         m_MethodName: PlayButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 659285853}
+        m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
+        m_MethodName: GenSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1763,6 +1802,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 659285853}
+        m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
+        m_MethodName: GenSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1250543938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,6 +2128,18 @@ MonoBehaviour:
       - m_Target: {fileID: 659285852}
         m_TargetAssemblyTypeName: Loading_scene_UI, Assembly-CSharp
         m_MethodName: SettingButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 659285853}
+        m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
+        m_MethodName: GenSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

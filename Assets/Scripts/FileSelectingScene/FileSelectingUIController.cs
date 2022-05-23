@@ -15,6 +15,7 @@ public class FileSelectingUIController : MonoBehaviour
 {
     public int page = 1;public GameObject MiddlePoint;public Button Page1Button; public Button Page2Button;public Image RotateImage;
     public  int times;
+    public SEmaster _semaster;
 
     public List<Button> FileButtons;
     public List<Button> RemoveButtons;
