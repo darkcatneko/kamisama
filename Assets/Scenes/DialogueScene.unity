@@ -832,6 +832,7 @@ GameObject:
   - component: {fileID: 507043652}
   - component: {fileID: 507043651}
   - component: {fileID: 507043650}
+  - component: {fileID: 507043653}
   m_Layer: 0
   m_Name: Dialogue System
   m_TagString: Untagged
@@ -895,6 +896,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &507043653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507043649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b280c1b30616cb48aec9d10aea0bc14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VolumeMaster: {fileID: 11400000, guid: 8e97d2f197081df40ab1f62977073ea6, type: 2}
 --- !u!1 &534828403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,6 +2011,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 507043653}
+        m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
+        m_MethodName: GencrossSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1330680382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2685,6 +2711,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 507043653}
+        m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
+        m_MethodName: OnCrossSlectSE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1853788416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2927,6 +2965,18 @@ MonoBehaviour:
       - m_Target: {fileID: 507043650}
         m_TargetAssemblyTypeName: UsageCase, Assembly-CSharp
         m_MethodName: SavingButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 507043653}
+        m_TargetAssemblyTypeName: SEmaster, Assembly-CSharp
+        m_MethodName: GencrossSE
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

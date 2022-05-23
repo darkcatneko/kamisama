@@ -11,16 +11,32 @@ public class SEmaster : MonoBehaviour
     {
 
     }
+    public void GencrossSE()
+    {
+        GameObject Buttonse = Instantiate<GameObject>(Resources.Load<GameObject>("CrossSceneSE"), transform.position, Quaternion.identity);
+        Buttonse.GetComponent<AudioSource>().volume = VolumeMaster.All * VolumeMaster.SoundEffect;
+        Buttonse.GetComponent<SimpleDestroy>().dontdestroy();
+        Buttonse.GetComponent<SimpleDestroy>().CallDestroy(Buttonse.GetComponent<AudioSource>().clip.length);
+
+    }
     public void GenSE()
     {
         GameObject Buttonse = Instantiate<GameObject>(Resources.Load<GameObject>("buttonSE"), transform.position, Quaternion.identity);
         Buttonse.GetComponent<AudioSource>().volume = VolumeMaster.All * VolumeMaster.SoundEffect;
         Buttonse.GetComponent<SimpleDestroy>().CallDestroy(Buttonse.GetComponent<AudioSource>().clip.length);
     }
+    
     public void FlipSE()
     {
         GameObject Buttonse = Instantiate<GameObject>(Resources.Load<GameObject>("cardSE"), transform.position, Quaternion.identity);
         Buttonse.GetComponent<AudioSource>().volume = VolumeMaster.All * VolumeMaster.SoundEffect;
+        Buttonse.GetComponent<SimpleDestroy>().CallDestroy(Buttonse.GetComponent<AudioSource>().clip.length);
+    }
+    public void OnCrossSlectSE()
+    {
+        GameObject Buttonse = Instantiate<GameObject>(Resources.Load<GameObject>("CrossSceneslectSE"), transform.position, Quaternion.identity);
+        Buttonse.GetComponent<AudioSource>().volume = VolumeMaster.All * VolumeMaster.SoundEffect;
+        Buttonse.GetComponent<SimpleDestroy>().dontdestroy();
         Buttonse.GetComponent<SimpleDestroy>().CallDestroy(Buttonse.GetComponent<AudioSource>().clip.length);
     }
     public void OnSlectSE()
