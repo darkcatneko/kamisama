@@ -8,4 +8,8 @@ public class SimpleDestroy : MonoBehaviour
     {
         Destroy(this.gameObject, SELONG);
     }
+    public void dontdestroy()
+    {
+        DontDestroyOnLoad(this);
+    }
 }

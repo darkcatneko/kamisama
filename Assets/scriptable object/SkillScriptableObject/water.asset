@@ -23,8 +23,8 @@ MonoBehaviour:
   SkillPic: {fileID: 21300000, guid: 301a5f7a192e3714b95fac8fa8dead61, type: 3}
   SkillCardPic: {fileID: 21300000, guid: 301a5f7a192e3714b95fac8fa8dead61, type: 3}
   SkillDescribe: 
-  SkillLearnWay: 
+  SkillLearnWay: "\u5FC5\u9808\u5230\u9054\"\u7B49\u7D1A\u516D\u5341\u4E94\"\u65B9\u53EF\u89E3\u9396"
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}
-  LevelUpCondition: 00000000
-  UnlockLevel: 0
+  LevelUpCondition: 41000000
+  UnlockLevel: 65
