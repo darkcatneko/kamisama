@@ -23,6 +23,10 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
     public int Now_Playing_Scene = 2;
     public string Now_Watching_Plot = "Opening";
     public int Now_Watching_Sentence;
+    public string Now_BackgroundPic;
+    public string Now_BGM;
+    public string TempNote;
+    public bool IfSpecialTime;
     void Start()
     {
         
@@ -72,6 +76,10 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
         a.Now_Playing_Scene = b.Now_Playing_Scene;
         a.Now_Watching_Plot = b.Now_Watching_Plot;
         a.Now_Watching_Sentence = b.Now_Watching_Sentence;
+        a.Now_BackgroundPic = b.Now_BackgroundPic;
+        a.Now_BGM = b.Now_BGM;
+        a.IfSpecialTime = b.IfSpecialTime;
+        a.TempNote = b.TempNote;
         a.Can_Get_Flag = b.Can_Get_Flag;
     }
     [ContextMenu("Save")]

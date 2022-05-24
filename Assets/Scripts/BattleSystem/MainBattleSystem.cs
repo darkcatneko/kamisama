@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class MainBattleSystem : MonoBehaviour
 {
+    public Animator PlayerAnimator;
     public static MainBattleSystem instance;//獨體
     public BattleStatus m_battleStatus = BattleStatus.ReadyFight;//回合狀態
     public SaveScriptableObject m_player;//玩家記錄檔
@@ -18,12 +19,14 @@ public class MainBattleSystem : MonoBehaviour
     public EightTrigrams NowFocusTrigrams;public bool ReadyAttack = false;//場地選擇
     public int SkillPain;//疲勞值
     public moonblocks CritOrNot = moonblocks.None;
+    public BattleAnimationContents battleAnimationContents;
     private void Awake()
     {
         instance = this;
     }
     void Start()
     {
+        m_battleStatus = BattleStatus.ReadyFight;
         m_player.Load();
         BattleUseStats = m_player.m_Player.Setup_battleInformation(m_player.m_Player);
         for (int i = 0; i < SkillButtons.Count; i++)
@@ -89,8 +92,12 @@ public class MainBattleSystem : MonoBehaviour
     {
         yield return new WaitUntil(() =>ReadyAttack == true);
         SkillEvent.AddListener(SKbase.FindSkillFunction(m_player.SkillBackPack[_id]));
-        SkillEvent.Invoke();
-
+        SkillEvent.Invoke();//扣魔力並且鎖住玩家行動
+        //演出animation
+        PlayerAnimator.SetBool(battleAnimationContents.TheAnimateBePlayed,true);
+        yield return new WaitForSeconds(battleAnimationContents.AnimationTime);
+        PlayerAnimator.SetBool(battleAnimationContents.TheAnimateBePlayed, false);
+        yield return new WaitForSeconds(battleAnimationContents.BattleEffectTime);
         SkillEvent.RemoveAllListeners();
         ReadyAttack = false;
     }
@@ -115,6 +122,17 @@ public class MainBattleSystem : MonoBehaviour
             CritOrNot = moonblocks.TwoDown;
         }
     }
+    
+}
+[System.Serializable]
+public class BattleAnimationContents
+{
+    public int NowDisplayDamage = 0;
+    public string TheAnimateBePlayed;
+    public GameObject BattleEffect;
+    public int AnimationTime;
+    public int BattleEffectTime;
+    public List<int> DamageDelt;
 }
 
 [System.Serializable]

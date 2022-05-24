@@ -111,7 +111,12 @@ public class SpriteClick : MonoBehaviour
         SpriteClickAnimation.instance.BlackScreen.SetActive(false);
         yield return null;
     }
-
+    public IEnumerator PlusTime(int _wait)
+    {
+        MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
+        yield return new WaitForSeconds(_wait);
+        MainSceneDataCenter.instance.Player_save.TimeSaveData.CheckSpecialDay();
+    }
     public void SetUPButtonFunction(Stats _stat)
     {
         if ((int)_stat < 7)//七個地標
@@ -126,10 +131,9 @@ public class SpriteClick : MonoBehaviour
                         MainSceneDataCenter.instance.Player_save.m_Player.GainLevel(1, _stat);//執行動作
                         //強化數值演出 
                         StartCoroutine("PlayerLevelAnimation",_stat);
-                        CheckIfGetNewSkill_BasicSkill(MainSceneDataCenter.instance.Player_save.m_Player.Level);
-                        StartCoroutine("ExitButtonClickedAnimation", 1.5f);                        
-                        //進入戰鬥
-                        MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
+                        CheckIfGetNewSkill_BasicSkill(MainSceneDataCenter.instance.Player_save.m_Player.Level);                                               
+                        StartCoroutine("ExitButtonClickedAnimation", 1.5f);
+                        StartCoroutine("PlusTime", 2f);
                         SpriteClickAnimation.instance.BuffButton.GetComponent<Button>().onClick.RemoveAllListeners();
                     }                   
                 }
@@ -140,7 +144,35 @@ public class SpriteClick : MonoBehaviour
                     if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
                     {
                         MainSceneDataCenter.instance.Player_save.m_Player.Gain_Love_Level(2);
-                        MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
+                        if (MainSceneDataCenter.instance.Player_save.TimeSaveData.time == 8|| MainSceneDataCenter.instance.Player_save.TimeSaveData.time == 22)
+                        {
+                            MainSceneDataCenter.instance.dialogue_Data_Object.IfSpecialToChat = true;
+                            switch (_stat)
+                            {
+                                case Stats.POW:
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad =  "Sen_Nong_Chat";
+                                    return;
+                                case Stats.SPI:
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Wood_Carving_Chat";
+                                    return;
+                                case Stats.DEX:
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Bench_Chat";
+                                    return;
+                                case Stats.INT:
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Market_Chat";
+                                    return;
+                                case Stats.HP:
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Bar_Chat";
+                                    return;
+                                case Stats.DEF:
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Unagi_Chat";
+                                    return;
+                                case Stats.ATK:
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Yong_Chuan_Chat";
+                                    return;
+                            }
+                        }
+                        StartCoroutine("PlusTime", 2f);
                         switch (_stat)
                         {
                             case Stats.POW:
@@ -164,7 +196,7 @@ public class SpriteClick : MonoBehaviour
                             case Stats.ATK:
                                 Into_Dialogue("Yong_Chuan_Chat");
                                 return;
-                        }
+                        }                        
                         //未完待續
                     }
 
@@ -331,10 +363,7 @@ public class SpriteClick : MonoBehaviour
     public void Into_Dialogue(string _plot_name)
     {
         ClearFunction();
-        MainSceneDataCenter.instance.dialogue_Data_Object.The_NodePad_Be_read = _plot_name;
-        MainSceneDataCenter.instance.dialogue_Data_Object.WhichLineItRead = 0;
-        MainSceneDataCenter.instance.Player_save.Save();
-        SceneManager.LoadScene(1);
+        MainSceneDataCenter.instance.IntoDialogueScene(_plot_name);
     }
     public void ClearFunction()
     {

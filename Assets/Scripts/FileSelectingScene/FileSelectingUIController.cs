@@ -64,6 +64,10 @@ public class FileSelectingUIController : MonoBehaviour
                     case 1:
                         dialogueOBJ.The_NodePad_Be_read = GameUseData.Now_Watching_Plot;
                         dialogueOBJ.WhichLineItRead = GameUseData.Now_Watching_Sentence - 1;
+                        dialogueOBJ.TheBackGroundPic = GameUseData.Now_BackgroundPic;
+                        dialogueOBJ.TheBackGroundMusic = GameUseData.Now_BGM;
+                        dialogueOBJ.IfSpecialToChat = GameUseData.IfSpecialTime;
+                        dialogueOBJ.TempSaveNodePad = GameUseData.TempNote;
                         SceneManager.LoadScene(GameUseData.Now_Playing_Scene);
                         return;
                     case 2:

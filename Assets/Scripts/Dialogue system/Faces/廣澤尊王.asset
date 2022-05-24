@@ -30,9 +30,21 @@ MonoBehaviour:
   - clip: {fileID: 32900000, guid: 4b3a8c0151d2e97489fe298de33a4f57, type: 3}
     Loopclip: {fileID: 32900000, guid: 68b9ea7ae046d04408dc66c93475459f, type: 3}
     m_Emoji: 3
-  - clip: {fileID: 32900000, guid: 4b3a8c0151d2e97489fe298de33a4f57, type: 3}
-    Loopclip: {fileID: 32900000, guid: 68b9ea7ae046d04408dc66c93475459f, type: 3}
-    m_Emoji: 3
-  - clip: {fileID: 32900000, guid: 4974c20ab97ba0246aa24439527ae032, type: 3}
-    Loopclip: {fileID: 32900000, guid: a5c2ba4bf40f51044a235073232edf84, type: 3}
+  - clip: {fileID: 0}
+    Loopclip: {fileID: 0}
+    m_Emoji: 9
+  - clip: {fileID: 0}
+    Loopclip: {fileID: 0}
+    m_Emoji: 18
+  - clip: {fileID: 0}
+    Loopclip: {fileID: 0}
+    m_Emoji: 19
+  - clip: {fileID: 0}
+    Loopclip: {fileID: 0}
+    m_Emoji: 16
+  - clip: {fileID: 0}
+    Loopclip: {fileID: 0}
+    m_Emoji: 17
+  - clip: {fileID: 0}
+    Loopclip: {fileID: 0}
     m_Emoji: 15

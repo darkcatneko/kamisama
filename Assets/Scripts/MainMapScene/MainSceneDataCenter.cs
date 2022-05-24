@@ -32,6 +32,11 @@ public class MainSceneDataCenter : MonoBehaviour
         Player_save.Load();
         CheckFlag();
         Player_save.Now_Playing_Scene = 2;
+        if (dialogue_Data_Object.IfSpecialToChat == true)
+        {
+            dialogue_Data_Object.IfSpecialToChat = false;
+            IntoDialogueScene(dialogue_Data_Object.TempSaveNodePad);
+        }
     }
 
     // Update is called once per frame
@@ -119,6 +124,13 @@ public class MainSceneDataCenter : MonoBehaviour
             status = Player_status.SkillInterface;
             SkillPanel.SetActive(true);
         }
+    }
+    public void IntoDialogueScene(string _plot_name)
+    {
+        dialogue_Data_Object.The_NodePad_Be_read = _plot_name;
+        instance.dialogue_Data_Object.WhichLineItRead = 0;
+        instance.Player_save.Save();
+        SceneManager.LoadScene(1);
     }
 }
 [System.Serializable]

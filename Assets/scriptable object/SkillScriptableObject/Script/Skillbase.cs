@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
+using System.Threading.Tasks;
 
 public class Skillbase : MonoBehaviour
 {
@@ -29,17 +31,19 @@ public class Skillbase : MonoBehaviour
         if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
         {            
                 MainBattleSystem.instance.MinusMana(5);//扣魔
+                MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
                 if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]!=null)//確認陣上是否有陣法
                 {
-                    Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);
+                    Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
                 }
-                //做動作
-                //生成特效
-                MainBattleSystem.instance.CritCheck();//確認爆擊
+                MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "smite"; //確認動作
+            MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1;
+            //確認生成特效
+            MainBattleSystem.instance.CritCheck();//確認爆擊
                 //爆擊動畫
                 //確認王的閃避
-                //輸出一個傷害值
-                //傷害回饋
+                //輸出多個傷害值
+
                 Debug.Log("BBBBBB");
             
         }

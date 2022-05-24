@@ -37,6 +37,7 @@ public class UsageCase : MonoBehaviour
     public SceneControllerOBJ sceneOBJ;
     public SaveScriptableObject _playerSave;
 
+    public GameObject BgmBlock;
     void Start()
     {
 
@@ -44,6 +45,13 @@ public class UsageCase : MonoBehaviour
         _playerSave.Load();
         _playerSave.Now_Playing_Scene = 1;
         textAsset = FindNotePad(dialogueOBJ.The_NodePad_Be_read);
+        //背景BGM宣告
+        msgSys.AddSpecialCharToFuncMap("normalBGM", () => { ChangeBgm("Lights"); });
+        msgSys.AddSpecialCharToFuncMap("FunBGM", () => { ChangeBgm("Girls's_Lunch_Royalty"); });
+        msgSys.AddSpecialCharToFuncMap("MainTempleBGM", () => { ChangeBgm("chinese"); });
+        msgSys.AddSpecialCharToFuncMap("SadStoryBGM", () => { ChangeBgm("SAD"); });
+        msgSys.AddSpecialCharToFuncMap("AnotherStartBGM", () => { ChangeBgm("Confident_Beginning"); });
+        msgSys.AddSpecialCharToFuncMap("HeartBreakingBGM", () => { ChangeBgm("Anxious"); });
         //背景指令碼宣告
         msgSys.AddSpecialCharToFuncMap("test", () => { ChangeBackground("test"); });
         msgSys.AddSpecialCharToFuncMap("BG_Sen_Nong", () => { ChangeBackground("BG_Sen_Nong"); });
@@ -73,7 +81,7 @@ public class UsageCase : MonoBehaviour
         msgSys.AddSpecialCharToFuncMap("N", NarrationSet);
         //尊王
         msgSys.AddSpecialCharToFuncMap("God_smile", () => ChangeMainSpeaker(CharactersLists[0], Emoji.smile));
-        msgSys.AddSpecialCharToFuncMap("God_happy", () => ChangeMainSpeaker(CharactersLists[0], Emoji.happy));
+        msgSys.AddSpecialCharToFuncMap("God_happy_one", () => ChangeMainSpeaker(CharactersLists[0], Emoji.happy));
         msgSys.AddSpecialCharToFuncMap("God_serious", () => ChangeMainSpeaker(CharactersLists[0], Emoji.serious));
         msgSys.AddSpecialCharToFuncMap("God_angry", () => ChangeMainSpeaker(CharactersLists[0], Emoji.angry));
         msgSys.AddSpecialCharToFuncMap("God_sad", () => ChangeMainSpeaker(CharactersLists[0], Emoji.sad));
@@ -81,14 +89,25 @@ public class UsageCase : MonoBehaviour
         msgSys.AddSpecialCharToFuncMap("God_shy", () => ChangeMainSpeaker(CharactersLists[0], Emoji.shy));
         msgSys.AddSpecialCharToFuncMap("God_doya", () => ChangeMainSpeaker(CharactersLists[0], Emoji.doya));
         msgSys.AddSpecialCharToFuncMap("God_shock", () => ChangeMainSpeaker(CharactersLists[0], Emoji.shock));
-        //
+        msgSys.AddSpecialCharToFuncMap("God_say", () => ChangeMainSpeaker(CharactersLists[0], Emoji.say));
+        msgSys.AddSpecialCharToFuncMap("God_hate", () => ChangeMainSpeaker(CharactersLists[0], Emoji.hate));
+        //過場
+        msgSys.AddSpecialCharToFuncMap("BlackScreenIn", () => GenBlackScreen());
         if (uiText == null)
         {
             Debug.LogError("UIText Component not assign.");
         }
         else
         ReadTextDataFromAssetLoading(textAsset, dialogueOBJ.WhichLineItRead);
-        dialogueOBJ.Clear();
+        if (dialogueOBJ.TheBackGroundPic!=""&&dialogueOBJ.TheBackGroundPic!=null)//回憶背景圖片
+        {
+            ChangeBackground(dialogueOBJ.TheBackGroundPic);
+        }
+        if (dialogueOBJ.TheBackGroundMusic!="" && dialogueOBJ.TheBackGroundMusic != null)
+        {
+            ChangeBackground(dialogueOBJ.TheBackGroundMusic);
+        }
+        dialogueOBJ.Clear();        
     }
     public void IntoChoiceSection_2(string _PlotName)
     {
@@ -102,6 +121,10 @@ public class UsageCase : MonoBehaviour
             case "Loli_Home_day_1":
                 SetChoiceButtonFunction(Choice2_1, "i choice a", "1-1",1);
                 SetChoiceButtonFunction(Choice2_2, "i choice b", "1-2",9);
+                return;
+            case "1-3":
+                SetChoiceButtonFunction(Choice2_1, "「很多鬼魂……很多業績是吧……」", "1-3-A", 10);
+                SetChoiceButtonFunction(Choice2_2, "「我要過勞死了……」", "1-3-B", 0);
                 return;
             default:
                 return;
@@ -121,9 +144,23 @@ public class UsageCase : MonoBehaviour
             ChoicePanel_2.SetActive(false);
         });           
     }
+    private void ChangeBgm(string _BGM)
+    {
+        if (BgmBlock == null)
+        {
+            BgmBlock = Instantiate(Resources.Load<GameObject>(_BGM), transform.position, Quaternion.identity);
+        }
+        else if (BgmBlock.name != _BGM && BgmBlock != null) 
+        {
+            Destroy(BgmBlock);
+            BgmBlock = null;
+            BgmBlock = Instantiate(Resources.Load<GameObject>(_BGM), transform.position, Quaternion.identity);
+        }        
+    }
     private void ChangeBackground(string _picname)
     {
         Background.sprite = Resources.Load<Sprite>("DialogueBackground/"+_picname);
+        dialogueOBJ.TheBackGroundPic = _picname;
     }
     private void ChangeMainSpeaker(NarrationCharacter _MC,Emoji _emo)
     {
@@ -193,7 +230,18 @@ public class UsageCase : MonoBehaviour
         }
         return null;
     }
-
+    public void GenBlackScreen()
+    {
+        NarrationSet();
+        On_choice = true;
+        Instantiate(Resources.Load<GameObject>("DialogueBlackScreen/BlackScreen"), transform.position, Quaternion.identity);
+        Invoke("EndBlackScreen", 1.5f);
+    }
+    public void EndBlackScreen()
+    {
+        On_choice = false;
+        msgSys.Next();        
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
@@ -259,6 +307,8 @@ public class UsageCase : MonoBehaviour
         sceneOBJ.Status = FileStatus.choosingSave;
         _playerSave.Now_Watching_Sentence = dialogueOBJ.WhichLineItRead;
         _playerSave.Now_Watching_Plot = dialogueOBJ.The_NodePad_Be_read;
+        _playerSave.IfSpecialTime = dialogueOBJ.IfSpecialToChat;
+        _playerSave.TempNote = dialogueOBJ.TempSaveNodePad;
         _playerSave.Save();
         SceneManager.LoadScene(3);
     }

@@ -179,7 +179,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -869,6 +869,7 @@ MonoBehaviour:
   dialogueOBJ: {fileID: 11400000, guid: f30d8c5f482616340929be19b1ec0cdb, type: 2}
   sceneOBJ: {fileID: 11400000, guid: 23e865d35ffb6fc4ba46d74dfca8f60e, type: 2}
   _playerSave: {fileID: 11400000, guid: beec8b3c85e5b9e46b73d58a15768ccf, type: 2}
+  BgmBlock: {fileID: 0}
 --- !u!114 &507043651
 MonoBehaviour:
   m_ObjectHideFlags: 0

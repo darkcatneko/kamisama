@@ -62,6 +62,8 @@ public enum Emoji
        shy,
        serious,
        sad,
+       say,
+       hate,
 }
 [System.Serializable]
 public class CharacterImage

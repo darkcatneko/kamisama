@@ -50,17 +50,95 @@ public class TimeClass
     public void PlusTime()
     {
         time++;
-        if (time>=23)
+        if (time >= 23)
         {
             MainTimeSystem.instance.ReloadFlags();
             day++;
             MainSceneDataCenter.instance.Player_save.Can_Get_Flag = true;
             time = 8;
-            MainSceneDataCenter.instance.Player_save.Save();
-            //進入戰鬥
+            MainSceneDataCenter.instance.Player_save.Save();          
         }
     }
-    
+    public void CheckSpecialDay ()//讀文本 
+    {
+        switch(day)
+        {
+            case 1:
+                if (time == 9)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("1-1");
+                }                             
+                return;
+            case 2:
+                if (time == 9)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("2-1");
+                }
+                else if(time == 8)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("1-2");
+                }
+                return;
+            case 3:
+                if (time == 9)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("3-1");
+                }
+                else if (time == 8)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("2-2");
+                }
+                return;
+            case 4:
+                if (time == 9)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("4-1");
+                }
+                else if (time == 8)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("3-2");
+                }
+                return;
+            case 5:
+                if (time == 9)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("5-1");
+                } 
+                else if (time == 8)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("4-2");
+                }
+                return;
+            case 6:
+                if (time == 9)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("6-1");
+                }
+                else if (time == 8)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("5-2");
+                }
+                return;
+            case 7:
+                if (time == 9)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("7-1");
+                }
+                else if (time == 8)
+                {
+                    MainSceneDataCenter.instance.IntoDialogueScene("6-2");
+                }
+                return;
+            case 8:
+                {
+                    if (time == 8)
+                    {
+                        MainSceneDataCenter.instance.IntoDialogueScene("7-2");
+                    }
+                }
+                return;
+        }
+    }
     public TimeClass()
     {
         day = 1;
