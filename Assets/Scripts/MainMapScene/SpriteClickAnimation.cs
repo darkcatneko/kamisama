@@ -27,8 +27,11 @@ public class SpriteClickAnimation : MonoBehaviour
     public Image panel;
     //玩家提升等級演出
     public GameObject LevelUpPanel;
+    public GameObject LevelUPArrow;
+    public TextMeshProUGUI PlayerLVint;
+    public TextMeshProUGUI PlayerLVPast;
     public TextMeshProUGUI Player_stats;
-    public TextMeshProUGUI BeforePlayer;
+    public TextMeshProUGUI StatsGrowthInt;
     public TextMeshProUGUI NowPlayer;
     public Vector2 stats_original;
     public Vector2 stats_end;

@@ -165,55 +165,105 @@ public class PlayerInformation
         Level = 1;
     }
     #endregion 
-    public void GainLevel(int _lv, Stats _stat)
+    public int RandomNum()
     {
+
+        return Random.Range(1, Level / 5 + 1);
+    }
+    public string Orginized(int[] _st,string[] _ar,int _surprise)
+    {
+        for (int i = 0; i < _ar.Length; i++)
+        {
+            _ar[i] = _st[i].ToString();
+        }
+        _ar[_surprise] += "!!";
+        return "+" + _ar[4].ToString() + "\n" + "+" + _ar[6].ToString() + "\n" + "+" + _ar[5].ToString() + "\n" + "+"
+            + _ar[0].ToString() + "\n" + "+" + _ar[1].ToString() + "\n" + "+" + _ar[2].ToString() + "\n" + "+" + _ar[3].ToString() + "\n" + "+" + _ar[7].ToString() + "\n" + "+" + _ar[8].ToString() + "\n";
+    }
+    public string GainLevel(int _lv, Stats _stat)
+    {
+       int[] growth = new int[9];
+       string[] growthstring = new string[9];
         Level += _lv;
         for (int i = 0; i < _lv; i++)
         {
-            POW.m_currentstat += Random.Range(1, Level / 5 + 1);
-            SPI.m_currentstat += Random.Range(1, Level / 5 + 1);
-            DEX.m_currentstat += Random.Range(1, Level / 5 + 1);
-            INT.m_currentstat += Random.Range(1, Level / 5 + 1);
-            HP.m_currentstat  += Random.Range(1, Level / 5 + 1);
-            DEF.m_currentstat += Random.Range(1, Level / 5 + 1);
-            ATK.m_currentstat += Random.Range(1, Level / 5 + 1);
+            for (int y = 0; y < 7; y++)
+            {
+                growth[y] = RandomNum();
+            }
+            POW.m_currentstat += growth[0];         
+            SPI.m_currentstat += growth[1];
+            DEX.m_currentstat += growth[2];
+            INT.m_currentstat += growth[3];
+            HP.m_currentstat  += growth[4];
+            DEF.m_currentstat += growth[5];
+            ATK.m_currentstat += growth[6];
             int chance;
             chance = Random.Range(0, 101);
             if (chance > 85)
             {
-                LUK.m_currentstat += Random.Range(1, Level / 5 + 1);
+                growth[7] = RandomNum();
+                LUK.m_currentstat += growth[7];
+            }
+            else
+            {
+                growth[7] = 0;
+                HP.m_currentstat += growth[7];
             }
         }        
         switch(_stat)
         {
             case Stats.INT:
                 Yao_Wan.m_currentstat += 1;
-                INT.m_currentstat += Random.Range(1, (Level/5)*((Level / 10) + 1));
-                return;
+                growth[8] = 1;
+                INT.m_currentstat -= growth[3];
+                growth[3] += Random.Range(1, (Level / 5) * ((Level / 10) + 1));                
+                INT.m_currentstat += growth[3];
+                return Orginized(growth, growthstring, 3);
             case Stats.DEX:
                 Fong_Shin.m_currentstat += 1;
-                DEX.m_currentstat += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
-                return;
+                growth[8] = 1;
+                DEX.m_currentstat -= growth[2];
+                growth[2] += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
+                DEX.m_currentstat += growth[2];
+                return Orginized(growth, growthstring, 2);
             case Stats.ATK:
                 Fong_Shin.m_currentstat += 1;
-                ATK.m_currentstat += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
-                return;
+                growth[8] = 1;
+                ATK.m_currentstat -= growth[6];
+                growth[6] += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
+                ATK.m_currentstat += growth[6];
+                return Orginized(growth, growthstring, 6);
             case Stats.POW:
                 Kin_hua.m_currentstat += 1;
-                POW.m_currentstat += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
-                return;
+                growth[8] = 1;
+                POW.m_currentstat -= growth[0];
+                growth[0] += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
+                POW.m_currentstat += growth[0];
+                return Orginized(growth, growthstring, 0);
             case Stats.SPI:
                 Kin_hua.m_currentstat += 1;
-                SPI.m_currentstat += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
-                return;
+                growth[8] = 1;
+                SPI.m_currentstat -= growth[1];
+                growth[1] += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
+                SPI.m_currentstat += growth[1];
+                return Orginized(growth, growthstring, 1);
             case Stats.HP:
                 Ron_Xiu.m_currentstat += 1;
-                HP.m_currentstat += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
-                return;
+                growth[8] = 1;
+                HP.m_currentstat -= growth[4];
+                growth[4] += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
+                HP.m_currentstat += growth[4];
+                return Orginized(growth, growthstring, 4);
             case Stats.DEF:
                 Ron_Xiu.m_currentstat += 1;
-                DEF.m_currentstat += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
-                return;
+                growth[8] = 1;
+                DEF.m_currentstat -= growth[5];
+                growth[5] += Random.Range(1, (Level / 5) * ((Level / 10) + 1));
+                DEF.m_currentstat += growth[5];
+                return Orginized(growth, growthstring, 5);
+            default:
+                return null;
         }
     }
     public void Gain_Love_Level(int _amount)

@@ -14,7 +14,7 @@ public class SpriteClick : MonoBehaviour
     public Vector2 Chat_end;
     public Vector2 Skill_end;
     public Stats _Place;
-    public string stat_in_past;
+    public string StatsGrowth;
     public SpriteRenderer Map_Place_name;
     
     private void Start()
@@ -127,8 +127,7 @@ public class SpriteClick : MonoBehaviour
                 {
                     if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
                     {
-                        stat_in_past = GetstatString(_stat);
-                        MainSceneDataCenter.instance.Player_save.m_Player.GainLevel(1, _stat);//執行動作
+                        StatsGrowth = MainSceneDataCenter.instance.Player_save.m_Player.GainLevel(1, _stat);                    
                         //強化數值演出 
                         if ((int)_stat == 0|| (int)_stat == 1)
                         {
@@ -489,12 +488,33 @@ public class SpriteClick : MonoBehaviour
     #endregion
     public IEnumerator PlayerLevelAnimation(Stats _stats)
     {
-        SpriteClickAnimation.instance.Player_stats.text = "LV:\nHP\nATK\nDEF\nPOW\nSPI\nDEX\nINT\nLUK\n" + _stats.ToString();
-        SpriteClickAnimation.instance.BeforePlayer.text = stat_in_past;
+        string temple = "";
+        if (_stats == Stats.Kin_hua)
+        {
+            temple = "金華";
+        }
+        else if (_stats == Stats.Fong_Shin)
+        {
+            temple = "風神";
+        }
+        else if (_stats == Stats.Yao_Wan)
+        {
+            temple = "藥王";
+        }
+        else if (_stats == Stats.Ron_Xiu)
+        {
+            temple = "榕樹";
+        }
+        SpriteClickAnimation.instance.Player_stats.text = "血量\n物攻\n物防\n魔攻\n魔防\n迴避\n智慧\n幸運\n" + temple;
+        SpriteClickAnimation.instance.PlayerLVint.text =(MainSceneDataCenter.instance.Player_save.m_Player.Level).ToString();
+        SpriteClickAnimation.instance.PlayerLVPast.text = (MainSceneDataCenter.instance.Player_save.m_Player.Level - 1).ToString();
+        SpriteClickAnimation.instance.StatsGrowthInt.text = StatsGrowth;
         SpriteClickAnimation.instance.NowPlayer.text = GetstatString(_stats);
         DOTween.To(() => { return SpriteClickAnimation.instance.LevelUpPanel.GetComponent<RectTransform>().anchoredPosition; }, v => { SpriteClickAnimation.instance.LevelUpPanel.GetComponent<RectTransform>().anchoredPosition = v; }, SpriteClickAnimation.instance.stats_end, 0.75f);
         //yield return new WaitUntil(()=>SpriteClickAnimation.instance.GoBack == true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.75f);
+        GameObject obj = Instantiate<GameObject>(Resources.Load<GameObject>("main scene/UI/LevelUpGreenArrow"), transform.position, Quaternion.identity, SpriteClickAnimation.instance.LevelUPArrow.transform);
+        yield return new WaitForSeconds(0.75f);
         //SpriteClickAnimation.instance.GoBack = false;
         DOTween.To(() => { return SpriteClickAnimation.instance.LevelUpPanel.GetComponent<RectTransform>().anchoredPosition; }, v => { SpriteClickAnimation.instance.LevelUpPanel.GetComponent<RectTransform>().anchoredPosition = v; }, SpriteClickAnimation.instance.stats_original-new Vector2(4000, 0), 1f);
         yield return new WaitForSeconds(1f);
@@ -506,7 +526,7 @@ public class SpriteClick : MonoBehaviour
     public string GetstatString(Stats _stats)
     {
         var player = MainSceneDataCenter.instance.Player_save.m_Player;
-        string a = player.Level.ToString() + "\n" + player.HP.m_currentstat.ToString() + "\n" + player.ATK.m_currentstat.ToString() + "\n" + player.DEF.m_currentstat.ToString() + "\n" + player.POW.m_currentstat.ToString() + "\n" + player.SPI.m_currentstat.ToString() + "\n" + player.DEX.m_currentstat.ToString() + "\n" + player.INT.m_currentstat.ToString() + "\n" + player.LUK.m_currentstat.ToString() + "\n";
+        string a = player.HP.m_currentstat.ToString() + "\n" + player.ATK.m_currentstat.ToString() + "\n" + player.DEF.m_currentstat.ToString() + "\n" + player.POW.m_currentstat.ToString() + "\n" + player.SPI.m_currentstat.ToString() + "\n" + player.DEX.m_currentstat.ToString() + "\n" + player.INT.m_currentstat.ToString() + "\n" + player.LUK.m_currentstat.ToString() + "\n";
         switch(_stats)
         {
             case Stats.INT:            
