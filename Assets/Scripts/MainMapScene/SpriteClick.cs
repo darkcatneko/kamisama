@@ -115,7 +115,7 @@ public class SpriteClick : MonoBehaviour
     {
         MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
         yield return new WaitForSeconds(_wait);
-        MainSceneDataCenter.instance.Player_save.TimeSaveData.CheckSpecialDay();
+        //MainSceneDataCenter.instance.Player_save.TimeSaveData.CheckSpecialDay();
     }
     public void SetUPButtonFunction(Stats _stat)
     {
@@ -130,7 +130,22 @@ public class SpriteClick : MonoBehaviour
                         stat_in_past = GetstatString(_stat);
                         MainSceneDataCenter.instance.Player_save.m_Player.GainLevel(1, _stat);//執行動作
                         //強化數值演出 
-                        StartCoroutine("PlayerLevelAnimation",_stat);
+                        if ((int)_stat == 0|| (int)_stat == 1)
+                        {
+                            StartCoroutine("PlayerLevelAnimation", Stats.Kin_hua);
+                        }
+                        else if ((int)_stat == 2 || (int)_stat == 6)
+                        {
+                            StartCoroutine("PlayerLevelAnimation", Stats.Fong_Shin);
+                        }
+                        else if ((int)_stat == 4 || (int)_stat == 5)
+                        {
+                            StartCoroutine("PlayerLevelAnimation", Stats.Ron_Xiu);
+                        }
+                        else if ((int)_stat == 3)
+                        {
+                            StartCoroutine("PlayerLevelAnimation", Stats.Yao_Wan);
+                        }
                         CheckIfGetNewSkill_BasicSkill(MainSceneDataCenter.instance.Player_save.m_Player.Level);                                               
                         StartCoroutine("ExitButtonClickedAnimation", 1.5f);
                         StartCoroutine("PlusTime", 2f);
@@ -208,13 +223,13 @@ public class SpriteClick : MonoBehaviour
                     if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
                     {
                         if (MainSceneDataCenter.instance.Player_save.FlagCount > 0 && MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] == false)
-                        {
-                            MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
+                        {                            
                             StartCoroutine("MinusFlag");
                             MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
                             //演出
                             ADDFlag();
                             StartCoroutine("ExitButtonClickedAnimation",1);
+                            StartCoroutine("PlusTime", 2f);
                             SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
                         }
                         else
@@ -236,8 +251,36 @@ public class SpriteClick : MonoBehaviour
                         if (MainSceneDataCenter.instance.Player_save.Can_Get_Flag == true)
                         {
                             MainSceneDataCenter.instance.Player_save.FlagCount = 3;
-                            MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
                             MainSceneDataCenter.instance.Player_save.Can_Get_Flag = false;
+                            if (MainSceneDataCenter.instance.Player_save.TimeSaveData.time == 8 || MainSceneDataCenter.instance.Player_save.TimeSaveData.time == 22)
+                            {
+                                MainSceneDataCenter.instance.dialogue_Data_Object.IfSpecialToChat = true;
+                                switch (MainTimeSystem.instance.Time.day)
+                                {
+                                    case 1:
+                                        MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_1";
+                                        return;
+                                    case 2:
+                                        MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_2";
+                                        return;
+                                    case 3:
+                                        MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_3";
+                                        return;
+                                    case 4:
+                                        MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_4";
+                                        return;
+                                    case 5:
+                                        MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_5";
+                                        return;
+                                    case 6:
+                                        MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_6";
+                                        return;
+                                    case 7:
+                                        MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_7";
+                                        return;
+                                }
+                            }
+                            StartCoroutine("PlusTime", 2f);
                             switch (MainTimeSystem.instance.Time.day)//進入西蘿殿每日劇情
                             {
                                 case 1:
@@ -278,12 +321,12 @@ public class SpriteClick : MonoBehaviour
                     {
                         if (MainSceneDataCenter.instance.Player_save.FlagCount > 0&&MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat]==false)
                         {
-                            MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
                             StartCoroutine("MinusFlag");
                             MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
                             //演出
                             ADDFlag();
-                            StartCoroutine("ExitButtonClickedAnimation",1);
+                            StartCoroutine("ExitButtonClickedAnimation", 1);
+                            StartCoroutine("PlusTime", 2f);
                             SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
                         }
                         else
@@ -313,7 +356,26 @@ public class SpriteClick : MonoBehaviour
                     if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
                     {
                         MainSceneDataCenter.instance.Player_save.m_Player.Gain_Love_Level(2);
-                        MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
+                        if (MainSceneDataCenter.instance.Player_save.TimeSaveData.time == 8 || MainSceneDataCenter.instance.Player_save.TimeSaveData.time == 22)
+                        {
+                            MainSceneDataCenter.instance.dialogue_Data_Object.IfSpecialToChat = true;
+                            switch (_stat)
+                            {
+                                case Stats.Yao_Wan:
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Yao_Wan_Chat";
+                                    return;
+                                case Stats.Fong_Shin:
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Fong_Shin_Chat";
+                                    return;
+                                case Stats.Kin_hua:
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Kin_hua_Chat";
+                                    return;
+                                case Stats.Ron_Xiu:
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Ron_Xiu_Chat";
+                                    return;                                
+                            }
+                        }
+                        StartCoroutine("PlusTime", 2f);
 
                         switch (_stat)
                         {
@@ -342,12 +404,12 @@ public class SpriteClick : MonoBehaviour
                     {
                         if (MainSceneDataCenter.instance.Player_save.FlagCount > 0 && MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] == false)
                         {
-                            MainSceneDataCenter.instance.Player_save.TimeSaveData.PlusTime();
                             StartCoroutine("MinusFlag");
                             MainSceneDataCenter.instance.Player_save.MapFlagCheck[(int)_stat] = true;
                             //演出
                             ADDFlag();
                             StartCoroutine("ExitButtonClickedAnimation",1);
+                            StartCoroutine("PlusTime", 2f);
                             SpriteClickAnimation.instance.FlagButton.GetComponent<Button>().onClick.RemoveAllListeners();
                         }
                         else 

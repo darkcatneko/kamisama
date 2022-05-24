@@ -2782,7 +2782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 0910f41e71ca9e342b0f5da775394df6, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -11980,7 +11980,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed8d999ce39acf446b95e15c82509984, type: 2}
-  m_sharedMaterial: {fileID: -7446974827067318603, guid: dae18b76b654e304ab6905611ef7a5d2, type: 2}
+  m_sharedMaterial: {fileID: -5528277901444608546, guid: ed8d999ce39acf446b95e15c82509984, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
