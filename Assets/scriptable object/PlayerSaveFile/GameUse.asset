@@ -22,7 +22,7 @@ MonoBehaviour:
   m_Player:
     Level: 1
     Mana_regen_speed: 5
-    Current_MP: 5
+    Current_MP: 0
     Current_HP: 1
     MaxHP: 1
     POW:
@@ -72,3 +72,7 @@ MonoBehaviour:
   Now_Playing_Scene: 0
   Now_Watching_Plot: Opening
   Now_Watching_Sentence: 0
+  Now_BackgroundPic: 
+  Now_BGM: 
+  TempNote: 
+  IfSpecialTime: 0
