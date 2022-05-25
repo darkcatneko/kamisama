@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class MainBattleSystem : MonoBehaviour
 {
+    public Animator SkillButtonLeverAnimation;
     public Animator PlayerAnimator;
     public static MainBattleSystem instance;//¿WÅé
     public BattleStatus m_battleStatus = BattleStatus.ReadyFight;//¦^¦Xª¬ºA
@@ -20,6 +22,7 @@ public class MainBattleSystem : MonoBehaviour
     public int SkillPain;//¯h³Ò­È
     public moonblocks CritOrNot = moonblocks.None;
     public BattleAnimationContents battleAnimationContents;
+    private int NowSkillPage = 1;public bool CanChangePage = false;
     private void Awake()
     {
         instance = this;
@@ -33,13 +36,40 @@ public class MainBattleSystem : MonoBehaviour
         {
             SkillButtonSetUp(i,m_player.SkillBackPack[i]);
         }
-        m_battleStatus = BattleStatus.PlayerTurn;
+        m_battleStatus = BattleStatus.PlayerTurn;        
     }
-
+    
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ChangePageLever();
+        }
+    }
+    public void ChangePageLever()
+    {
+        if (CanChangePage == false)
+        {
+            if (NowSkillPage == 1)
+            {
+                CanChangePage = true;
+                SkillButtonLeverAnimation.SetTrigger("Second");
+                NowSkillPage = 2;
+                Invoke("CanChangeButton", 0.7f);
+            }
+            else
+            {
+                CanChangePage = true;
+                SkillButtonLeverAnimation.SetTrigger("First");
+                NowSkillPage = 1;
+                Invoke("CanChangeButton", 0.7f);
+            }
+        }        
+    }
+    public void CanChangeButton()
+    {
+        CanChangePage = false;
     }
     public void WhichBoss_DayBoss(int _whichDay)
     {

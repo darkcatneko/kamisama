@@ -36,7 +36,7 @@ public class Skillbase : MonoBehaviour
                 {
                     Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
                 }
-                MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "smite"; //確認動作
+                MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Smite"; //確認動作
             MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1;
             //確認生成特效
             MainBattleSystem.instance.CritCheck();//確認爆擊
