@@ -13,7 +13,7 @@ public class UsageCase : MonoBehaviour
 {
     private bool On_choice = false;
     private bool On_VideoPlay = false;
-
+    private GameObject BlackScreen;
     private ES_MessageSystem msgSys;
     public TextMeshProUGUI uiText;
     public TextAsset textAsset;
@@ -69,6 +69,7 @@ public class UsageCase : MonoBehaviour
         msgSys.AddSpecialCharToFuncMap("BG_Ron_Xiu", () => { ChangeBackground("BG_Ron_Xiu"); });
         msgSys.AddSpecialCharToFuncMap("BG_Office", () => { ChangeBackground("BG_Office"); });
         msgSys.AddSpecialCharToFuncMap("BG_Res_Area", () => { ChangeBackground("BG_Res_Area"); });
+        msgSys.AddSpecialCharToFuncMap("BG_Black", () => { ChangeBackground("BG_Black"); });
         //結束新手劇情
         msgSys.AddSpecialCharToFuncMap("OldGame", ()=> { _playerSave.Newtogame = false; _playerSave.Save(); });
         //結束劇情
@@ -81,7 +82,7 @@ public class UsageCase : MonoBehaviour
         msgSys.AddSpecialCharToFuncMap("N", NarrationSet);
         //尊王
         msgSys.AddSpecialCharToFuncMap("God_smile", () => ChangeMainSpeaker(CharactersLists[0], Emoji.smile));
-        msgSys.AddSpecialCharToFuncMap("God_happy_one", () => ChangeMainSpeaker(CharactersLists[0], Emoji.happy));
+        msgSys.AddSpecialCharToFuncMap("God_happy", () => ChangeMainSpeaker(CharactersLists[0], Emoji.happy));
         msgSys.AddSpecialCharToFuncMap("God_serious", () => ChangeMainSpeaker(CharactersLists[0], Emoji.serious));
         msgSys.AddSpecialCharToFuncMap("God_angry", () => ChangeMainSpeaker(CharactersLists[0], Emoji.angry));
         msgSys.AddSpecialCharToFuncMap("God_sad", () => ChangeMainSpeaker(CharactersLists[0], Emoji.sad));
@@ -92,7 +93,11 @@ public class UsageCase : MonoBehaviour
         msgSys.AddSpecialCharToFuncMap("God_say", () => ChangeMainSpeaker(CharactersLists[0], Emoji.say));
         msgSys.AddSpecialCharToFuncMap("God_hate", () => ChangeMainSpeaker(CharactersLists[0], Emoji.hate));
         //過場
-        msgSys.AddSpecialCharToFuncMap("BlackScreenIn", () => GenBlackScreen());
+        msgSys.AddSpecialCharToFuncMap("BlackScreenIn", () => GenBlackScreen_1());
+        msgSys.AddSpecialCharToFuncMap("BlackScreenOut", () => GenBlackScreen_2());
+        //無臉角色
+        msgSys.AddSpecialCharToFuncMap("MainCharacter_nomal", () => ChangeMainSpeakerWithNoLive2D("你"));
+        msgSys.AddSpecialCharToFuncMap("UncleChen_nomal", () => ChangeMainSpeakerWithNoLive2D("陳叔"));
         if (uiText == null)
         {
             Debug.LogError("UIText Component not assign.");
@@ -168,6 +173,10 @@ public class UsageCase : MonoBehaviour
         object[] _obj = new object[2] { _MC,_emo};
         StartCoroutine("ChangeMainSpeakerAnimate", _obj);
     }
+    private void ChangeMainSpeakerWithNoLive2D(string _name)
+    {
+        ui_speaker.text = "";        
+    }
     public IEnumerator ChangeMainSpeakerAnimate(object[] _obj)
     {
         ClearOutRenderTexture(bug);
@@ -230,17 +239,24 @@ public class UsageCase : MonoBehaviour
         }
         return null;
     }
-    public void GenBlackScreen()
+    public void GenBlackScreen_1()
     {
         NarrationSet();
         On_choice = true;
-        Instantiate(Resources.Load<GameObject>("DialogueBlackScreen/BlackScreen"), transform.position, Quaternion.identity);
+        BlackScreen = Instantiate(Resources.Load<GameObject>("DialogueBlackScreen/BlackScreen"), transform.position, Quaternion.identity);
         Invoke("EndBlackScreen", 1.5f);
     }
     public void EndBlackScreen()
     {
         On_choice = false;
         msgSys.Next();        
+    }
+    public void GenBlackScreen_2()
+    {
+        NarrationSet();
+        On_choice = true;
+        BlackScreen.GetComponent<Animator>().SetTrigger("CanFade");
+        Invoke("EndBlackScreen", 1.5f);
     }
     void Update()
     {

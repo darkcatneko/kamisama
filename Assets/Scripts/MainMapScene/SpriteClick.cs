@@ -157,58 +157,74 @@ public class SpriteClick : MonoBehaviour
                 {
                     if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
                     {
+                        int RandomDialogue; RandomDialogue = Random.Range(1, 4);
                         MainSceneDataCenter.instance.Player_save.m_Player.Gain_Love_Level(2);
+                        
                         if (MainSceneDataCenter.instance.Player_save.TimeSaveData.time == 8|| MainSceneDataCenter.instance.Player_save.TimeSaveData.time == 22)
                         {
                             MainSceneDataCenter.instance.dialogue_Data_Object.IfSpecialToChat = true;
                             switch (_stat)
                             {
                                 case Stats.POW:
-                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad =  "Sen_Nong_Chat";
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad =  "Sen_Nong_Chat_"+RandomDialogue.ToString();
+                                    StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                    StartCoroutine("PlusTime", 2f);
                                     return;
                                 case Stats.SPI:
-                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Wood_Carving_Chat";
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Wood_Carving_Chat_" + RandomDialogue.ToString();
+                                    StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                    StartCoroutine("PlusTime", 2f);
                                     return;
                                 case Stats.DEX:
-                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Bench_Chat";
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Bench_Chat_" + RandomDialogue.ToString();
+                                    StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                    StartCoroutine("PlusTime", 2f);
                                     return;
                                 case Stats.INT:
-                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Market_Chat";
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Market_Chat_" + RandomDialogue.ToString();
+                                    StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                    StartCoroutine("PlusTime", 2f);
                                     return;
                                 case Stats.HP:
-                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Bar_Chat";
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Bar_Chat_" + RandomDialogue.ToString();
+                                    StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                    StartCoroutine("PlusTime", 2f);
                                     return;
                                 case Stats.DEF:
-                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Unagi_Chat";
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Unagi_Chat_" + RandomDialogue.ToString();
+                                    StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                    StartCoroutine("PlusTime", 2f);
                                     return;
                                 case Stats.ATK:
-                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Yong_Chuan_Chat";
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Yong_Chuan_Chat_" + RandomDialogue.ToString();
+                                    StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                    StartCoroutine("PlusTime", 2f);
                                     return;
                             }
                         }
                         StartCoroutine("PlusTime", 2f);
                         switch (_stat)
-                        {
+                        { 
                             case Stats.POW:
-                                Into_Dialogue("Sen_Nong_Chat");
+                                Into_Dialogue("Sen_Nong_Chat_" + RandomDialogue.ToString());
                                 return;
                             case Stats.SPI:
-                                Into_Dialogue("Wood_Carving_Chat");
+                                Into_Dialogue("Wood_Carving_Chat_" + RandomDialogue.ToString());
                                 return;
                             case Stats.DEX:
-                                Into_Dialogue("Bench_Chat");
+                                Into_Dialogue("Bench_Chat_" + RandomDialogue.ToString());
                                 return;
                             case Stats.INT:
-                                Into_Dialogue("Market_Chat");
+                                Into_Dialogue("Market_Chat_" + RandomDialogue.ToString());
                                 return;
                             case Stats.HP:
-                                Into_Dialogue("Bar_Chat");
+                                Into_Dialogue("Bar_Chat_" + RandomDialogue.ToString());
                                 return;
                             case Stats.DEF:
-                                Into_Dialogue("Unagi_Chat");
+                                Into_Dialogue("Unagi_Chat_" + RandomDialogue.ToString());
                                 return;
                             case Stats.ATK:
-                                Into_Dialogue("Yong_Chuan_Chat");
+                                Into_Dialogue("Yong_Chuan_Chat_" + RandomDialogue.ToString());
                                 return;
                         }                        
                         //¥¼§¹«ÝÄò
@@ -258,24 +274,38 @@ public class SpriteClick : MonoBehaviour
                                 {
                                     case 1:
                                         MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_1";
+                                        StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                        StartCoroutine("PlusTime", 2f);
                                         return;
                                     case 2:
                                         MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_2";
+                                        StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                        StartCoroutine("PlusTime", 2f);
                                         return;
                                     case 3:
                                         MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_3";
+                                        StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                        StartCoroutine("PlusTime", 2f);
                                         return;
                                     case 4:
                                         MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_4";
+                                        StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                        StartCoroutine("PlusTime", 2f);
                                         return;
                                     case 5:
                                         MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_5";
+                                        StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                        StartCoroutine("PlusTime", 2f);
                                         return;
                                     case 6:
                                         MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_6";
+                                        StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                        StartCoroutine("PlusTime", 2f);
                                         return;
                                     case 7:
                                         MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Loli_Home_day_7";
+                                        StartCoroutine("ExitButtonClickedAnimation", 1f);
+                                        StartCoroutine("PlusTime", 2f);
                                         return;
                                 }
                             }

@@ -2102,8 +2102,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u6211\u4ECA\u5929\u597D\u9913\u963F"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e33c7a420a1a5574bb59e6805810d503, type: 2}
-  m_sharedMaterial: {fileID: -5845536016460774987, guid: e33c7a420a1a5574bb59e6805810d503, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2d1f79ab00636ff4d80d1d6d35ae47cb, type: 2}
+  m_sharedMaterial: {fileID: 7324171407045866615, guid: 2d1f79ab00636ff4d80d1d6d35ae47cb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2133,7 +2133,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
