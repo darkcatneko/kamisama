@@ -46,12 +46,12 @@ public class UsageCase : MonoBehaviour
         _playerSave.Now_Playing_Scene = 1;
         textAsset = FindNotePad(dialogueOBJ.The_NodePad_Be_read);
         //背景BGM宣告
-        msgSys.AddSpecialCharToFuncMap("normalBGM", () => { ChangeBgm("Lights"); });
-        msgSys.AddSpecialCharToFuncMap("FunBGM", () => { ChangeBgm("Girls's_Lunch_Royalty"); });
-        msgSys.AddSpecialCharToFuncMap("MainTempleBGM", () => { ChangeBgm("chinese"); });
-        msgSys.AddSpecialCharToFuncMap("SadStoryBGM", () => { ChangeBgm("SAD"); });
-        msgSys.AddSpecialCharToFuncMap("AnotherStartBGM", () => { ChangeBgm("Confident_Beginning"); });
-        msgSys.AddSpecialCharToFuncMap("HeartBreakingBGM", () => { ChangeBgm("Anxious"); });
+        msgSys.AddSpecialCharToFuncMap("normalBGM", () => { ChangeBgm("DialogueBgm/Lights"); });
+        msgSys.AddSpecialCharToFuncMap("FunBGM", () => { ChangeBgm("DialogueBgm/Girls's_Lunch_Royalty"); });
+        msgSys.AddSpecialCharToFuncMap("MainTempleBGM", () => { ChangeBgm("DialogueBgm/chinese"); });
+        msgSys.AddSpecialCharToFuncMap("SadStoryBGM", () => { ChangeBgm("DialogueBgm/SAD"); });
+        msgSys.AddSpecialCharToFuncMap("AnotherStartBGM", () => { ChangeBgm("DialogueBgm/Confident_Beginning"); });
+        msgSys.AddSpecialCharToFuncMap("HeartBreakingBGM", () => { ChangeBgm("DialogueBgm/Anxious"); });
         //背景指令碼宣告
         msgSys.AddSpecialCharToFuncMap("test", () => { ChangeBackground("test"); });
         msgSys.AddSpecialCharToFuncMap("BG_Sen_Nong", () => { ChangeBackground("BG_Sen_Nong"); });
@@ -175,7 +175,7 @@ public class UsageCase : MonoBehaviour
     }
     private void ChangeMainSpeakerWithNoLive2D(string _name)
     {
-        ui_speaker.text = "";        
+        ui_speaker.text = _name;        
     }
     public IEnumerator ChangeMainSpeakerAnimate(object[] _obj)
     {
