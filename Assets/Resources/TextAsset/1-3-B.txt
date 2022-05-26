@@ -1,0 +1,8 @@
+[BG_Bench][MainCharacter_nomal]「我要過勞死了……」[w]
+[God_angry]「什麼過勞死，對神明尊敬一點啊……」[w]
+[MainCharacter_nomal]「還好我現在休假中，不然每天都這樣可能忙不過來啊……」[w]
+[God_say]「汝還是早點調適過來吧，這樣的日子還會持續一段時間哦。」[w]
+[MainCharacter_nomal]「唉……」[w]
+[God_say]「總而言之，明天還是要繼續下去，一樣的時間開工哦。」[w]
+[MainCharacter_nomal]「嗯……我知道了，看來我得早點休息才行。」[w]
+[END]

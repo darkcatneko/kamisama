@@ -1,0 +1,7 @@
+[BG_Sen_Nong][MainCharacter_nomal]「很多鬼魂……很多業績是吧……」[w]
+[God_angry]「嗚……汝又來了……！戲弄神明，大不敬的傢伙……」[w]
+[MainCharacter_nomal]「只是開個玩笑而已，不要這麼生氣……」[w]
+[God_angry]「哼……」[w]
+[God_say]「總而言之！明天還是要繼續下去，一樣的時間開工哦。」[w]
+[MainCharacter_nomal]「嗯……我知道了，看來我得早點休息才行。」[w]
+[END]
