@@ -25,6 +25,7 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
     public int Now_Watching_Sentence;
     public string Now_BackgroundPic;
     public string Now_BGM;
+    public string Now_Speaker;
     public string TempNote;
     public bool IfSpecialTime;
     void Start()
@@ -77,6 +78,7 @@ public class SaveScriptableObject : ScriptableObject, ISerializationCallbackRece
         a.Now_Watching_Plot = b.Now_Watching_Plot;
         a.Now_Watching_Sentence = b.Now_Watching_Sentence;
         a.Now_BackgroundPic = b.Now_BackgroundPic;
+        a.Now_Speaker = b.Now_Speaker;
         a.Now_BGM = b.Now_BGM;
         a.IfSpecialTime = b.IfSpecialTime;
         a.TempNote = b.TempNote;

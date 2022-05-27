@@ -9,6 +9,7 @@ public class Dialogue_Data_Object : ScriptableObject
     public string TempSaveNodePad;
     public string TheBackGroundPic;
     public string TheBackGroundMusic;
+    public string NowSpeaker;
     public int WhichLineItRead;
     public int Love_Point;
     [ContextMenu("Clear")]
@@ -20,8 +21,10 @@ public class Dialogue_Data_Object : ScriptableObject
         WhichLineItRead = 0;
         Love_Point = 0;
     }
+    [ContextMenu("DeepClear")]
     public void DeepClear()
     {
+        NowSpeaker = null;
         TheBackGroundMusic = null;
         TheBackGroundPic = null;
         TempSaveNodePad = null;

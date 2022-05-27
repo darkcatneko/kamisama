@@ -47,6 +47,7 @@ public class MainSceneDataCenter : MonoBehaviour
     private void OnApplicationQuit()
     {
         Player_save.Clear();
+        dialogue_Data_Object.DeepClear();
     }
     public void CheckFlag()
     {

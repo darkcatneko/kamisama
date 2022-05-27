@@ -106,11 +106,16 @@ public class UsageCase : MonoBehaviour
         ReadTextDataFromAssetLoading(textAsset, dialogueOBJ.WhichLineItRead);
         if (dialogueOBJ.TheBackGroundPic!=""&&dialogueOBJ.TheBackGroundPic!=null)//回憶背景圖片
         {
+            Debug.Log(dialogueOBJ.TheBackGroundPic);
             ChangeBackground(dialogueOBJ.TheBackGroundPic);
         }
         if (dialogueOBJ.TheBackGroundMusic!="" && dialogueOBJ.TheBackGroundMusic != null)
         {
-            ChangeBackground(dialogueOBJ.TheBackGroundMusic);
+            ChangeBgm("DialogueBgm/" + dialogueOBJ.TheBackGroundMusic);
+        }
+        if (dialogueOBJ.NowSpeaker != "" && dialogueOBJ.NowSpeaker != null)
+        {
+            ui_speaker.text = dialogueOBJ.NowSpeaker;
         }
         dialogueOBJ.Clear();        
     }
@@ -189,7 +194,7 @@ public class UsageCase : MonoBehaviour
         m_MainC_Image.enabled = true;
         V_player.Play();
         ui_speaker.text = _MC.CharacterName;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds((float)_MC.Find_Clip(_emo).length+0.05f);
         On_VideoPlay = false;
         V_player.isLooping = true; 
         V_player.clip = _MC.Find_LoopClip(_emo);
@@ -287,8 +292,23 @@ public class UsageCase : MonoBehaviour
             msgSys.SetText(textList[textIndex]);            
             textIndex++;
         }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            EndDialogue();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            IntoChoiceSection_2(textAsset.name);
+        }
     }
-
+    public void NextSentence()
+    {
+        if (On_choice == false && On_VideoPlay == false)
+        {
+            //Continue the messages, stoping by [w] or [lr] keywords.
+            msgSys.Next();
+        }
+    }
     public void ClearOutRenderTexture(RenderTexture renderTexture)
     {
         RenderTexture rt = RenderTexture.active;
@@ -309,18 +329,27 @@ public class UsageCase : MonoBehaviour
     }
     public void LoadingButtonPress()
     {
+        dialogueOBJ.TheBackGroundPic = Background.GetComponent<SpriteRenderer>().sprite.name;
+        dialogueOBJ.TheBackGroundMusic = BgmBlock.GetComponent<AudioSource>().clip.name;
         dialogueOBJ.The_NodePad_Be_read = textAsset.name;
         dialogueOBJ.WhichLineItRead = textIndex;
+        dialogueOBJ.NowSpeaker = ui_speaker.text;
         sceneOBJ.LastScene = 1;
         sceneOBJ.Status = FileStatus.choosingPlay;
         SceneManager.LoadScene(3);
     }
     public void SavingButtonPress()
     {
+        dialogueOBJ.TheBackGroundPic = Background.GetComponent<SpriteRenderer>().sprite.name;
+        dialogueOBJ.TheBackGroundMusic = BgmBlock.GetComponent<AudioSource>().clip.name;
         dialogueOBJ.The_NodePad_Be_read = textAsset.name;
         dialogueOBJ.WhichLineItRead = textIndex;
+        dialogueOBJ.NowSpeaker = ui_speaker.text;
         sceneOBJ.LastScene = 1;
         sceneOBJ.Status = FileStatus.choosingSave;
+        _playerSave.Now_Speaker = dialogueOBJ.NowSpeaker;
+        _playerSave.Now_BackgroundPic = dialogueOBJ.TheBackGroundPic;
+        _playerSave.Now_BGM = dialogueOBJ.TheBackGroundMusic;
         _playerSave.Now_Watching_Sentence = dialogueOBJ.WhichLineItRead;
         _playerSave.Now_Watching_Plot = dialogueOBJ.The_NodePad_Be_read;
         _playerSave.IfSpecialTime = dialogueOBJ.IfSpecialToChat;
@@ -335,5 +364,6 @@ public class UsageCase : MonoBehaviour
     private void OnApplicationQuit()
     {
         _playerSave.Clear();
+        dialogueOBJ.DeepClear();
     }
 }

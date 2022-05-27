@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a602d89cedf75184db732190d2f2cf7d, type: 3}
   m_Name: Dialogue_data
   m_EditorClassIdentifier: 
-  IfSpecialToChat: 1
+  IfSpecialToChat: 0
   The_NodePad_Be_read: 
-  TempSaveNodePad: Sen_Nong_Chat_2
-  TheBackGroundPic: BG_Sen_Nong
+  TempSaveNodePad: 
+  TheBackGroundPic: 
   TheBackGroundMusic: 
+  NowSpeaker: 
   WhichLineItRead: 0
   Love_Point: 0
