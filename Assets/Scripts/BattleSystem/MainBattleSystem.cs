@@ -7,6 +7,7 @@ using DG.Tweening;
 
 public class MainBattleSystem : MonoBehaviour
 {
+    public int ManaTired = 0;//¯h³Ò­È
     public Animator SkillButtonLeverAnimation;
     public Animator PlayerAnimator;
     public static MainBattleSystem instance;//¿WÅé
@@ -133,7 +134,7 @@ public class MainBattleSystem : MonoBehaviour
     }
     public void MinusMana(int ManaCost)
     {        
-         BattleUseStats.Current_MP -= ManaCost;        
+         BattleUseStats.Current_MP -= ManaCost+ManaTired;        
     }
     public void CritCheck()
     {
