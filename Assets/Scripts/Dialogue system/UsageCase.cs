@@ -359,6 +359,7 @@ public class UsageCase : MonoBehaviour
     }
     public void BackToTitle()
     {
+        dialogueOBJ.DeepClear();
         SceneManager.LoadScene(0);
     }
     private void OnApplicationQuit()

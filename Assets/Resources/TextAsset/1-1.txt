@@ -1,4 +1,4 @@
-[normalBGM][BG_Loli_Home][N]隔天早上。
+[normalBGM][BG_Loli_Home][N]隔天早上。[w]
 [N]我依照廣澤尊王的指示，在九點之前來到了西羅殿前。[w]
 [MainCharacter_nomal]「該不會其實是一場夢吧……」[w]
 [N]其實昨天遇到廣澤尊王的一切都是夢境……什麼的。這種可能性，也不是沒有啊。[w]
