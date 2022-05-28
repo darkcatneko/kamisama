@@ -18,8 +18,9 @@ public class MainBattleSystem : MonoBehaviour
     public SkillDatabaseOBJ skillDatabaseOBJ;//技能資訊庫
     public List<GameObject> SkillButtons;//技能按鈕們
     public UnityEvent SkillEvent = new UnityEvent();//放出招式的系統
+    public List<int> SkillDamage;//傷害存檔
     public GameObject[] FieldSkills = new GameObject[8];
-    public EightTrigrams NowFocusTrigrams;public bool ReadyAttack = false;//場地選擇
+    public EightTrigrams NowFocusTrigrams;public bool ReadyAttack = false;//場地的選擇 //選好格子
     public int SkillPain;//疲勞值
     public moonblocks CritOrNot = moonblocks.None;
     public BattleAnimationContents battleAnimationContents;
@@ -142,11 +143,11 @@ public class MainBattleSystem : MonoBehaviour
         Luck = 30 + Random.Range(-10, BattleUseStats.LUK.m_currentstat);
         if (Luck >= 60)
         {
-            CritOrNot = moonblocks.OneUpOneDown;
+            CritOrNot = moonblocks.OneUpOneDown;            
         }
         else if (Luck>=20)
         {
-            CritOrNot = moonblocks.TwoUp;
+            CritOrNot = moonblocks.TwoUp; 
         }
         else
         {
@@ -178,8 +179,8 @@ public enum BattleStatus
 [System.Serializable]
 public enum moonblocks
 {
-    TwoUp,
-    TwoDown,
-    OneUpOneDown,
-    None,
+    TwoUp = 10,
+    TwoDown = 9 ,
+    OneUpOneDown = 11,
+    None = 0,
 }
