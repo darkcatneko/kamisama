@@ -139,7 +139,7 @@ public class MainBattleSystem : MonoBehaviour
     public void CritCheck()
     {
         int Luck;
-        Luck = 30 + Random.Range(-10, BattleUseStats.LUK.m_currentstat*3);
+        Luck = 30 + Random.Range(-10, BattleUseStats.LUK.m_currentstat);
         if (Luck >= 60)
         {
             CritOrNot = moonblocks.OneUpOneDown;
