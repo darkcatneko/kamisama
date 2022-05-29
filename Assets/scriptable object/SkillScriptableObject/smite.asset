@@ -24,7 +24,7 @@ MonoBehaviour:
   SkillCardPic: {fileID: 21300000, guid: c27c20457e03a354a8ae1ce7a0fa6739, type: 3}
   SkillDescribe: "\u72E0\u72E0\u7684\u5F80\u5C0D\u65B9\u63CD\u4E0B\u53BB"
   SkillLearnWay: Lv1
-  AnimationPrefab: {fileID: 0}
+  AnimationPrefab: {fileID: 1090331897440246951, guid: eddd3da9d6fa7d74d84b1f9fdfd8388f, type: 3}
   FieldPrefab: {fileID: 0}
   LevelUpCondition: 01000000
   UnlockLevel: 1

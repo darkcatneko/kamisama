@@ -10,7 +10,7 @@ public class MainSceneDataCenter : MonoBehaviour
     public GameObject VolumePanel;
     public SEmaster _semaster;
 
-    public SaveScriptableObject Player_save;
+    public SaveScriptableObject Player_save;public SaveScriptableObject AutoSave;
     public SkillDatabaseOBJ m_SkillDatabaseOBJ;
     public Dialogue_Data_Object dialogue_Data_Object;
     public SceneControllerOBJ sceneOBJ;

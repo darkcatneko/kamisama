@@ -45,3 +45,6 @@ TagManager:
   - name: SkillBoard
     uniqueID: 3094726837
     locked: 0
+  - name: Damage
+    uniqueID: 1003855675
+    locked: 0

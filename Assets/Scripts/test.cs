@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 public class test : MonoBehaviour
 {
     public VolumeDataCenter VolumeMaster;
+    public GameObject bruh;
     private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Instantiate(bruh);
+        }
     }
     public void GenSE()
     {

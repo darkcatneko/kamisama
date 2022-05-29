@@ -36,6 +36,7 @@ public class UsageCase : MonoBehaviour
     public Dialogue_Data_Object dialogueOBJ;
     public SceneControllerOBJ sceneOBJ;
     public SaveScriptableObject _playerSave;
+    public SaveScriptableObject AutoSave;
 
     public GameObject BgmBlock;
     void Start()
@@ -129,8 +130,8 @@ public class UsageCase : MonoBehaviour
                 SetChoiceButtonFunction(Choice2_2, "就這麼繞過去", "0-1-B", 0);
                 return;
             case "Loli_Home_day_1":
-                SetChoiceButtonFunction(Choice2_1, "i choice a", "1-1",1);
-                SetChoiceButtonFunction(Choice2_2, "i choice b", "1-2",9);
+                SetChoiceButtonFunction(Choice2_1, "鬼是為了隱藏在人群中嗎？", "Loli_Home_day_1_A", 10);
+                SetChoiceButtonFunction(Choice2_2, "我太不懂為什麼……", "Loli_Home_day_1_B", 0);
                 return;
             case "1-3":
                 SetChoiceButtonFunction(Choice2_1, "「很多鬼魂……很多業績是吧……」", "1-3-A", 10);

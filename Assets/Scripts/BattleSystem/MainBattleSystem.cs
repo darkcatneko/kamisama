@@ -7,21 +7,28 @@ using DG.Tweening;
 
 public class MainBattleSystem : MonoBehaviour
 {
-    public int ManaTired = 0;//疲勞值
-    public Animator SkillButtonLeverAnimation;
-    public Animator PlayerAnimator;
-    public static MainBattleSystem instance;//獨體
-    public BattleStatus m_battleStatus = BattleStatus.ReadyFight;//回合狀態
-    public SaveScriptableObject m_player;//玩家記錄檔
-    public PlayerInformation BattleUseStats;//戰鬥用數值
-    public Skillbase SKbase;//技能庫
-    public SkillDatabaseOBJ skillDatabaseOBJ;//技能資訊庫
-    public List<GameObject> SkillButtons;//技能按鈕們
-    public UnityEvent SkillEvent = new UnityEvent();//放出招式的系統
-    public List<int> SkillDamage;//傷害存檔
+
+    public int ManaTired = 0;                                           //疲勞值
+    public Animator SkillButtonLeverAnimation;                          //拉桿動畫器
+    public GameObject PlayerSprite;                                     //玩家物件
+    [System.NonSerialized]public List<SpriteRenderer> PlayerSprites = new List<SpriteRenderer>();
+    [System.NonSerialized] public List<SpriteRenderer> BossSprites = new List<SpriteRenderer>();
+    public Animator PlayerAnimator;                                     //玩家動畫器
+    public GameObject BossSprite;                                       //魔王物件
+    public static MainBattleSystem instance;                            //獨體
+    public BattleStatus m_battleStatus = BattleStatus.ReadyFight;       //回合狀態
+    public SaveScriptableObject m_player;                               //玩家記錄檔
+    public SaveScriptableObject AutoSave;                               //自動存檔
+    public PlayerInformation BattleUseStats;                            //戰鬥用數值
+    public Skillbase SKbase;                                            //技能庫
+    public SkillDatabaseOBJ skillDatabaseOBJ;                           //技能資訊庫
+    public List<GameObject> SkillButtons;                               //技能按鈕們
+    public UnityEvent SkillEvent = new UnityEvent();                    //放出招式的系統
+    //public List<int> SkillDamage;                                     ////傷害存檔
+    public string LastSkill;                                            //上一召
     public GameObject[] FieldSkills = new GameObject[8];
     public EightTrigrams NowFocusTrigrams;public bool ReadyAttack = false;//場地的選擇 //選好格子
-    public int SkillPain;//疲勞值
+    public int SkillPain;                                               //疲勞值
     public moonblocks CritOrNot = moonblocks.None;
     public BattleAnimationContents battleAnimationContents;
     private int NowSkillPage = 1;public bool CanChangePage = false;
@@ -31,6 +38,14 @@ public class MainBattleSystem : MonoBehaviour
     }
     void Start()
     {
+        for (int i = 0; i < PlayerSprite.GetComponentsInChildren<SpriteRenderer>().Length; i++)
+        {
+            PlayerSprites.Add(PlayerSprite.GetComponentsInChildren<SpriteRenderer>()[i]);
+        }
+        for (int i = 0; i < BossSprite.GetComponentsInChildren<SpriteRenderer>().Length; i++)
+        {
+            BossSprites.Add(BossSprite.GetComponentsInChildren<SpriteRenderer>()[i]);
+        }
         m_battleStatus = BattleStatus.ReadyFight;
         m_player.Load();
         BattleUseStats = m_player.m_Player.Setup_battleInformation(m_player.m_Player);
@@ -122,7 +137,9 @@ public class MainBattleSystem : MonoBehaviour
     }
     public IEnumerator PlayerAttack(int _id)
     {
+        m_battleStatus = BattleStatus.ChooseEightTrigram;
         yield return new WaitUntil(() =>ReadyAttack == true);
+        MainBattleSystem.instance.m_battleStatus = BattleStatus.PlayerTurn;
         SkillEvent.AddListener(SKbase.FindSkillFunction(m_player.SkillBackPack[_id]));
         SkillEvent.Invoke();//扣魔力並且鎖住玩家行動
         //演出animation
@@ -130,6 +147,9 @@ public class MainBattleSystem : MonoBehaviour
         yield return new WaitForSeconds(battleAnimationContents.AnimationTime);
         PlayerAnimator.SetBool(battleAnimationContents.TheAnimateBePlayed, false);
         yield return new WaitForSeconds(battleAnimationContents.BattleEffectTime);
+        battleAnimationContents.DamageDelt = new List<int>();
+        battleAnimationContents.NowDisplayDamage = 0;
+        m_battleStatus = BattleStatus.PlayerTurn;
         SkillEvent.RemoveAllListeners();
         ReadyAttack = false;
     }

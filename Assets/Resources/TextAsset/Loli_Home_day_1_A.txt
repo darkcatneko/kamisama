@@ -1,0 +1,5 @@
+[MainTempleBGM][BG_Loli_Home][God_smile]「沒錯，汝還蠻聰明的嘛。」[w]
+[God_say]「正因為他們不善於隱藏自己的氣息與妖力，所以他們只能選擇隱藏在人群之中……相反的，也很容易因此在鬆懈之時被發現到。」[w]
+[God_say]「所以，從這些地方去找，應該就沒有問題了。」[w]
+[MainCharacter_nomal]「了解了……幫助很大呢！」[w]
+[END]

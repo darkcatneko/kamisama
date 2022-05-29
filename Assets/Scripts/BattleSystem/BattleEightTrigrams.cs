@@ -7,7 +7,10 @@ public class BattleEightTrigrams : MonoBehaviour
     public EightTrigrams ThisPlate;
     private void OnMouseUp()
     {
-        MainBattleSystem.instance.NowFocusTrigrams = ThisPlate;
-        MainBattleSystem.instance.ReadyAttack = true;
+        if (MainBattleSystem.instance.ReadyAttack == false&&MainBattleSystem.instance.m_battleStatus == BattleStatus.ChooseEightTrigram)
+        {
+            MainBattleSystem.instance.NowFocusTrigrams = ThisPlate;
+            MainBattleSystem.instance.ReadyAttack = true;
+        }
     }
 }
