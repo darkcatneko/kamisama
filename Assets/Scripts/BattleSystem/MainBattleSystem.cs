@@ -182,7 +182,7 @@ public class BattleAnimationContents
     public int NowDisplayDamage = 0;
     public string TheAnimateBePlayed;
     public GameObject BattleEffect;
-    public int AnimationTime;
+    public float AnimationTime;
     public int BattleEffectTime;
     public List<int> DamageDelt;
 }

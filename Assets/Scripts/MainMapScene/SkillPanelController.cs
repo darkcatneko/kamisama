@@ -37,7 +37,7 @@ public class SkillPanelController : MonoBehaviour
     {
         PlayerLevel.text = "LV."+MainSceneDataCenter.instance.Player_save.m_Player.Level.ToString();
         _text.text =
-            MainSceneDataCenter.instance.Player_save.m_Player.HP.m_currentstat.ToString() + "\n"
+            (MainSceneDataCenter.instance.Player_save.m_Player.HP.m_currentstat*10).ToString() + "\n"
            + MainSceneDataCenter.instance.Player_save.m_Player.ATK.m_currentstat.ToString() + "\n"
            + MainSceneDataCenter.instance.Player_save.m_Player.DEF.m_currentstat.ToString() + "\n"
            + MainSceneDataCenter.instance.Player_save.m_Player.POW.m_currentstat.ToString() + "\n"

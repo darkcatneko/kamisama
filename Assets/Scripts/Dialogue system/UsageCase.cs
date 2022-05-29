@@ -328,6 +328,10 @@ public class UsageCase : MonoBehaviour
         _playerSave.Save();
         SceneManager.LoadScene(2);        
     }
+    public void IntoBattle()
+    {
+
+    }
     public void LoadingButtonPress()
     {
         dialogueOBJ.TheBackGroundPic = Background.GetComponent<SpriteRenderer>().sprite.name;

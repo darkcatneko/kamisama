@@ -8,6 +8,7 @@ public abstract class BossBase : ScriptableObject
     public int BossID;
     public GameObject BossGameObjectPrefab;
     public Sprite BossPicture;
+    public float BaseBlock;
     public List<PlayerStats> BossStats;
     public List<UnityAction> BossAttackSkill;
 }

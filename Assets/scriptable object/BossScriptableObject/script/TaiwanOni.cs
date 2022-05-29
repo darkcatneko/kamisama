@@ -8,16 +8,5 @@ public class TaiwanOni : BossBase
     private void Awake()
     {
         
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
+    }    
 }

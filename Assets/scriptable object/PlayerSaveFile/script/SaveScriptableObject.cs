@@ -279,9 +279,9 @@ public class PlayerInformation
     {
         PlayerInformation Battle_used;
         Battle_used = m_Playerstats;
-        Battle_used.MaxHP =Mathf.RoundToInt(m_Playerstats.HP.m_currentstat) ;
-        Battle_used.Current_MP = 5;
-        Battle_used.Current_HP = Mathf.RoundToInt(m_Playerstats.HP.m_currentstat);
+        Battle_used.MaxHP =Mathf.RoundToInt(m_Playerstats.HP.m_currentstat*10) ;
+        Battle_used.Current_MP = Mathf.RoundToInt(m_Playerstats.INT.m_currentstat*0.1f+5);
+        Battle_used.Current_HP = Mathf.RoundToInt(m_Playerstats.HP.m_currentstat * 10);
         Battle_used.Mana_regen_speed = 5;
         return Battle_used;
     }

@@ -565,7 +565,7 @@ public class SpriteClick : MonoBehaviour
     public string GetstatString(Stats _stats)
     {
         var player = MainSceneDataCenter.instance.Player_save.m_Player;
-        string a = player.HP.m_currentstat.ToString() + "\n" + player.ATK.m_currentstat.ToString() + "\n" + player.DEF.m_currentstat.ToString() + "\n" + player.POW.m_currentstat.ToString() + "\n" + player.SPI.m_currentstat.ToString() + "\n" + player.DEX.m_currentstat.ToString() + "\n" + player.INT.m_currentstat.ToString() + "\n" + player.LUK.m_currentstat.ToString() + "\n";
+        string a = (player.HP.m_currentstat*10).ToString() + "\n" + player.ATK.m_currentstat.ToString() + "\n" + player.DEF.m_currentstat.ToString() + "\n" + player.POW.m_currentstat.ToString() + "\n" + player.SPI.m_currentstat.ToString() + "\n" + player.DEX.m_currentstat.ToString() + "\n" + player.INT.m_currentstat.ToString() + "\n" + player.LUK.m_currentstat.ToString() + "\n";
         switch(_stats)
         {
             case Stats.INT:            

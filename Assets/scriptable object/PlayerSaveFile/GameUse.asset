@@ -17,38 +17,38 @@ MonoBehaviour:
   SaveDate: 
   TimeSaveData:
     day: 1
-    time: 8
+    time: 9
     Get_Flag: 0
   m_Player:
-    Level: 1
+    Level: 2
     Mana_regen_speed: 5
     Current_MP: 5
-    Current_HP: 1
-    MaxHP: 1
+    Current_HP: 2
+    MaxHP: 2
     POW:
       m_stat: 0
-      m_currentstat: 1
+      m_currentstat: 3
     SPI:
       m_stat: 1
-      m_currentstat: 1
+      m_currentstat: 2
     LUK:
       m_stat: 12
       m_currentstat: 1
     DEX:
       m_stat: 2
-      m_currentstat: 1
+      m_currentstat: 2
     INT:
       m_stat: 3
-      m_currentstat: 1
+      m_currentstat: 2
     HP:
       m_stat: 4
-      m_currentstat: 1
+      m_currentstat: 2
     DEF:
       m_stat: 5
-      m_currentstat: 1
+      m_currentstat: 2
     ATK:
       m_stat: 6
-      m_currentstat: 1
+      m_currentstat: 2
     Love:
       m_stat: 7
       m_currentstat: 11
@@ -60,13 +60,13 @@ MonoBehaviour:
       m_currentstat: 1
     Kin_hua:
       m_stat: 10
-      m_currentstat: 1
+      m_currentstat: 2
     Ron_Xiu:
       m_stat: 11
       m_currentstat: 1
-  SkillBackPack: 01000000000000000000000000000000000000000000000000000000000000000000000000000000
+  SkillBackPack: 01000000020000000000000000000000000000000000000000000000000000000000000000000000
   MapFlagCheck: 0000000000000000000000000000
-  SkillUnlockCheck: 01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  SkillUnlockCheck: 01010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   Can_Get_Flag: 1
   FlagCount: 0
   Now_Playing_Scene: 1
