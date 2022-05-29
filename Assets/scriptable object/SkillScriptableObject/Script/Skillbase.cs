@@ -34,14 +34,14 @@ public class Skillbase : MonoBehaviour
     {
         if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
         {            
-            MainBattleSystem.instance.MinusMana(0);//扣魔
+            MainBattleSystem.instance.MinusMana(5);//扣魔
             MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
             if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]!=null)//確認陣上是否有陣法
             {
                 Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
             }
             MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Smite"; //確認動作
-            MainBattleSystem.instance.LastSkill = "Smite";//紀錄使用
+            MainBattleSystem.instance.LastSkill = "Smite";//上一召紀錄使用
             MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1;//確認動作時長
             MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(1).AnimationPrefab;//確認生成特效
             MainBattleSystem.instance.CritCheck();//確認爆擊
