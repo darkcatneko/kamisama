@@ -119,5 +119,15 @@ public class BattleAnimationEvent : MonoBehaviour
         {
             StartCoroutine("ChangeColor2", MainBattleSystem.instance.PlayerSprites);
         }
+        if(Input.GetKeyDown(KeyCode.Y))
+        {
+            MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(2);
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(2).AnimationPrefab;
+            MainBattleSystem.instance.PlayerAnimator.SetBool("Medicine", true);
+          }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            MainBattleSystem.instance.PlayerAnimator.SetBool("Medicine", false);
+        }
     }
 }
