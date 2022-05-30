@@ -28,6 +28,6 @@
 [Boss_day1]「呃呃呃……！」[w]
 [God_say]「早就注意到了啦，好了好了，讓吾欣賞看看汝的初戰吧！」[w]
 [MainCharacter_nomal]「真的沒有退路了……啊啊不管了，上吧！」[w]
-[END]
+[IntoBattle]
 
 

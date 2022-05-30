@@ -51,12 +51,9 @@ public class TimeClass
     {
         time++;
         if (time >= 23)
-        {
-            MainTimeSystem.instance.ReloadFlags();
-            day++;
-            MainSceneDataCenter.instance.Player_save.Can_Get_Flag = true;
-            time = 8;
-            MainSceneDataCenter.instance.Player_save.Save();          
+        {            
+            day++; 
+            time = 8;       
         }
     }
     public void CheckSpecialDay ()//Ū�奻 
@@ -78,6 +75,9 @@ public class TimeClass
                 {
                     if (MainSceneDataCenter.instance.Player_save.MapFlagCheck[2]==true)
                     {
+                        MainTimeSystem.instance.ReloadFlags();
+                        MainSceneDataCenter.instance.Player_save.Can_Get_Flag = true;
+                        MainSceneDataCenter.instance.Player_save.Save();
                         MainSceneDataCenter.instance.IntoDialogueScene("1-2");
                     }
                     else
@@ -93,6 +93,9 @@ public class TimeClass
                 }
                 else if (time == 8)
                 {
+                    MainTimeSystem.instance.ReloadFlags();
+                    MainSceneDataCenter.instance.Player_save.Can_Get_Flag = true;
+                    MainSceneDataCenter.instance.Player_save.Save();
                     MainSceneDataCenter.instance.IntoDialogueScene("2-2");
                 }
                 return;
@@ -103,6 +106,9 @@ public class TimeClass
                 }
                 else if (time == 8)
                 {
+                    MainTimeSystem.instance.ReloadFlags();
+                    MainSceneDataCenter.instance.Player_save.Can_Get_Flag = true;
+                    MainSceneDataCenter.instance.Player_save.Save();
                     MainSceneDataCenter.instance.IntoDialogueScene("3-2");
                 }
                 return;
@@ -113,6 +119,9 @@ public class TimeClass
                 } 
                 else if (time == 8)
                 {
+                    MainTimeSystem.instance.ReloadFlags();
+                    MainSceneDataCenter.instance.Player_save.Can_Get_Flag = true;
+                    MainSceneDataCenter.instance.Player_save.Save();
                     MainSceneDataCenter.instance.IntoDialogueScene("4-2");
                 }
                 return;
@@ -123,6 +132,9 @@ public class TimeClass
                 }
                 else if (time == 8)
                 {
+                    MainTimeSystem.instance.ReloadFlags();
+                    MainSceneDataCenter.instance.Player_save.Can_Get_Flag = true;
+                    MainSceneDataCenter.instance.Player_save.Save();
                     MainSceneDataCenter.instance.IntoDialogueScene("5-2");
                 }
                 return;
@@ -133,6 +145,9 @@ public class TimeClass
                 }
                 else if (time == 8)
                 {
+                    MainTimeSystem.instance.ReloadFlags();
+                    MainSceneDataCenter.instance.Player_save.Can_Get_Flag = true;
+                    MainSceneDataCenter.instance.Player_save.Save();
                     MainSceneDataCenter.instance.IntoDialogueScene("6-2");
                 }
                 return;
@@ -140,6 +155,9 @@ public class TimeClass
                 {
                     if (time == 8)
                     {
+                        MainTimeSystem.instance.ReloadFlags();
+                        MainSceneDataCenter.instance.Player_save.Can_Get_Flag = true;
+                        MainSceneDataCenter.instance.Player_save.Save();
                         MainSceneDataCenter.instance.IntoDialogueScene("7-2");
                     }
                 }

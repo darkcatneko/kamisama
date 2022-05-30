@@ -829,7 +829,7 @@ MonoBehaviour:
     BattleEffectTime: 0
     DamageDelt: 
   CanChangePage: 0
-  sceneControllerOBJ: {fileID: 0}
+  sceneControllerOBJ: {fileID: 11400000, guid: 23e865d35ffb6fc4ba46d74dfca8f60e, type: 2}
 --- !u!114 &377580407
 MonoBehaviour:
   m_ObjectHideFlags: 0

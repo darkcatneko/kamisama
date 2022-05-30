@@ -49,7 +49,7 @@ public class MainBattleSystem : MonoBehaviour
             BossSprites.Add(BossSprite.GetComponentsInChildren<SpriteRenderer>()[i]);
         }        
         m_player.Load();
-        //ThisBoss = sceneControllerOBJ.NextBoss.m_base;
+        ThisBoss = sceneControllerOBJ.NextBoss.m_base;
         BattleUseStats = m_player.m_Player.Setup_battleInformation(m_player.m_Player);
         for (int i = 0; i < SkillButtons.Count; i++)
         {
@@ -122,14 +122,21 @@ public class MainBattleSystem : MonoBehaviour
                 {
                     if (m_battleStatus == BattleStatus.PlayerTurn)
                     {
-                        if (skillDatabaseOBJ.GetSkillInformation(skillid).ManaCost<=BattleUseStats.Current_MP)
+                        if (NowSkillPage  == SkillButton/5+1)
                         {
-                            StartCoroutine("PlayerAttack", SkillButton);
+                            if (skillDatabaseOBJ.GetSkillInformation(skillid).ManaCost <= BattleUseStats.Current_MP)
+                            {
+                                StartCoroutine("PlayerAttack", SkillButton);
+                            }
+                            else
+                            {
+                                Debug.Log("¶Ì¹GÅ]¤O¤£°÷");
+                            }
                         }
                         else
                         {
-                            Debug.Log("¶Ì¹GÅ]¤O¤£°÷");
-                        }                     
+                            Debug.Log("·Ø­¶©Ô");
+                        }
                     }                    
                 }
                 
