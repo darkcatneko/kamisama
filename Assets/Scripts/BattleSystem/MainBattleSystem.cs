@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class MainBattleSystem : MonoBehaviour
 {
-
+    public BossClass ThisBoss;
     public int ManaTired = 0;                                           //疲勞值
     public Animator SkillButtonLeverAnimation;                          //拉桿動畫器
     public GameObject PlayerSprite;                                     //玩家物件
@@ -32,12 +32,14 @@ public class MainBattleSystem : MonoBehaviour
     public moonblocks CritOrNot = moonblocks.None;
     public BattleAnimationContents battleAnimationContents;
     private int NowSkillPage = 1;public bool CanChangePage = false;
+    public SceneControllerOBJ sceneControllerOBJ;
     private void Awake()
     {
         instance = this;
     }
     void Start()
     {
+        m_battleStatus = BattleStatus.ReadyFight;
         for (int i = 0; i < PlayerSprite.GetComponentsInChildren<SpriteRenderer>().Length; i++)
         {
             PlayerSprites.Add(PlayerSprite.GetComponentsInChildren<SpriteRenderer>()[i]);
@@ -45,9 +47,9 @@ public class MainBattleSystem : MonoBehaviour
         for (int i = 0; i < BossSprite.GetComponentsInChildren<SpriteRenderer>().Length; i++)
         {
             BossSprites.Add(BossSprite.GetComponentsInChildren<SpriteRenderer>()[i]);
-        }
-        m_battleStatus = BattleStatus.ReadyFight;
+        }        
         m_player.Load();
+        //ThisBoss = sceneControllerOBJ.NextBoss.m_base;
         BattleUseStats = m_player.m_Player.Setup_battleInformation(m_player.m_Player);
         for (int i = 0; i < SkillButtons.Count; i++)
         {

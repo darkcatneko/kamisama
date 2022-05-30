@@ -11,7 +11,7 @@ public class Skillbase : MonoBehaviour
     public Dictionary <int, UnityAction> SkillActionList = new Dictionary<int, UnityAction>();
     private void Awake()
     {
-        SkillActionList.Add(0, ASSHOLE);
+        //SkillActionList.Add(0, Test);
         SkillActionList.Add(1, Smite_Skill);
         SkillActionList.Add(2, Medicine_Skill);
     }

@@ -6,11 +6,11 @@ public class BossDatabase : ScriptableObject
 {
     public List<BossBase> BossDataBase;
 
-    public BossBase GetSkillInformation(int _id)
+    public BossBase GetBossInformation(int _id)
     {
         for (int i = 0; i < BossDataBase.Count; i++)
         {
-            if (BossDataBase[i].BossID == _id)
+            if (BossDataBase[i].m_base.BossID == _id)
             {
                 return BossDataBase[i];
             }

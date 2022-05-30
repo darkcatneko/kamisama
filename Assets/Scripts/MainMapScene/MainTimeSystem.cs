@@ -76,7 +76,14 @@ public class TimeClass
                 }
                 else if(time == 8)
                 {
-                    MainSceneDataCenter.instance.IntoDialogueScene("1-2");
+                    if (MainSceneDataCenter.instance.Player_save.MapFlagCheck[2]==true)
+                    {
+                        MainSceneDataCenter.instance.IntoDialogueScene("1-2");
+                    }
+                    else
+                    {
+                        Debug.Log("幹你娘給我去插旗子");
+                    }
                 }
                 return;
             case 3:

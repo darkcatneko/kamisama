@@ -570,7 +570,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u4F60\u4F7F\u7528\u4E86\u5C41\u773C\u6D3E\u5C0D"
+  m_text: "\u4F60\u4F7F\u7528\u4E86\u6D3E\u5C0D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed8d999ce39acf446b95e15c82509984, type: 2}
   m_sharedMaterial: {fileID: -5528277901444608546, guid: ed8d999ce39acf446b95e15c82509984, type: 2}
@@ -732,6 +732,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b6f09851e99bb4eb622c30b2184004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisBoss:
+    BossID: 0
+    BossGameObjectPrefab: {fileID: 0}
+    BossPicture: {fileID: 0}
+    BaseBlock: 0
+    BossStats: []
   ManaTired: 0
   SkillButtonLeverAnimation: {fileID: 2042684467}
   PlayerSprite: {fileID: 995266474}
@@ -823,6 +829,7 @@ MonoBehaviour:
     BattleEffectTime: 0
     DamageDelt: 
   CanChangePage: 0
+  sceneControllerOBJ: {fileID: 0}
 --- !u!114 &377580407
 MonoBehaviour:
   m_ObjectHideFlags: 0

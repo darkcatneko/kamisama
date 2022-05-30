@@ -12,16 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c7f4b85bbdfc24d8886cb96b2a0e89, type: 3}
   m_Name: TaiwanOni
   m_EditorClassIdentifier: 
-  BossGameObjectPrefab: {fileID: 0}
-  BossPicture: {fileID: 0}
-  BossStats:
-  - m_stat: 4
-    m_currentstat: 0
-  - m_stat: 6
-    m_currentstat: 0
-  - m_stat: 5
-    m_currentstat: 0
-  - m_stat: 1
-    m_currentstat: 0
-  - m_stat: 0
-    m_currentstat: 0
+  m_base:
+    BossID: 0
+    BossGameObjectPrefab: {fileID: 0}
+    BossPicture: {fileID: 0}
+    BaseBlock: 0
+    BossStats:
+    - m_stat: 4
+      m_currentstat: 0
+    - m_stat: 6
+      m_currentstat: 0
+    - m_stat: 5
+      m_currentstat: 0
+    - m_stat: 1
+      m_currentstat: 0
+    - m_stat: 0
+      m_currentstat: 0

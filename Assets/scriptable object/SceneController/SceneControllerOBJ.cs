@@ -5,7 +5,8 @@ using UnityEngine;
 public class SceneControllerOBJ : ScriptableObject
 {
     public int LastScene;
-    public FileStatus Status; 
+    public FileStatus Status;
+    public BossBase NextBoss;
     public void Clear()
     {
         LastScene = 0;

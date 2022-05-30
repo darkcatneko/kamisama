@@ -54,7 +54,7 @@ public class BattleAnimationEvent : MonoBehaviour
             DamageBlock.transform.Find("hun").gameObject.SetActive(false);
             DamageBlock.transform.Find("ten").gameObject.SetActive(false);
         }
-        //怪物血條減少
+        //MainBattleSystem.instance.ThisBoss.BossStats//怪物血條減少
     }
     public void MonsterGetHit()
     {

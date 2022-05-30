@@ -37,7 +37,7 @@ public class UsageCase : MonoBehaviour
     public SceneControllerOBJ sceneOBJ;
     public SaveScriptableObject _playerSave;
     public SaveScriptableObject AutoSave;
-
+    public BossDatabase bossdata;
     public GameObject BgmBlock;
     void Start()
     {
@@ -329,8 +329,35 @@ public class UsageCase : MonoBehaviour
         SceneManager.LoadScene(2);        
     }
     public void IntoBattle()
-    {
+    {        
+        switch (textAsset.name)
+        {
+            case "1-3":
+                sceneOBJ.NextBoss = bossdata.GetBossInformation(0);
+                _playerSave.Save();
+                SceneManager.LoadScene(4);
+                return;
+            case "2-3":
+                
+                return;
+            case "3-3":
+               
+                return;
+            case "4-3":
 
+                return;
+            case "5-3":
+
+                return;
+            case "6-3":
+
+                return;
+            case "7-3":
+
+                return;
+            default:
+                return;
+        }
     }
     public void LoadingButtonPress()
     {
