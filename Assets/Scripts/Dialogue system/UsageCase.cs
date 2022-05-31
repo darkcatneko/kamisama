@@ -303,6 +303,10 @@ public class UsageCase : MonoBehaviour
         {
             IntoChoiceSection_2(textAsset.name);
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            IntoBattle();
+        }
     }
     public void NextSentence()
     {
