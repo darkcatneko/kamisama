@@ -10,6 +10,15 @@ public class BattleAnimationEvent : MonoBehaviour
     {
         Instantiate(MainBattleSystem.instance.battleAnimationContents.BattleEffect, Vector3.zero, Quaternion.identity);
     }
+    public void GenFieldEffect()
+    {
+        MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] = Instantiate(MainBattleSystem.instance.battleAnimationContents.FieldPrefab, MainBattleSystem.instance.EightTrimSpawnPoint[(int)MainBattleSystem.instance.NowFocusTrigrams].transform.position, Quaternion.identity);
+        if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().SelfDestroyCountDown!=-1)
+        {
+            MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().StartTurn = MainBattleSystem.instance.NowTurn;
+            MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().EndTurn = MainBattleSystem.instance.NowTurn + MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().SelfDestroyCountDown;
+        }       
+    }
     public void GenDamageNumber()
     {
         Vector3 Place = new Vector3(Random.Range(-20, 0) * 0.1f, 0f, Random.Range(-20, 0) * 0.1f);
@@ -122,12 +131,12 @@ public class BattleAnimationEvent : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Y))
         {
         //    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(2);
-            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(5).AnimationPrefab;
-            MainBattleSystem.instance.PlayerAnimator.SetBool("Needle", true);
+            MainBattleSystem.instance.battleAnimationContents.FieldPrefab = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(3).FieldPrefab;
+            MainBattleSystem.instance.PlayerAnimator.SetBool("MagicArray", true);
           }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            MainBattleSystem.instance.PlayerAnimator.SetBool("Needle", false);
+            MainBattleSystem.instance.PlayerAnimator.SetBool("MagicArray", false);
         }
     }
 }

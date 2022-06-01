@@ -14,6 +14,8 @@ public class Skillbase : MonoBehaviour
         //SkillActionList.Add(0, Test);
         SkillActionList.Add(1, Smite_Skill);
         SkillActionList.Add(2, Medicine_Skill);
+        SkillActionList.Add(3, MagicArraySkill);
+        SkillActionList.Add(4, GoastSkill);
     }
     private void Start()
     {
@@ -39,6 +41,7 @@ public class Skillbase : MonoBehaviour
             MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
             if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]!=null)//確認陣上是否有陣法
             {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
                 Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
             }
             MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Smite"; //確認動作
@@ -73,6 +76,7 @@ public class Skillbase : MonoBehaviour
             MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
             if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
             {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
                 Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
             }
             MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Medicine"; //確認動作
@@ -99,8 +103,140 @@ public class Skillbase : MonoBehaviour
         }
 
     }
+    public void MagicArraySkill()
+    {
+        if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
+        {
+            MainBattleSystem.instance.MinusMana(5);//扣魔
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
+            if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
+            {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
+                Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
+            }
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "MagicArray"; //確認動作
+            MainBattleSystem.instance.LastSkill = "MagicArray";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(3).AnimationPrefab;//確認生成特效
+            MainBattleSystem.instance.battleAnimationContents.FieldPrefab = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(3).FieldPrefab;//確認生成場地            
+            MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
+            MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.1f);
 
-}
+            Debug.Log("BBBBBB");
+
+        }
+
+    }
+    public void GoastSkill()
+    {
+        if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
+        {
+            MainBattleSystem.instance.MinusMana(5);//扣魔
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
+            if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
+            {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
+                Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
+            }
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Goast"; //確認動作
+            MainBattleSystem.instance.LastSkill = "Goast";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(4).AnimationPrefab;//確認生成特效
+            MainBattleSystem.instance.battleAnimationContents.FieldPrefab = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(4).FieldPrefab;//確認生成場地            
+            MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
+            MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.2f);
+
+            Debug.Log("BBBBBB");
+
+        }
+
+    }
+    public void Needle_Skill()
+    {
+        if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
+        {
+            MainBattleSystem.instance.MinusMana(5);//扣魔
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
+            if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
+            {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
+                Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
+            }
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Needle"; //確認動作
+            MainBattleSystem.instance.LastSkill = "Needle";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(5).AnimationPrefab;//確認生成特效
+            MainBattleSystem.instance.CritCheck();//確認爆擊
+            //爆擊動畫
+            //確認王的閃避
+            MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Li)//輸出多個傷害值
+            {
+                if (MainBattleSystem.instance.CritOrNot == moonblocks.OneUpOneDown)
+                {
+                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.1f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 10f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                    Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+                }
+                else
+                {
+                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.005f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 1f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                    Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+                }
+            }
+            else
+            {
+                if (MainBattleSystem.instance.CritOrNot == moonblocks.OneUpOneDown)
+                {
+                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.1f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 10f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                    Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+                }
+                else
+                {
+                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.005f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 1f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                    Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+                }
+            }
+
+            Debug.Log("BBBBBB");
+
+        }
+
+    }
+    public void M_Skill()
+    {
+        if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
+        {
+            MainBattleSystem.instance.MinusMana(5);//扣魔
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
+            if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
+            {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
+                Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
+            }
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Medicine"; //確認動作
+            MainBattleSystem.instance.LastSkill = "Medicine";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(2).AnimationPrefab;//確認生成特效
+            MainBattleSystem.instance.CritCheck();//確認爆擊
+            //爆擊動畫
+            //確認王的閃避
+            MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Li)//輸出多個傷害值
+            {
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 2f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+            }
+            else
+            {
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 2f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+            }
+
+            Debug.Log("BBBBBB");
+
+        }
+    }
+    }
 [System.Serializable]
 public enum EightTrigrams
 {

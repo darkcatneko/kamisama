@@ -142,6 +142,7 @@ public class PlayerInformation
     public int Current_MP;
     public int Current_HP;
     public int MaxHP;
+    public int Shield;
     #region ª±®a¼Æ­È
     public PlayerStats POW = new PlayerStats(Stats.POW, 1);
     public PlayerStats SPI = new PlayerStats(Stats.SPI, 1);

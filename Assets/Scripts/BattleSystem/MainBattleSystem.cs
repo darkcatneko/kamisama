@@ -7,6 +7,7 @@ using DG.Tweening;
 
 public class MainBattleSystem : MonoBehaviour
 {
+    public int NowTurn;                                                 //回合數
     public BossClass ThisBoss;
     public int ManaTired = 0;                                           //疲勞值
     public Animator SkillButtonLeverAnimation;                          //拉桿動畫器
@@ -23,7 +24,9 @@ public class MainBattleSystem : MonoBehaviour
     public Skillbase SKbase;                                            //技能庫
     public SkillDatabaseOBJ skillDatabaseOBJ;                           //技能資訊庫
     public List<GameObject> SkillButtons;                               //技能按鈕們
+    public List<GameObject> EightTrimSpawnPoint;
     public UnityEvent SkillEvent = new UnityEvent();                    //放出招式的系統
+    public UnityEvent BuffClear = new UnityEvent();
     //public List<int> SkillDamage;                                     ////傷害存檔
     public string LastSkill;                                            //上一召
     public GameObject[] FieldSkills = new GameObject[8];
@@ -127,6 +130,7 @@ public class MainBattleSystem : MonoBehaviour
                         {
                             if (skillDatabaseOBJ.GetSkillInformation(skillid).ManaCost+ManaTired <= BattleUseStats.Current_MP)
                             {
+                                
                                 StartCoroutine("PlayerAttack", SkillButton);
                             }
                             else
@@ -138,7 +142,28 @@ public class MainBattleSystem : MonoBehaviour
                         {
                             Debug.Log("煥頁拉");
                         }
-                    }                    
+                    }
+                    else if (m_battleStatus == BattleStatus.ChooseEightTrigram)
+                    {
+                        StopAllCoroutines();
+                        Debug.Log(123);
+                        if (NowSkillPage == SkillButton / 5 + 1)
+                        {
+                            if (skillDatabaseOBJ.GetSkillInformation(skillid).ManaCost + ManaTired <= BattleUseStats.Current_MP)
+                            {
+
+                                StartCoroutine("PlayerAttack", SkillButton);
+                            }
+                            else
+                            {
+                                Debug.Log("傻逼魔力不夠");
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log("煥頁拉");
+                        }
+                    }
                 }
                 
                 
@@ -183,8 +208,28 @@ public class MainBattleSystem : MonoBehaviour
         {
             CritOrNot = moonblocks.TwoDown;
         }
+        Debug.Log(CritOrNot.ToString());
     }
-    
+    public void EndPlayerTurn()
+    {
+        if(m_battleStatus == BattleStatus.PlayerTurn)
+        {
+            m_battleStatus = BattleStatus.EnemyTurn;
+            //換王攻擊
+            //check玩家是否死亡
+            //換回玩家回合
+            BackToPlayerTurn();
+        }
+    }
+    public void BackToPlayerTurn()
+    {
+
+        ManaTired = 0;
+        BattleUseStats.Current_MP += BattleUseStats.Mana_regen_speed;
+        //確認上過的buff是否需要回調
+        m_battleStatus = BattleStatus.PlayerTurn;
+
+    }
 }
 [System.Serializable]
 public class BattleAnimationContents
@@ -192,6 +237,7 @@ public class BattleAnimationContents
     public int NowDisplayDamage = 0;
     public string TheAnimateBePlayed;
     public GameObject BattleEffect;
+    public GameObject FieldPrefab;
     public float AnimationTime;
     public int BattleEffectTime;
     public List<int> DamageDelt;

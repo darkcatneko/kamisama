@@ -16,59 +16,60 @@ MonoBehaviour:
   savePath: /Gameuse.save
   SaveDate: 
   TimeSaveData:
-    day: 1
-    time: 9
+    day: 2
+    time: 8
     Get_Flag: 0
   m_Player:
-    Level: 2
+    Level: 14
     Mana_regen_speed: 5
-    Current_MP: 5
-    Current_HP: 2
-    MaxHP: 2
+    Current_MP: 7
+    Current_HP: 170
+    MaxHP: 170
+    Shield: 0
     POW:
       m_stat: 0
-      m_currentstat: 3
+      m_currentstat: 17
     SPI:
       m_stat: 1
-      m_currentstat: 2
+      m_currentstat: 18
     LUK:
       m_stat: 12
       m_currentstat: 1
     DEX:
       m_stat: 2
-      m_currentstat: 2
+      m_currentstat: 16
     INT:
       m_stat: 3
-      m_currentstat: 2
+      m_currentstat: 17
     HP:
       m_stat: 4
-      m_currentstat: 2
+      m_currentstat: 17
     DEF:
       m_stat: 5
-      m_currentstat: 2
+      m_currentstat: 15
     ATK:
       m_stat: 6
-      m_currentstat: 2
+      m_currentstat: 38
     Love:
       m_stat: 7
-      m_currentstat: 11
+      m_currentstat: 21
     Yao_Wan:
       m_stat: 8
       m_currentstat: 1
     Fong_Shin:
       m_stat: 9
-      m_currentstat: 1
+      m_currentstat: 14
     Kin_hua:
       m_stat: 10
-      m_currentstat: 2
+      m_currentstat: 1
     Ron_Xiu:
       m_stat: 11
       m_currentstat: 1
-  SkillBackPack: 01000000020000000000000000000000000000000000000000000000000000000000000000000000
+  SkillBackPack: 01000000020000000300000004000000000000000000000000000000000000000000000000000000
   MapFlagCheck: 0000000000000000000000000000
-  SkillUnlockCheck: 01010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  SkillUnlockCheck: 01010101010101010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   Can_Get_Flag: 1
-  FlagCount: 0
+  FlagCount: 2
   Now_Playing_Scene: 1
   Now_Watching_Plot: Opening
   Now_Watching_Sentence: 0
