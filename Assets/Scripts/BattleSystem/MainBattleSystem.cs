@@ -49,6 +49,7 @@ public class MainBattleSystem : MonoBehaviour
             BossSprites.Add(BossSprite.GetComponentsInChildren<SpriteRenderer>()[i]);
         }        
         m_player.Load();
+      
         ThisBoss = sceneControllerOBJ.NextBoss.m_base;
         BattleUseStats = m_player.m_Player.Setup_battleInformation(m_player.m_Player);
         for (int i = 0; i < SkillButtons.Count; i++)

@@ -121,13 +121,13 @@ public class BattleAnimationEvent : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Y))
         {
-            MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(2);
-            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(2).AnimationPrefab;
-            MainBattleSystem.instance.PlayerAnimator.SetBool("Medicine", true);
+        //    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(2);
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(5).AnimationPrefab;
+            MainBattleSystem.instance.PlayerAnimator.SetBool("Needle", true);
           }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            MainBattleSystem.instance.PlayerAnimator.SetBool("Medicine", false);
+            MainBattleSystem.instance.PlayerAnimator.SetBool("Needle", false);
         }
     }
 }
