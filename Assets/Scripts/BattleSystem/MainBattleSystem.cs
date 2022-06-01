@@ -124,7 +124,7 @@ public class MainBattleSystem : MonoBehaviour
                     {
                         if (NowSkillPage  == SkillButton/5+1)
                         {
-                            if (skillDatabaseOBJ.GetSkillInformation(skillid).ManaCost <= BattleUseStats.Current_MP)
+                            if (skillDatabaseOBJ.GetSkillInformation(skillid).ManaCost+ManaTired <= BattleUseStats.Current_MP)
                             {
                                 StartCoroutine("PlayerAttack", SkillButton);
                             }

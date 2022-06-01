@@ -54,7 +54,7 @@ public class BattleAnimationEvent : MonoBehaviour
             DamageBlock.transform.Find("hun").gameObject.SetActive(false);
             DamageBlock.transform.Find("ten").gameObject.SetActive(false);
         }
-        //MainBattleSystem.instance.ThisBoss.BossStats//©Çª«¦å±ø´î¤Ö
+        MainBattleSystem.instance.ThisBoss.ChangeBossStats(Stats.HP, Mathf.RoundToInt(MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP) - Damage));
     }
     public void MonsterGetHit()
     {

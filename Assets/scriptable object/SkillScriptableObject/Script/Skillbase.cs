@@ -35,7 +35,7 @@ public class Skillbase : MonoBehaviour
     {
         if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
         {            
-            MainBattleSystem.instance.MinusMana(0);//扣魔
+            MainBattleSystem.instance.MinusMana(5);//扣魔
             MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
             if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]!=null)//確認陣上是否有陣法
             {
@@ -69,7 +69,7 @@ public class Skillbase : MonoBehaviour
     {
         if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
         {
-            MainBattleSystem.instance.MinusMana(0);//扣魔
+            MainBattleSystem.instance.MinusMana(5);//扣魔
             MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
             if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
             {
