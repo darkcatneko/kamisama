@@ -13,6 +13,8 @@ public class BattleAnimationEvent : MonoBehaviour
     public void GenFieldEffect()
     {
         MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] = Instantiate(MainBattleSystem.instance.battleAnimationContents.FieldPrefab, MainBattleSystem.instance.EightTrimSpawnPoint[(int)MainBattleSystem.instance.NowFocusTrigrams].transform.position, Quaternion.identity);
+        MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().Place = MainBattleSystem.instance.NowFocusTrigrams;
+        MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().Amount = MainBattleSystem.instance.BuffAmount;
         if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().SelfDestroyCountDown!=-1)
         {
             MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().StartTurn = MainBattleSystem.instance.NowTurn;

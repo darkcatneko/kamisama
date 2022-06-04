@@ -122,7 +122,16 @@ public class Skillbase : MonoBehaviour
             MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(3).AnimationPrefab;//確認生成特效
             MainBattleSystem.instance.battleAnimationContents.FieldPrefab = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(3).FieldPrefab;//確認生成場地            
             MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
-            MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.1f);
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Kun)
+            {
+                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.1f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.1f);
+            }
+            else
+            {
+                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.1f*0.9f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.1f);
+            }
 
             Debug.Log("BBBBBB");
 
@@ -146,7 +155,17 @@ public class Skillbase : MonoBehaviour
             MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(4).AnimationPrefab;//確認生成特效
             MainBattleSystem.instance.battleAnimationContents.FieldPrefab = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(4).FieldPrefab;//確認生成場地            
             MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
-            MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.2f);
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Kan)
+            {
+                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.2f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.2f);
+            }
+            else
+            {
+                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.2f*0.9f); 
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.2f * 0.9f); 
+            }
+           
 
             Debug.Log("BBBBBB");
 
@@ -242,7 +261,31 @@ public class Skillbase : MonoBehaviour
 
         }
     }
+    public void SheepSkill()
+    {
+        if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
+        {
+            MainBattleSystem.instance.MinusMana(5);//扣魔
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
+            if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
+            {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
+                Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
+            }
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Sheep"; //確認動作
+            MainBattleSystem.instance.LastSkill = "Sheep";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(7).AnimationPrefab;//確認生成特效
+            MainBattleSystem.instance.battleAnimationContents.FieldPrefab = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(7).FieldPrefab;//確認生成場地            
+            MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
+            MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat * 0.1f);
+
+            Debug.Log("BBBBBB");
+
+        }
+
     }
+}
 [System.Serializable]
 public enum EightTrigrams
 {

@@ -34,7 +34,7 @@ public class MainBattleSystem : MonoBehaviour
     public string LastSkill;                                            //上一召
     public GameObject[] FieldSkills = new GameObject[8];
     public EightTrigrams NowFocusTrigrams;public bool ReadyAttack = false;//場地的選擇 //選好格子
-    public int SkillPain;                                               //疲勞值
+    public float BuffAmount;                                               //加成值
     public moonblocks CritOrNot = moonblocks.None;
     public BattleAnimationContents battleAnimationContents;
     private int NowSkillPage = 1;public bool CanChangePage = false;

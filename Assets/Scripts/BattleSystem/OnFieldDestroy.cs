@@ -9,6 +9,8 @@ public class OnFieldDestroy : MonoBehaviour
     public int SelfDestroyCountDown = -1;
     public int StartTurn;
     public int EndTurn;
+    public EightTrigrams Place;
+    public float Amount;
     public void CallDestroyTurn()
     {
         if (SelfDestroyCountDown != -1)
@@ -25,10 +27,13 @@ public class OnFieldDestroy : MonoBehaviour
     }
     public void MagicArrayDestroy()
     {
-        MainBattleSystem.instance.BattleUseStats.Shield -= Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.1f);
+         MainBattleSystem.instance.BattleUseStats.Shield -= Mathf.RoundToInt(Amount);
     }
     public void GoastDestroy()
     {
-        MainBattleSystem.instance.BattleUseStats.Shield -= Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.2f);
+       
+         MainBattleSystem.instance.BattleUseStats.Shield -= Mathf.RoundToInt(Amount);
+
+        
     }
 }
