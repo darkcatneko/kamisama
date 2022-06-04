@@ -21,7 +21,7 @@ public class SkillPanelController : MonoBehaviour
     public Transform Contents;
     void Start()
     {
-        for (int i = 1; i < 38; i++)
+        for (int i = 1; i < 36; i++)
         {
             GenSkillBoard(i);
         }
@@ -70,6 +70,7 @@ public class SkillPanelController : MonoBehaviour
         DOTween.To(() => { return AimingPic.GetComponent<Transform>().localPosition; }, v => { AimingPic.GetComponent<Transform>().localPosition = v; }, SkillBackPackButtons[_id].GetComponent<Transform>().localPosition, 0.3f);
         if (MainSceneDataCenter.instance.Player_save.SkillBackPack[_id]!=0)
         {
+            HowtoGetSkill.text = "";
             SkillBoard.sprite = MainSceneDataCenter.instance.m_SkillDatabaseOBJ.GetSkillInformation(MainSceneDataCenter.instance.Player_save.SkillBackPack[FocusNum]).SkillCardPic;
         }
     }
