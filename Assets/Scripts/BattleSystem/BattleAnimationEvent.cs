@@ -142,12 +142,12 @@ public class BattleAnimationEvent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             //    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(2);
-            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(5).AnimationPrefab;
-            MainBattleSystem.instance.PlayerAnimator.SetBool("Needle", true);
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(6).AnimationPrefab;
+            MainBattleSystem.instance.PlayerAnimator.SetBool("Punch", true);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            MainBattleSystem.instance.PlayerAnimator.SetBool("Needle", false);
+            MainBattleSystem.instance.PlayerAnimator.SetBool("Punch", false);
         }
     }
 }
