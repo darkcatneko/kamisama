@@ -20,8 +20,8 @@ MonoBehaviour:
   m_eightTrigrams: 5
   stats: 6
   ManaCost: 15
-  SkillPic: {fileID: 21300000, guid: e46b51eb0ba114b45ad2c848270d83cf, type: 3}
-  SkillCardPic: {fileID: 21300000, guid: e46b51eb0ba114b45ad2c848270d83cf, type: 3}
+  SkillPic: {fileID: 21300000, guid: 0d56271fc9477a04ca17c9df5ea7bc5c, type: 3}
+  SkillCardPic: {fileID: 21300000, guid: da07fbe70cccb8a4d8ae3ca619cef19f, type: 3}
   SkillDescribe: "\u5341\u5E72\u81F3\u5C0A\uFF0C\u85CF\u800C\u4E0D\u73FE\uFF0C\u5E38\u96B1\u9041\u65BC\u516D\u5100\uFF0C\r\n\u98DB\u5929\u9041\u5730\uFF0C\u547C\u98A8\u559A\u96E8\uFF0C\u4FEE\u5F97\u6B64\u6CD5\u4FBF\u7121\u6240\u4E0D\u80FD"
   SkillLearnWay: "\u5FC5\u9808\u5230\u9054\"\u7B49\u7D1A\u56DB\u5341\u56DB\"\u65B9\u53EF\u89E3\u9396"
   AnimationPrefab: {fileID: 0}
