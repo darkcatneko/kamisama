@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Temple: 0
   m_Skilltype: 0
-  SkillName: "\u8D85\u7D1A\u5B87\u5B99\u7121\u6575\u7A76\u6975\u6700\u5F37\u7D42\u6975\u5C0A\u738B\u8E22"
-  ID: 37
+  SkillName: "\u8D85\u7D1A\u5B87\u5B99\u7121\u6575\u5C0A\u738B\u8E22"
+  ID: 35
   skillVariable: 0
   m_eightTrigrams: 1
   stats: 0

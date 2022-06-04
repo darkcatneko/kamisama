@@ -15,14 +15,14 @@ MonoBehaviour:
   Temple: 0
   m_Skilltype: 0
   SkillName: "\u9583\u96FB\u4E94\u9023\u97AD"
-  ID: 33
+  ID: 31
   skillVariable: 0
   m_eightTrigrams: 6
   stats: 6
   ManaCost: 20
   SkillPic: {fileID: 21300000, guid: ab7dcee42cd4d2b4d95a1694b082c4e3, type: 3}
   SkillCardPic: {fileID: 21300000, guid: ab7dcee42cd4d2b4d95a1694b082c4e3, type: 3}
-  SkillDescribe: 
+  SkillDescribe: "\u4E0B\u9762\uFF0C\u6211\u6253\u4E00\u500B\u9023\u4E94\u97AD\uFF0C\r\n\u5F88\u5FEB\u963F\uFF0C\u4E00\u97AD\uFF0C\u5169\u97AD\uFF0C\u8981\u4E0D\u8981\u96A8\u4FBF\u3002"
   SkillLearnWay: "\u5FC5\u9808\u5230\u9054\"\u7B49\u7D1A\u516B\u5341\u4E00\"\u65B9\u53EF\u89E3\u9396"
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/scriptable object/SkillScriptableObject/laiTing.asset.meta
+guid: e4a4299f1b888b44caaabdd3e60d5802
+NativeFormatImporter:
+========
+guid: 0c3310aae9eabd447b5e6a0fdbf7f3f1
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> 98aa65564970676ec5cbae3157757808223b732e:Assets/Prefab/BattleSystem/Field/SkillIcon.meta
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

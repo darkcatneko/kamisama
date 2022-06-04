@@ -140,5 +140,16 @@ public class BattleAnimationEvent : MonoBehaviour
         {
             MainBattleSystem.instance.PlayerAnimator.SetBool("MagicArray", false);
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(2);
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(6).AnimationPrefab;
+            MainBattleSystem.instance.PlayerAnimator.SetBool("Punch", true);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            MainBattleSystem.instance.PlayerAnimator.SetBool("Punch", false);
+        }
     }
 }
