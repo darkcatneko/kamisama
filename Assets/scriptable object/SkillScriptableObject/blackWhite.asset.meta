@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/scriptable object/SkillScriptableObject/blackWhite.asset.meta
 guid: 40ffe0c2da6185749834e24829c1654a
 NativeFormatImporter:
+========
+guid: 07d7896d828c3bf4ba96dc6026b80676
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> 98aa65564970676ec5cbae3157757808223b732e:Assets/Prefab/BattleSystem/Field.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 

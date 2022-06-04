@@ -19,12 +19,12 @@ MonoBehaviour:
     BaseBlock: 0
     BossStats:
     - m_stat: 4
-      m_currentstat: 0
+      m_currentstat: 50
     - m_stat: 6
-      m_currentstat: 0
+      m_currentstat: 5
     - m_stat: 5
-      m_currentstat: 0
+      m_currentstat: 5
     - m_stat: 1
-      m_currentstat: 0
+      m_currentstat: 5
     - m_stat: 0
-      m_currentstat: 0
+      m_currentstat: 5

@@ -25,6 +25,6 @@ MonoBehaviour:
   SkillDescribe: "\u554A\u6211\u5C31\u6015\u88AB\u6253\uFF0C\u90A3\u5C31\u8B93\u53E6\u4E00\u500B\u6211\u88AB\u6253\u597D\u4E86"
   SkillLearnWay: "\u5FC5\u9808\u5230\u9054\"\u7B49\u7D1A\u4E94\"\u65B9\u53EF\u89E3\u9396"
   AnimationPrefab: {fileID: 0}
-  FieldPrefab: {fileID: 0}
+  FieldPrefab: {fileID: 5006947041054269658, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
   LevelUpCondition: 05000000
   UnlockLevel: 5

@@ -46,6 +46,7 @@ public class UsageCase : MonoBehaviour
         _playerSave.Load();
         _playerSave.Now_Playing_Scene = 1;
         textAsset = FindNotePad(dialogueOBJ.The_NodePad_Be_read);
+        msgSys.AddSpecialCharToFuncMap("IntoBattle", () => { IntoBattle(); });
         //背景BGM宣告
         msgSys.AddSpecialCharToFuncMap("normalBGM", () => { ChangeBgm("DialogueBgm/Lights"); });
         msgSys.AddSpecialCharToFuncMap("FunBGM", () => { ChangeBgm("DialogueBgm/Girls's_Lunch_Royalty"); });
@@ -99,6 +100,7 @@ public class UsageCase : MonoBehaviour
         //無臉角色
         msgSys.AddSpecialCharToFuncMap("MainCharacter_nomal", () => ChangeMainSpeakerWithNoLive2D("你"));
         msgSys.AddSpecialCharToFuncMap("UncleChen_nomal", () => ChangeMainSpeakerWithNoLive2D("陳叔"));
+        msgSys.AddSpecialCharToFuncMap("Boss_day1", () => ChangeMainSpeakerWithNoLive2D("野鬼"));
         if (uiText == null)
         {
             Debug.LogError("UIText Component not assign.");
@@ -301,6 +303,10 @@ public class UsageCase : MonoBehaviour
         {
             IntoChoiceSection_2(textAsset.name);
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            IntoBattle();
+        }
     }
     public void NextSentence()
     {
@@ -332,27 +338,27 @@ public class UsageCase : MonoBehaviour
     {        
         switch (textAsset.name)
         {
-            case "1-3":
+            case "1-2":
                 sceneOBJ.NextBoss = bossdata.GetBossInformation(0);
                 _playerSave.Save();
                 SceneManager.LoadScene(4);
                 return;
-            case "2-3":
+            case "2-2":
                 
                 return;
-            case "3-3":
+            case "3-2":
                
                 return;
-            case "4-3":
+            case "4-2":
 
                 return;
-            case "5-3":
+            case "5-2":
 
                 return;
-            case "6-3":
+            case "6-2":
 
                 return;
-            case "7-3":
+            case "7-2":
 
                 return;
             default:

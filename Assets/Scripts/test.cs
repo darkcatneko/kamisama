@@ -11,7 +11,10 @@ public class test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Instantiate(bruh);
+            for (int i = 0; i < 8; i++)
+            {
+                Instantiate(bruh, MainBattleSystem.instance.EightTrimSpawnPoint[i].transform.position, Quaternion.identity);
+            }
         }
     }
     public void GenSE()

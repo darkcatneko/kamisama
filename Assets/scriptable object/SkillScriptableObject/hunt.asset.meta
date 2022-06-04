@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/scriptable object/SkillScriptableObject/hunt.asset.meta
 guid: e383a46562c24804fb61d0142f4e020f
 NativeFormatImporter:
+========
+guid: 2acc581d5402529419f5fd442784d1d1
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> 98aa65564970676ec5cbae3157757808223b732e:Assets/Prefab/BattleSystem/Field/EightTrim.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 

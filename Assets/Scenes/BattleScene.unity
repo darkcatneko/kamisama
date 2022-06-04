@@ -432,9 +432,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188801118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.7510915, y: 15.433865, z: -19.651596}
+  m_LocalPosition: {x: 8, y: -2.6900005, z: 0.06}
   m_LocalScale: {x: 2.805128, y: 1, z: 2.8051279}
-  m_Children: []
+  m_Children:
+  - {fileID: 145201854939396181}
   m_Father: {fileID: 1698812155}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -732,6 +733,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b6f09851e99bb4eb622c30b2184004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ManaCountText: {fileID: 1827229049}
+  ManaBar: {fileID: 1694707138}
+  NowTurn: 0
   ThisBoss:
     BossID: 0
     BossGameObjectPrefab: {fileID: 0}
@@ -752,6 +756,7 @@ MonoBehaviour:
     Current_MP: 0
     Current_HP: 0
     MaxHP: 0
+    Shield: 0
     POW:
       m_stat: 0
       m_currentstat: 1
@@ -804,7 +809,19 @@ MonoBehaviour:
   - {fileID: 1489283630}
   - {fileID: 455362681}
   - {fileID: 900010193}
+  EightTrimSpawnPoint:
+  - {fileID: 690836487657138194}
+  - {fileID: 4169157006295480939}
+  - {fileID: 4700792433664170590}
+  - {fileID: 382931931282522157}
+  - {fileID: 3976448138735457547}
+  - {fileID: 4351272709024522720}
+  - {fileID: 882953806}
+  - {fileID: 1775046704785064560}
   SkillEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  BuffClear:
     m_PersistentCalls:
       m_Calls: []
   LastSkill: 
@@ -825,11 +842,12 @@ MonoBehaviour:
     NowDisplayDamage: 0
     TheAnimateBePlayed: 
     BattleEffect: {fileID: 0}
+    FieldPrefab: {fileID: 0}
     AnimationTime: 0
     BattleEffectTime: 0
     DamageDelt: 
   CanChangePage: 0
-  sceneControllerOBJ: {fileID: 0}
+  sceneControllerOBJ: {fileID: 11400000, guid: 23e865d35ffb6fc4ba46d74dfca8f60e, type: 2}
 --- !u!114 &377580407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,7 +873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VolumeMaster: {fileID: 0}
-  bruh: {fileID: 6966019140636713664, guid: 82ac994b316f0564ab5582429d8ad0a6, type: 3}
+  bruh: {fileID: 5006947041054269658, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
 --- !u!1001 &415312732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1460,13 +1478,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443746595}
-  m_LocalRotation: {x: -0, y: -0.32022375, z: -0, w: 0.947342}
-  m_LocalPosition: {x: 10.69, y: 15.433865, z: -30.04}
-  m_LocalScale: {x: 2.805128, y: 1, z: 2.8051279}
-  m_Children: []
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.13, y: -2.6900005, z: -11.78}
+  m_LocalScale: {x: 2.805128, y: 1, z: 2.805128}
+  m_Children:
+  - {fileID: 1064528334344589418}
   m_Father: {fileID: 1698812155}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: -37.353, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &443746597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,6 +1573,8 @@ GameObject:
   - component: {fileID: 455362685}
   - component: {fileID: 455362684}
   - component: {fileID: 455362683}
+  - component: {fileID: 455362687}
+  - component: {fileID: 455362686}
   m_Layer: 5
   m_Name: SkillButton (8)
   m_TagString: Untagged
@@ -1624,7 +1645,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 455362684}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 455362687}
+        m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+        m_MethodName: Onclick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &455362684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1663,6 +1696,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455362681}
   m_CullTransparentMesh: 1
+--- !u!114 &455362686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455362681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 455362687}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 455362687}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &455362687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455362681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1719e4190bfa76d4f9621b1875592870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &493543686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,13 +1780,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493543686}
-  m_LocalRotation: {x: -0, y: 0.7053374, z: -0, w: 0.7088718}
-  m_LocalPosition: {x: -2.11, y: 15.433865, z: -25.609196}
-  m_LocalScale: {x: 2.805128, y: 1, z: 2.8051279}
-  m_Children: []
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.22, y: -2.6900005, z: -3.08}
+  m_LocalScale: {x: 2.8051279, y: 1, z: 2.8051276}
+  m_Children:
+  - {fileID: 882953807}
   m_Father: {fileID: 1698812155}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 89.714, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &493543688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1912,7 +2003,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630576836}
   m_LocalRotation: {x: 0.5415079, y: -0, z: -0, w: 0.8406957}
-  m_LocalPosition: {x: 12.38, y: 14.31, z: -14.63}
+  m_LocalPosition: {x: 11.2, y: 13.91, z: -14.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2084,7 +2175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4292790955100445765, guid: 801506875590cc84891ef5df2d69281b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.41760224
+      value: 0.4176022
       objectReference: {fileID: 0}
     - target: {fileID: 4292790955100445765, guid: 801506875590cc84891ef5df2d69281b, type: 3}
       propertyPath: m_LocalScale.y
@@ -2152,6 +2243,8 @@ GameObject:
   - component: {fileID: 755627701}
   - component: {fileID: 755627700}
   - component: {fileID: 755627699}
+  - component: {fileID: 755627703}
+  - component: {fileID: 755627702}
   m_Layer: 5
   m_Name: SkillButton (5)
   m_TagString: Untagged
@@ -2222,7 +2315,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 755627700}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 755627703}
+        m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+        m_MethodName: Onclick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &755627700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2261,6 +2366,93 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755627697}
   m_CullTransparentMesh: 1
+--- !u!114 &755627702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755627697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 755627703}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 755627703}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &755627703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755627697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1719e4190bfa76d4f9621b1875592870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &882953806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 882953807}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &882953807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882953806}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.07486291, y: 2.4800005, z: -0.28904366}
+  m_LocalScale: {x: 0.35649, y: 1, z: 0.35649002}
+  m_Children: []
+  m_Father: {fileID: 493543687}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &900010193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2273,6 +2465,8 @@ GameObject:
   - component: {fileID: 900010196}
   - component: {fileID: 900010195}
   - component: {fileID: 900010194}
+  - component: {fileID: 900010199}
+  - component: {fileID: 900010198}
   m_Layer: 5
   m_Name: SkillButton (9)
   m_TagString: Untagged
@@ -2323,7 +2517,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 900010195}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 900010199}
+        m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+        m_MethodName: Onclick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &900010195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2382,6 +2588,63 @@ RectTransform:
   m_AnchoredPosition: {x: 309, y: -474.8}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &900010198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900010193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 900010199}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 900010199}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &900010199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900010193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1719e4190bfa76d4f9621b1875592870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &901337973
 GameObject:
   m_ObjectHideFlags: 0
@@ -2416,8 +2679,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0.9000244, y: -0.3999939}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &901337975
 MonoBehaviour:
@@ -2439,7 +2702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a7dc63d106bf1ef4ab8050cc426d7e12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2469,6 +2732,8 @@ GameObject:
   - component: {fileID: 914999232}
   - component: {fileID: 914999231}
   - component: {fileID: 914999230}
+  - component: {fileID: 914999234}
+  - component: {fileID: 914999233}
   m_Layer: 5
   m_Name: SkillButton (6)
   m_TagString: Untagged
@@ -2539,7 +2804,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 914999231}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 914999234}
+        m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+        m_MethodName: Onclick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &914999231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2578,6 +2855,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914999228}
   m_CullTransparentMesh: 1
+--- !u!114 &914999233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914999228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 914999234}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 914999234}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &914999234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914999228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1719e4190bfa76d4f9621b1875592870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &918247376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,8 +2946,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0.9000244, y: -0.3999939}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &918247378
 MonoBehaviour:
@@ -2635,7 +2969,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 251fda26623da744e9f1cada0d56c829, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2871,8 +3205,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0.9000244, y: -0.3999939}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1056715132
 MonoBehaviour:
@@ -2894,7 +3228,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e6f5d9fc837a4a6499f0b1efc5a00562, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2999,6 +3333,8 @@ GameObject:
   - component: {fileID: 1082579985}
   - component: {fileID: 1082579984}
   - component: {fileID: 1082579983}
+  - component: {fileID: 1082579987}
+  - component: {fileID: 1082579986}
   m_Layer: 5
   m_Name: SkillButton (2)
   m_TagString: Untagged
@@ -3069,7 +3405,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1082579984}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082579987}
+        m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+        m_MethodName: Onclick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1082579984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3108,6 +3456,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082579981}
   m_CullTransparentMesh: 1
+--- !u!114 &1082579986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082579981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1082579987}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1082579987}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1082579987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082579981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1719e4190bfa76d4f9621b1875592870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1134706486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3142,8 +3547,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 1, y: -0.6000061}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1134706488
 MonoBehaviour:
@@ -3165,7 +3570,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c3b957ee4d527444eb044eacd83d7f59, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3217,8 +3622,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 1, y: -0.6000061}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1140758943
 MonoBehaviour:
@@ -3240,7 +3645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9a838667eda720e4ab6594e4c32f9211, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3426,13 +3831,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217032253}
-  m_LocalRotation: {x: -0, y: -0.3831125, z: -0, w: 0.92370176}
-  m_LocalPosition: {x: 0.69, y: 15.433865, z: -21.52}
-  m_LocalScale: {x: 2.805128, y: 1, z: 2.8051279}
-  m_Children: []
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.71, y: -2.6900005, z: 0.14}
+  m_LocalScale: {x: 2.8051279, y: 1, z: 2.8051279}
+  m_Children:
+  - {fileID: 1384786394378687031}
   m_Father: {fileID: 1698812155}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -45.053, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1217032255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3758,7 +4164,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1338746612}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 377580406}
+        m_TargetAssemblyTypeName: MainBattleSystem, Assembly-CSharp
+        m_MethodName: EndPlayerTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1338746612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3932,8 +4350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0.9, y: -0.4}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1382754530
 MonoBehaviour:
@@ -3955,7 +4373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b670e9b07dd25894fa5afd2599e587e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4007,8 +4425,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 1, y: -0.6000061}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1390492724
 MonoBehaviour:
@@ -4030,7 +4448,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2530b7f96548c08489c3833d12afba21, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4060,6 +4478,8 @@ GameObject:
   - component: {fileID: 1415878423}
   - component: {fileID: 1415878422}
   - component: {fileID: 1415878421}
+  - component: {fileID: 1415878425}
+  - component: {fileID: 1415878424}
   m_Layer: 5
   m_Name: SkillButton (1)
   m_TagString: Untagged
@@ -4130,7 +4550,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1415878422}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1415878425}
+        m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+        m_MethodName: Onclick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1415878422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4169,6 +4601,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415878419}
   m_CullTransparentMesh: 1
+--- !u!114 &1415878424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415878419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1415878425}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1415878425}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1415878425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415878419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1719e4190bfa76d4f9621b1875592870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1417784275
 GameObject:
   m_ObjectHideFlags: 0
@@ -4272,9 +4761,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425289850}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.6910915, y: 15.433865, z: -31.481596}
+  m_LocalPosition: {x: 2.08, y: -2.6900005, z: -11.73}
   m_LocalScale: {x: 2.805128, y: 1, z: 2.8051279}
-  m_Children: []
+  m_Children:
+  - {fileID: 4375997947890517324}
   m_Father: {fileID: 1698812155}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4353,6 +4843,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425289850}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1427373519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6818625713356967105, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+  m_PrefabInstance: {fileID: 4349074561707946007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1427373522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427373519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cac30d293e61314ca2dc42d2abb21dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathtime: 1
 --- !u!1 &1489283630
 GameObject:
   m_ObjectHideFlags: 0
@@ -4365,6 +4873,8 @@ GameObject:
   - component: {fileID: 1489283634}
   - component: {fileID: 1489283633}
   - component: {fileID: 1489283632}
+  - component: {fileID: 1489283636}
+  - component: {fileID: 1489283635}
   m_Layer: 5
   m_Name: SkillButton (7)
   m_TagString: Untagged
@@ -4435,7 +4945,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1489283633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1489283636}
+        m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+        m_MethodName: Onclick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1489283633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4474,6 +4996,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489283630}
   m_CullTransparentMesh: 1
+--- !u!114 &1489283635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489283630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1489283636}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1489283636}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1489283636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489283630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1719e4190bfa76d4f9621b1875592870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1548859848
 GameObject:
   m_ObjectHideFlags: 0
@@ -4486,6 +5065,8 @@ GameObject:
   - component: {fileID: 1548859852}
   - component: {fileID: 1548859851}
   - component: {fileID: 1548859850}
+  - component: {fileID: 1548859854}
+  - component: {fileID: 1548859853}
   m_Layer: 5
   m_Name: SkillButton (3)
   m_TagString: Untagged
@@ -4556,7 +5137,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1548859851}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1548859854}
+        m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+        m_MethodName: Onclick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1548859851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4595,6 +5188,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548859848}
   m_CullTransparentMesh: 1
+--- !u!114 &1548859853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548859848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1548859854}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1548859854}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1548859854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548859848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1719e4190bfa76d4f9621b1875592870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1576858973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4616,23 +5266,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.9793952
+      value: 2.979395
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.9793952
+      value: 2.979395
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 39.53109
+      value: 38.54109
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.383865
+      value: -2.7399998
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.151596
+      value: -4.561596
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4702,8 +5352,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 0.9000244, y: -0.3999939}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1579118482
 MonoBehaviour:
@@ -4725,7 +5375,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d81c9b3b87dc2d041a22e16d788ca1d0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4777,8 +5427,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 1, y: -0.6000061}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1600917425
 MonoBehaviour:
@@ -4800,7 +5450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c44e41f4e04bce845be14efc47242f0a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4846,9 +5496,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618647104}
   m_LocalRotation: {x: -0, y: -0.7042087, z: -0, w: 0.70999306}
-  m_LocalPosition: {x: 13.741092, y: 15.433865, z: -25.609196}
-  m_LocalScale: {x: 2.805128, y: 1, z: 2.8051279}
-  m_Children: []
+  m_LocalPosition: {x: 11.93, y: -2.6900005, z: -8.99}
+  m_LocalScale: {x: 2.8051286, y: 1, z: 2.8051283}
+  m_Children:
+  - {fileID: 5379855012441147929}
   m_Father: {fileID: 1698812155}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -89.531, z: 0}
@@ -5039,6 +5690,8 @@ GameObject:
   - component: {fileID: 1663692949}
   - component: {fileID: 1663692948}
   - component: {fileID: 1663692947}
+  - component: {fileID: 1663692951}
+  - component: {fileID: 1663692950}
   m_Layer: 5
   m_Name: SkillButton (4)
   m_TagString: Untagged
@@ -5109,7 +5762,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1663692948}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1663692951}
+        m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+        m_MethodName: Onclick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1663692948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5148,6 +5813,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663692945}
   m_CullTransparentMesh: 1
+--- !u!114 &1663692950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663692945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1663692951}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1663692951}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1663692951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663692945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1719e4190bfa76d4f9621b1875592870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1686905820
 GameObject:
   m_ObjectHideFlags: 0
@@ -5322,7 +6044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698812154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.99, y: -18.123865, z: 19.59}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 493543687}
@@ -5418,13 +6140,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704866623}
-  m_LocalRotation: {x: -0, y: 0.31272575, z: -0, w: 0.9498435}
-  m_LocalPosition: {x: 0.76, y: 15.433865, z: -29.87}
-  m_LocalScale: {x: 2.805128, y: 1, z: 2.8051279}
-  m_Children: []
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.35, y: -2.6900005, z: -8.84}
+  m_LocalScale: {x: 2.805128, y: 1, z: 2.805128}
+  m_Children:
+  - {fileID: 4032787686469104039}
   m_Father: {fileID: 1698812155}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 36.447, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1704866625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5566,13 +6289,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779068652}
-  m_LocalRotation: {x: -0, y: 0.2888418, z: -0, w: 0.9573769}
-  m_LocalPosition: {x: 10.67, y: 15.433865, z: -21.47}
-  m_LocalScale: {x: 2.805128, y: 1, z: 2.8051279}
-  m_Children: []
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.860001, y: -2.6900005, z: -3.01}
+  m_LocalScale: {x: 2.8051286, y: 1, z: 2.8051283}
+  m_Children:
+  - {fileID: 3624929600303262252}
   m_Father: {fileID: 1698812155}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 33.577, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1779068654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5852,8 +6576,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 1, y: -0.6}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1880474486
 MonoBehaviour:
@@ -5875,7 +6599,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: af7653597c19042429d7b85474b0041b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5977,6 +6701,8 @@ GameObject:
   - component: {fileID: 1988415352}
   - component: {fileID: 1988415351}
   - component: {fileID: 1988415350}
+  - component: {fileID: 1988415354}
+  - component: {fileID: 1988415353}
   m_Layer: 5
   m_Name: SkillButton
   m_TagString: Untagged
@@ -6047,7 +6773,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1988415351}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1988415354}
+        m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+        m_MethodName: Onclick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1988415351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6086,6 +6824,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988415348}
   m_CullTransparentMesh: 1
+--- !u!114 &1988415353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988415348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1988415354}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1988415354}
+          m_TargetAssemblyTypeName: SkillButtonDoTween, Assembly-CSharp
+          m_MethodName: OnPointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1988415354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988415348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1719e4190bfa76d4f9621b1875592870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2031085140
 GameObject:
   m_ObjectHideFlags: 0
@@ -6281,23 +7076,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.9793952
+      value: 2.979395
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.9793952
+      value: 2.979395
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1789087
+      value: -1.1689087
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.383865
+      value: -2.7399998
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.151596
+      value: -4.561596
       objectReference: {fileID: 0}
     - target: {fileID: 1042465397890528735, guid: 2c986d7e539b36c4b94e746e94ff211a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6426,60 +7221,392 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1001 &5307188268154821727
+--- !u!4 &145201854939396181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690836487657138194}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.082381636, y: 2.4800005, z: -0.29888266}
+  m_LocalScale: {x: 0.35649, y: 1, z: 0.35649}
+  m_Children: []
+  m_Father: {fileID: 188801119}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &382931931282522157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1064528334344589418}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &690836487657138194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 145201854939396181}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1064528334344589418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382931931282522157}
+  m_LocalRotation: {x: -0, y: 0.32022375, z: -0, w: 0.947342}
+  m_LocalPosition: {x: -0.07, y: 2.4800005, z: -0.318}
+  m_LocalScale: {x: 0.35649, y: 1, z: 0.35649}
+  m_Children: []
+  m_Father: {fileID: 443746596}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1384786394378687031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775046704785064560}
+  m_LocalRotation: {x: -0, y: 0.3831125, z: -0, w: 0.92370176}
+  m_LocalPosition: {x: -0.102, y: 2.4800005, z: -0.305}
+  m_LocalScale: {x: 0.35649, y: 1, z: 0.35649}
+  m_Children: []
+  m_Father: {fileID: 1217032254}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1775046704785064560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1384786394378687031}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1001 &2997560786121796577
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5307188266331692044, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 8556618626398469077, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 5307188266331692044, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 8556618626398469077, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.46
       objectReference: {fileID: 0}
-    - target: {fileID: 5307188266331692044, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 8556618626398469077, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.21
       objectReference: {fileID: 0}
-    - target: {fileID: 5307188266331692044, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 8556618626398469077, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -11.05
       objectReference: {fileID: 0}
-    - target: {fileID: 5307188266331692044, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 8556618626398469077, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5307188266331692044, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 8556618626398469077, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5307188266331692044, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 8556618626398469077, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5307188266331692044, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 8556618626398469077, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5307188266331692044, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 8556618626398469077, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5307188266331692044, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 8556618626398469077, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5307188266331692044, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 8556618626398469077, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5307188266331692045, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+    - target: {fileID: 9019218286997793682, guid: a782f2d44119ab348973cc861836a211, type: 3}
       propertyPath: m_Name
-      value: Medicine_VFX_Animation
+      value: MagicCircleVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019218286997793682, guid: a782f2d44119ab348973cc861836a211, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7939a6a1ee70ddd4c99d809f41f3ed31, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: a782f2d44119ab348973cc861836a211, type: 3}
+--- !u!4 &3624929600303262252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169157006295480939}
+  m_LocalRotation: {x: -0, y: -0.2888418, z: -0, w: 0.9573769}
+  m_LocalPosition: {x: -0.09, y: 2.4800005, z: -0.3}
+  m_LocalScale: {x: 0.3564899, y: 1, z: 0.3564899}
+  m_Children: []
+  m_Father: {fileID: 1779068653}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3976448138735457547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4375997947890517324}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4032787686469104039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4351272709024522720}
+  m_LocalRotation: {x: -0, y: -0.31272575, z: -0, w: 0.9498435}
+  m_LocalPosition: {x: -0.017, y: 2.4800005, z: -0.2695172}
+  m_LocalScale: {x: 0.35649, y: 1, z: 0.35649}
+  m_Children: []
+  m_Father: {fileID: 1704866624}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4169157006295480939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3624929600303262252}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1001 &4349074561707946007
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6818625713356967105, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_Name
+      value: Punch_VFX_Animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800202220666359758, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800202220666359758, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800202220666359758, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800202220666359758, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800202220666359758, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800202220666359758, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800202220666359758, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800202220666359758, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800202220666359758, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800202220666359758, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800202220666359758, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
+--- !u!1 &4351272709024522720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4032787686469104039}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4375997947890517324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3976448138735457547}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.07525218, y: 2.4800005, z: -0.30601248}
+  m_LocalScale: {x: 0.35649, y: 1, z: 0.35649}
+  m_Children: []
+  m_Father: {fileID: 1425289851}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4700792433664170590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5379855012441147929}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5379855012441147929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4700792433664170590}
+  m_LocalRotation: {x: -0, y: 0.7042087, z: -0, w: 0.70999306}
+  m_LocalPosition: {x: -0.33599165, y: 2.4800005, z: 0.072506085}
+  m_LocalScale: {x: 0.3564899, y: 1, z: 0.3564899}
+  m_Children: []
+  m_Father: {fileID: 1618647105}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8360611344165709000
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5006947041054269658, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_Name
+      value: GoastFieldVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006947041054269658, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686282433611624605, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686282433611624605, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686282433611624605, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686282433611624605, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686282433611624605, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686282433611624605, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686282433611624605, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686282433611624605, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686282433611624605, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686282433611624605, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686282433611624605, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2a4f253fcd64ef4385db20d3732e1e9, type: 3}
