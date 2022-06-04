@@ -15,7 +15,7 @@ MonoBehaviour:
   Temple: 0
   m_Skilltype: 0
   SkillName: "\u529B\u62D4\u5C71\u516E\u6C23\u84CB\u4E16"
-  ID: 21
+  ID: 48
   skillVariable: 0
   m_eightTrigrams: 5
   stats: 4

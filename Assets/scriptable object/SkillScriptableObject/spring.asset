@@ -22,7 +22,7 @@ MonoBehaviour:
   ManaCost: 7
   SkillPic: {fileID: 21300000, guid: dd2b39aa98224a646a34ebed1400a570, type: 3}
   SkillCardPic: {fileID: 21300000, guid: dd2b39aa98224a646a34ebed1400a570, type: 3}
-  SkillDescribe: 
+  SkillDescribe: "\u975C\u5FC3\uFF0C\u4F7F\u9748\u7D14\u5316\r\n\u842C\u7269\u5FA9\u7526\u4E4B\u6642\uFF0C\u5176\u540D\u70BA\u6625\r\n\u5438\u6536\u5176\u4E4B\u6C23\uFF0C\u4F7F\u9B42\u56DE\u5FA9"
   SkillLearnWay: "\u5FC5\u9808\u5230\u9054\"\u7B49\u7D1A\u5341\u4E94\"\u65B9\u53EF\u89E3\u9396"
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}
