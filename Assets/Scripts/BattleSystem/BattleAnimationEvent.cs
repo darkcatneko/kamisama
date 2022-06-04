@@ -5,7 +5,11 @@ using DG.Tweening;
 
 public class BattleAnimationEvent : MonoBehaviour
 {
-
+    public Material BasicMat;
+    private void Start()
+    {
+        BasicMat = MainBattleSystem.instance.BossSprites[0].material;
+    }
     public void GenBattleEffect()
     {
         Instantiate(MainBattleSystem.instance.battleAnimationContents.BattleEffect, Vector3.zero, Quaternion.identity);
@@ -99,7 +103,7 @@ public class BattleAnimationEvent : MonoBehaviour
         yield return new WaitForSeconds(0.07f);
         for (int i = 0; i < Prefab.Count; i++)
         {
-            Prefab[i].material = defualt;
+            Prefab[i].material = BasicMat;
         }
     }
     private IEnumerator ChangeColor2(List<SpriteRenderer> Prefab)
