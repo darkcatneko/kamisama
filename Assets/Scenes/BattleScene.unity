@@ -3166,6 +3166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e243ff0f75fec5040958dd3ba0a1c6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BasicMat: {fileID: 0}
 --- !u!95 &995266477 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 855064361197410638, guid: 801506875590cc84891ef5df2d69281b, type: 3}
@@ -6059,6 +6060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e243ff0f75fec5040958dd3ba0a1c6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BasicMat: {fileID: 0}
 --- !u!114 &1704510827
 MonoBehaviour:
   m_ObjectHideFlags: 0
