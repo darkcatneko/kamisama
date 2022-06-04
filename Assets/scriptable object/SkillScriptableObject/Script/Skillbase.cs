@@ -16,6 +16,8 @@ public class Skillbase : MonoBehaviour
         SkillActionList.Add(2, Medicine_Skill);
         SkillActionList.Add(3, MagicArraySkill);
         SkillActionList.Add(4, GoastSkill);
+        SkillActionList.Add(5, Needle_Skill);
+        SkillActionList.Add(6, Punch_Skill);
     }
     private void Start()
     {
@@ -37,7 +39,7 @@ public class Skillbase : MonoBehaviour
     {
         if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
         {            
-            MainBattleSystem.instance.MinusMana(5);//扣魔
+            MainBattleSystem.instance.MinusMana(1);//扣魔
             MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
             if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]!=null)//確認陣上是否有陣法
             {
@@ -170,7 +172,7 @@ public class Skillbase : MonoBehaviour
             //爆擊動畫
             //確認王的閃避
             MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
-            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Li)//輸出多個傷害值
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Qian)//輸出多個傷害值
             {
                 if (MainBattleSystem.instance.CritOrNot == moonblocks.OneUpOneDown)
                 {
@@ -202,7 +204,7 @@ public class Skillbase : MonoBehaviour
         }
 
     }
-    public void M_Skill()
+    public void Punch_Skill()
     {
         if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
         {
@@ -213,23 +215,27 @@ public class Skillbase : MonoBehaviour
                 MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
                 Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
             }
-            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Medicine"; //確認動作
-            MainBattleSystem.instance.LastSkill = "Medicine";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Punch"; //確認動作
+            MainBattleSystem.instance.LastSkill = "Punch";//上一召紀錄使用
             MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
-            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(2).AnimationPrefab;//確認生成特效
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(6).AnimationPrefab;//確認生成特效
             MainBattleSystem.instance.CritCheck();//確認爆擊
             //爆擊動畫
             //確認王的閃避
             MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
-            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Li)//輸出多個傷害值
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Gen)//輸出多個傷害值
             {
-                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 2f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 1f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.03f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 3f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[1]);
             }
             else
             {
-                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 2f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 1f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.03f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 3f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[1]);
             }
 
             Debug.Log("BBBBBB");

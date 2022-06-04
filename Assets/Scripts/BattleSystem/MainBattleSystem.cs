@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using DG.Tweening;
+using TMPro;
 
 public class MainBattleSystem : MonoBehaviour
 {
+    public TextMeshProUGUI ManaCountText;
+    public Image ManaBar;private float TempMana;
     public int NowTurn;                                                 //回合數
     public BossClass ThisBoss;
     public int ManaTired = 0;                                           //疲勞值
@@ -55,6 +58,7 @@ public class MainBattleSystem : MonoBehaviour
       
         ThisBoss = sceneControllerOBJ.NextBoss.m_base;
         BattleUseStats = m_player.m_Player.Setup_battleInformation(m_player.m_Player);
+        TempMana = BattleUseStats.Current_MP;
         for (int i = 0; i < SkillButtons.Count; i++)
         {
             SkillButtonSetUp(i,m_player.SkillBackPack[i]);
@@ -65,10 +69,11 @@ public class MainBattleSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.mouseScrollDelta.y!=0)
         {
             ChangePageLever();
         }
+        ManaUpdate();
     }
     public void ChangePageLever()
     {
@@ -189,10 +194,18 @@ public class MainBattleSystem : MonoBehaviour
         ReadyAttack = false;
     }
     public void MinusMana(int ManaCost)
-    {        
-         BattleUseStats.Current_MP -= ManaCost+ManaTired;        
+    {
+        TempMana = BattleUseStats.Current_MP;        
+        BattleUseStats.Current_MP -= ManaCost+ManaTired;
+        DOTween.To(() => { return TempMana; }, x => TempMana = x, BattleUseStats.Current_MP, 1f);
+        ManaTired++;
     }
-    public void CritCheck()
+    public void ManaUpdate()
+    {
+        ManaCountText.text = BattleUseStats.Current_MP.ToString() + "/" + Mathf.RoundToInt(BattleUseStats.INT.m_currentstat * 0.1f + 5).ToString();
+        ManaBar.fillAmount = TempMana / (BattleUseStats.INT.m_currentstat * 0.1f + 5);
+    }
+    public void CritCheck3() 
     {
         int Luck;
         Luck = 30 + Random.Range(-10, BattleUseStats.LUK.m_currentstat);
@@ -210,6 +223,36 @@ public class MainBattleSystem : MonoBehaviour
         }
         Debug.Log(CritOrNot.ToString());
     }
+    public void CritCheck()
+    {
+        int Luck;int Luck2;
+        Luck = Random.Range(0, 101);
+        if (MainBattleSystem.instance.BattleUseStats.LUK.m_currentstat>Luck)
+        {
+            Luck2 = Random.Range(0, 101);            
+            if (MainBattleSystem.instance.BattleUseStats.LUK.m_currentstat > Luck2)
+            {
+                CritOrNot = moonblocks.OneUpOneDown;
+            }
+            else
+            {
+                CritOrNot = moonblocks.TwoUp;
+            }
+        }
+        else
+        {
+            Luck2 = Random.Range(0, 101);
+            if (Luck2 % 2==0)
+            {
+                CritOrNot = moonblocks.TwoUp;
+            }
+            else
+            {
+                CritOrNot = moonblocks.TwoDown;
+            }           
+        }
+        Debug.Log(CritOrNot.ToString());
+    }
     public void EndPlayerTurn()
     {
         if(m_battleStatus == BattleStatus.PlayerTurn)
@@ -223,13 +266,30 @@ public class MainBattleSystem : MonoBehaviour
     }
     public void BackToPlayerTurn()
     {
-
+        NowTurn++;
+        TempMana = BattleUseStats.Current_MP;
         ManaTired = 0;
-        BattleUseStats.Current_MP += BattleUseStats.Mana_regen_speed;
-        //確認上過的buff是否需要回調
+        BattleUseStats.Current_MP = Mathf.Clamp(BattleUseStats.Current_MP + BattleUseStats.Mana_regen_speed, 0, Mathf.RoundToInt(BattleUseStats.INT.m_currentstat * 0.1f + 5)) ;
+        DOTween.To(() => { return TempMana; }, x => TempMana = x, BattleUseStats.Current_MP, 1f);
+        for (int i = 0; i < FieldSkills.Length; i++)
+        {
+            if (FieldSkills[i]!=null)
+            {
+                if (FieldSkills[i].GetComponent<OnFieldDestroy>().SelfDestroyCountDown != -1)
+                {
+                    if (FieldSkills[i].GetComponent<OnFieldDestroy>().EndTurn == NowTurn)
+                    {
+                        FieldSkills[i].GetComponent<OnFieldDestroy>().CallDestroy();
+                        Destroy(FieldSkills[i]);
+                    }
+                }
+            }
+            
+        }//確認上過的buff是否需要回調
         m_battleStatus = BattleStatus.PlayerTurn;
 
     }
+    
 }
 [System.Serializable]
 public class BattleAnimationContents

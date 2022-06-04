@@ -733,6 +733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b6f09851e99bb4eb622c30b2184004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ManaCountText: {fileID: 1827229049}
+  ManaBar: {fileID: 1694707138}
   NowTurn: 0
   ThisBoss:
     BossID: 0
