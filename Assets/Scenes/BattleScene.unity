@@ -836,7 +836,7 @@ MonoBehaviour:
   - {fileID: 0}
   NowFocusTrigrams: 0
   ReadyAttack: 0
-  SkillPain: 0
+  BuffAmount: 0
   CritOrNot: 3
   battleAnimationContents:
     NowDisplayDamage: 0
@@ -4843,24 +4843,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425289850}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1427373519 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6818625713356967105, guid: 4cd55cdcd094f154c814bbac9fdc7ef5, type: 3}
-  m_PrefabInstance: {fileID: 4349074561707946007}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1427373522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427373519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cac30d293e61314ca2dc42d2abb21dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathtime: 1
 --- !u!1 &1489283630
 GameObject:
   m_ObjectHideFlags: 0
