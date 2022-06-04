@@ -26,5 +26,5 @@ MonoBehaviour:
   SkillLearnWay: "\u5FC5\u9808\u5230\u9054\"\u7B49\u7D1A\u516D\u5341\u4E5D\"\u65B9\u53EF\u89E3\u9396"
   AnimationPrefab: {fileID: 0}
   FieldPrefab: {fileID: 0}
-  LevelUpCondition: 
+  LevelUpCondition: 00000000
   UnlockLevel: 69
