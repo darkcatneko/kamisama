@@ -242,7 +242,7 @@ public class Skillbase : MonoBehaviour
             //爆擊動畫
             //確認王的閃避
             MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
-            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Gen)//輸出多個傷害值
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Zhen)//輸出多個傷害值
             {
                 MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 1f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
@@ -256,7 +256,7 @@ public class Skillbase : MonoBehaviour
                 MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.03f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 3f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[1]);
             }
-
+            MainBattleSystem.instance.ManaTired++;
             Debug.Log("BBBBBB");
 
         }
@@ -278,7 +278,121 @@ public class Skillbase : MonoBehaviour
             MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(7).AnimationPrefab;//確認生成特效
             MainBattleSystem.instance.battleAnimationContents.FieldPrefab = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(7).FieldPrefab;//確認生成場地            
             MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
-            MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat * 0.1f);
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Gen)
+            {
+                MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat * 0.1f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat * 0.1f);
+            }
+            else
+            {
+                MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat * 0.1f * 0.9f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat * 0.1f * 0.9f);
+            }
+           
+
+            Debug.Log("BBBBBB");
+
+        }
+
+    }
+    public void RockHand_Skill()
+    {
+        if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
+        {
+            MainBattleSystem.instance.MinusMana(5);//扣魔
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
+            if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
+            {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
+                Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
+            }
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "RockHand"; //確認動作
+            MainBattleSystem.instance.LastSkill = "RockHand";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(8).AnimationPrefab;//確認生成特效
+            MainBattleSystem.instance.CritCheck();//確認爆擊
+            //爆擊動畫
+            //確認王的閃避
+            MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Zhen)//輸出多個傷害值
+            {
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.3f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 15f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+                
+            }
+            else
+            {
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(GetDamage(0.3f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 15f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f));
+                Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+
+            }
+            MainBattleSystem.instance.ManaTired++;
+            Debug.Log("BBBBBB");
+
+        }
+    }
+    public void SpringSkill()
+    {
+        if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
+        {
+            MainBattleSystem.instance.MinusMana(7);//扣魔
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
+            if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
+            {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
+                Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
+            }
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Spring"; //確認動作
+            MainBattleSystem.instance.LastSkill = "Spring";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(9).AnimationPrefab;//確認生成特效
+            MainBattleSystem.instance.battleAnimationContents.FieldPrefab = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(9).FieldPrefab;//確認生成場地            
+            MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Kun)
+            {
+                MainBattleSystem.instance.BattleUseStats.Regen += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.1f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.1f);
+            }
+            else
+            {
+                MainBattleSystem.instance.BattleUseStats.Regen += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.1f*0.9f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.1f * 0.9f);
+            }
+
+
+            Debug.Log("BBBBBB");
+
+        }
+
+    }
+    public void KingKongSkill()
+    {
+        if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
+        {
+            MainBattleSystem.instance.MinusMana(5);//扣魔
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
+            if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
+            {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
+                Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
+            }
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Spring"; //確認動作
+            MainBattleSystem.instance.LastSkill = "Spring";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(9).AnimationPrefab;//確認生成特效
+            MainBattleSystem.instance.battleAnimationContents.FieldPrefab = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(9).FieldPrefab;//確認生成場地            
+            MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<int>();
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Kun)
+            {
+                MainBattleSystem.instance.BattleUseStats.Regen += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.1f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.1f);
+            }
+            else
+            {
+                MainBattleSystem.instance.BattleUseStats.Regen += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.1f * 0.9f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.1f * 0.9f);
+            }
+
 
             Debug.Log("BBBBBB");
 

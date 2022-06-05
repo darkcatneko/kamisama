@@ -21,7 +21,7 @@ MonoBehaviour:
   stats: 3
   ManaCost: 30
   SkillPic: {fileID: 21300000, guid: 04f5f0c3b871c864887f8b71d077cc69, type: 3}
-  SkillCardPic: {fileID: 21300000, guid: bb1170410dc76e244aa763d482e6acf4, type: 3}
+  SkillCardPic: {fileID: 21300000, guid: 04f5f0c3b871c864887f8b71d077cc69, type: 3}
   SkillDescribe: "\u4EC0\u9EBC\u90FD\u770B\u4E0D\u5230\uFF0C\u4EC0\u9EBC\u90FD\u611F\u89BA\u4E0D\u5230\u3002\r\n\u6216\u8005\u8AAC\uFF0C\u4EC0\u9EBC\u90FD\u80FD\u770B\u5230\uFF0C\u4EC0\u9EBC\u90FD\u80FD\u807D\u5230\u3002"
   SkillLearnWay: 
   AnimationPrefab: {fileID: 0}

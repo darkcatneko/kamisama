@@ -20,7 +20,8 @@ public class SkillPanelController : MonoBehaviour
     public TextMeshProUGUI HowtoGetSkill;
     public Transform Contents;
     void Start()
-    {
+    {        
+
         for (int i = 1; i < 36; i++)
         {
             GenSkillBoard(i);

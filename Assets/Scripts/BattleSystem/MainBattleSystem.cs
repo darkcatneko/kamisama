@@ -264,9 +264,17 @@ public class MainBattleSystem : MonoBehaviour
             BackToPlayerTurn();
         }
     }
-    public void BackToPlayerTurn()
+    public void ChangeHP(int value)
     {
-        NowTurn++;
+        int TempHP;
+        TempHP = BattleUseStats.Current_HP;
+        BattleUseStats.Current_HP += value;
+        DOTween.To(() => { return TempHP; }, x => TempHP = x, BattleUseStats.Current_HP, 1f);
+    }
+    public void BackToPlayerTurn()
+    {       
+       NowTurn++;
+        ChangeHP(BattleUseStats.Regen);
         TempMana = BattleUseStats.Current_MP;
         ManaTired = 0;
         BattleUseStats.Current_MP = Mathf.Clamp(BattleUseStats.Current_MP + BattleUseStats.Mana_regen_speed, 0, Mathf.RoundToInt(BattleUseStats.INT.m_currentstat * 0.1f + 5)) ;
@@ -319,4 +327,16 @@ public enum moonblocks
     TwoDown = 9 ,
     OneUpOneDown = 11,
     None = 0,
+}
+[System.Serializable]
+public class PlayerBuff
+{
+    public Stats BuffStat;
+    public float Amount;
+    public int StartTurn;
+    public int EndTurn;
+    public void Buffend()
+    {
+        
+    }
 }

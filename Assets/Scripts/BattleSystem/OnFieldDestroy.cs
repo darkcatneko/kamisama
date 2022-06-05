@@ -36,4 +36,19 @@ public class OnFieldDestroy : MonoBehaviour
 
         
     }
+    public void SheepDestroy()
+    {
+
+        MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat -= Mathf.RoundToInt(Amount);
+
+
+    }
+    public void SpringDestroy()
+    {
+
+        MainBattleSystem.instance.BattleUseStats.Regen -= Mathf.RoundToInt(Amount);
+
+
+    }
+
 }
