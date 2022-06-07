@@ -35,6 +35,7 @@ public class MainBattleSystem : MonoBehaviour
     public GameObject[] FieldSkills = new GameObject[8];
     public EightTrigrams NowFocusTrigrams;public bool ReadyAttack = false;//場地的選擇 //選好格子
     public float BuffAmount;                                               //加成值
+    public List<PlayerBuff> Buffs;
     public moonblocks CritOrNot = moonblocks.None;
     public BattleAnimationContents battleAnimationContents;
     private int NowSkillPage = 1;public bool CanChangePage = false;
@@ -133,7 +134,7 @@ public class MainBattleSystem : MonoBehaviour
                     {
                         if (NowSkillPage  == SkillButton/5+1)
                         {
-                            if (skillDatabaseOBJ.GetSkillInformation(skillid).ManaCost+ManaTired <= BattleUseStats.Current_MP)
+                            if (skillDatabaseOBJ.GetSkillInformation(skillid).ManaCost+ManaTired <= BattleUseStats.Current_MP)//檢查魔力量
                             {
                                 
                                 StartCoroutine("PlayerAttack", SkillButton);
@@ -181,13 +182,13 @@ public class MainBattleSystem : MonoBehaviour
         yield return new WaitUntil(() =>ReadyAttack == true);
         MainBattleSystem.instance.m_battleStatus = BattleStatus.PlayerTurn;
         SkillEvent.AddListener(SKbase.FindSkillFunction(m_player.SkillBackPack[_id]));
-        SkillEvent.Invoke();//扣魔力並且鎖住玩家行動
+        SkillEvent.Invoke();//扣魔力並且鎖住玩家行動 //前提條件判定
         //演出animation
         PlayerAnimator.SetBool(battleAnimationContents.TheAnimateBePlayed,true);
         yield return new WaitForSeconds(battleAnimationContents.AnimationTime);
         PlayerAnimator.SetBool(battleAnimationContents.TheAnimateBePlayed, false);
         yield return new WaitForSeconds(battleAnimationContents.BattleEffectTime);
-        battleAnimationContents.DamageDelt = new List<int>();
+        battleAnimationContents.DamageDelt = new List<DamageNumber>();
         battleAnimationContents.NowDisplayDamage = 0;
         m_battleStatus = BattleStatus.PlayerTurn;
         SkillEvent.RemoveAllListeners();
@@ -279,7 +280,7 @@ public class MainBattleSystem : MonoBehaviour
         ManaTired = 0;
         BattleUseStats.Current_MP = Mathf.Clamp(BattleUseStats.Current_MP + BattleUseStats.Mana_regen_speed, 0, Mathf.RoundToInt(BattleUseStats.INT.m_currentstat * 0.1f + 5)) ;
         DOTween.To(() => { return TempMana; }, x => TempMana = x, BattleUseStats.Current_MP, 1f);
-        for (int i = 0; i < FieldSkills.Length; i++)
+        for (int i = 0; i < FieldSkills.Length; i++)//檢查場地
         {
             if (FieldSkills[i]!=null)
             {
@@ -294,6 +295,14 @@ public class MainBattleSystem : MonoBehaviour
             }
             
         }//確認上過的buff是否需要回調
+        for (int i = 0; i < Buffs.Count; i++)
+        {
+            if (Buffs[i].EndTurn == NowTurn)
+            {
+                Buffs[i].Buffend();
+                Buffs.RemoveAt(i);
+            }
+        }
         m_battleStatus = BattleStatus.PlayerTurn;
 
     }
@@ -308,7 +317,7 @@ public class BattleAnimationContents
     public GameObject FieldPrefab;
     public float AnimationTime;
     public int BattleEffectTime;
-    public List<int> DamageDelt;
+    public List<DamageNumber> DamageDelt;
 }
 
 [System.Serializable]
@@ -337,6 +346,35 @@ public class PlayerBuff
     public int EndTurn;
     public void Buffend()
     {
-        
+        switch(BuffStat)
+        {
+            case Stats.DEF:
+                MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat -= Mathf.RoundToInt(Amount);
+                return;
+            case Stats.SPI:
+                MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat -= Mathf.RoundToInt(Amount);
+                return;
+            case Stats.POW:
+                MainBattleSystem.instance.BattleUseStats.POW.m_currentstat -= Mathf.RoundToInt(Amount);
+                return;
+        }
+    }
+    public PlayerBuff(Stats st, float am, int startturn, int endturn)
+    {
+        BuffStat = st;
+        Amount = am;
+        StartTurn = startturn;
+        EndTurn = endturn;
+    }
+}
+[System.Serializable]
+public class DamageNumber
+{
+    public int Number;
+    public DamageType type;
+    public DamageNumber(int num, DamageType _type)
+    {
+        Number = num;
+        type = _type;
     }
 }

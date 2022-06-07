@@ -137,7 +137,6 @@ public class PlayerInformation
     //技能包
     public int BasicMana => Level + Mathf.RoundToInt(INT.m_currentstat * 0.1f);
     public int Mana_regen_speed;
-
     
     public int Current_MP;
     public int Current_HP;
@@ -160,6 +159,18 @@ public class PlayerInformation
     public PlayerStats Kin_hua = new PlayerStats(Stats.Kin_hua, 1);
     public PlayerStats Ron_Xiu = new PlayerStats(Stats.Ron_Xiu, 1);
     #endregion 
+    //public List<PlayerStats> m_Stats = new List<PlayerStats>();
+    //public PlayerStats FindStat(Stats st)
+    //{
+    //    for (int i = 0; i < m_Stats.Count; i++)
+    //    {
+    //        if ( m_Stats[i].m_stat==st)
+    //        {
+    //            return m_Stats[i];
+    //        }
+    //    }
+    //    return null;
+    //}
     #region 建構式
     public PlayerInformation(int _level)
     {

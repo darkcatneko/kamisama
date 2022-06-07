@@ -28,7 +28,7 @@ public class BattleAnimationEvent : MonoBehaviour
     public void GenDamageNumber()
     {
         Vector3 Place = new Vector3(Random.Range(-20, 0) * 0.1f, 0f, Random.Range(-20, 0) * 0.1f);
-        int Damage = MainBattleSystem.instance.battleAnimationContents.DamageDelt[MainBattleSystem.instance.battleAnimationContents.NowDisplayDamage];
+        int Damage = MainBattleSystem.instance.battleAnimationContents.DamageDelt[MainBattleSystem.instance.battleAnimationContents.NowDisplayDamage].Number;//根據怪物的魔防物防來改
         MainBattleSystem.instance.battleAnimationContents.NowDisplayDamage++;
         GameObject DamageBlock = Instantiate(Resources.Load<GameObject>("DamageNumber"), Place, Quaternion.identity);
         if (Damage>=10)
