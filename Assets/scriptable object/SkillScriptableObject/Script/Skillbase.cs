@@ -596,6 +596,75 @@ public class Skillbase : MonoBehaviour
         }
 
     }
+    public void Quiet_Skill()
+    {
+        if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
+        {
+            MainBattleSystem.instance.MinusMana(8);//扣魔
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
+            if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
+            {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
+                Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
+            }
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Quiet"; //確認動作
+            MainBattleSystem.instance.LastSkill = "Quiet";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(13).AnimationPrefab;//確認生成特效
+            MainBattleSystem.instance.CritCheck();//確認爆擊
+            //爆擊動畫
+            //確認王的閃避
+            MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<DamageNumber>();
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Kan)//輸出多個傷害值
+            {
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.4f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 20f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+
+            }
+            else
+            {
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.4f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 20f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
+
+            }
+            Debug.Log("BBBBBB");
+
+        }
+    }
+    public void lingMai_Skill()
+    {
+        if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
+        {
+            MainBattleSystem.instance.MinusMana(10);//扣魔
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
+            if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
+            {
+                MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
+                Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
+            }
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "lingMai"; //確認動作
+            MainBattleSystem.instance.LastSkill = "lingMai";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
+            MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(17).AnimationPrefab;//確認生成特效
+            MainBattleSystem.instance.battleAnimationContents.FieldPrefab = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(17).FieldPrefab;//確認生成場地            
+            MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<DamageNumber>();
+            if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Kun)
+            {
+                MainBattleSystem.instance.BattleUseStats.Mana_regen_speed += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.02f+2);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.02f + 2);
+            }
+            else
+            {
+                MainBattleSystem.instance.BattleUseStats.Regen += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.02f*0.9f + 2);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.INT.m_currentstat * 0.02f * 0.9f + 2);
+            }
+
+
+            Debug.Log("BBBBBB");
+
+        }
+
+    }
 }
 [System.Serializable]
 public enum EightTrigrams

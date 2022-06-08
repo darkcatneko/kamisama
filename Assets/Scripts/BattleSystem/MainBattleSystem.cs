@@ -204,7 +204,7 @@ public class MainBattleSystem : MonoBehaviour
     public void ManaUpdate()
     {
         ManaCountText.text = BattleUseStats.Current_MP.ToString() + "/" + Mathf.RoundToInt(BattleUseStats.INT.m_currentstat * 0.1f + 5).ToString();
-        ManaBar.fillAmount = TempMana / (BattleUseStats.INT.m_currentstat * 0.1f + 5);
+        ManaBar.fillAmount = TempMana / Mathf.RoundToInt(BattleUseStats.INT.m_currentstat * 0.1f + 5);
     }
     public void CritCheck3() 
     {
