@@ -384,7 +384,7 @@ public class SpriteClick : MonoBehaviour
                 {
                     if (MainSceneDataCenter.instance.status == Player_status.ButtonClicked)
                     {
-                        int RandomDialogue; RandomDialogue = Random.Range(1, 4);
+                        int RandomDialogue; RandomDialogue = Random.Range(1, 3);
                         MainSceneDataCenter.instance.Player_save.m_Player.Gain_Love_Level(2);
                         if (MainSceneDataCenter.instance.Player_save.TimeSaveData.time == 8 || MainSceneDataCenter.instance.Player_save.TimeSaveData.time == 22)
                         {
@@ -392,22 +392,22 @@ public class SpriteClick : MonoBehaviour
                             switch (_stat)
                             {
                                 case Stats.Yao_Wan:
-                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Yao_Wan_Chat";
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Yao_Wan_Chat_" + RandomDialogue.ToString(); ;
                                     StartCoroutine("ExitButtonClickedAnimation", 1f);
                                     StartCoroutine("PlusTime", 1f);
                                     return;
                                 case Stats.Fong_Shin:
-                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Fong_Shin_Chat";
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Fong_Shin_Chat_" + RandomDialogue.ToString(); ;
                                     StartCoroutine("ExitButtonClickedAnimation", 1f);
                                     StartCoroutine("PlusTime", 1f);
                                     return;
                                 case Stats.Kin_hua:
-                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Kin_hua_Chat";
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Kin_hua_Chat_" + RandomDialogue.ToString(); ;
                                     StartCoroutine("ExitButtonClickedAnimation", 1f);
                                     StartCoroutine("PlusTime", 1f);
                                     return;
                                 case Stats.Ron_Xiu:
-                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Ron_Xiu_Chat";
+                                    MainSceneDataCenter.instance.dialogue_Data_Object.TempSaveNodePad = "Ron_Xiu_Chat_" + RandomDialogue.ToString(); ;
                                     StartCoroutine("ExitButtonClickedAnimation", 1f);
                                     StartCoroutine("PlusTime", 1f);
                                     return;                                
@@ -418,16 +418,16 @@ public class SpriteClick : MonoBehaviour
                         switch (_stat)
                         {
                             case Stats.Yao_Wan:
-                                Into_Dialogue("Yao_Wan_Chat" + RandomDialogue.ToString());
+                                Into_Dialogue("Yao_Wan_Chat_" + RandomDialogue.ToString());
                                 return;
                             case Stats.Fong_Shin:
-                                Into_Dialogue("Fong_Shin_Chat" + RandomDialogue.ToString());
+                                Into_Dialogue("Fong_Shin_Chat_" + RandomDialogue.ToString());
                                 return;
                             case Stats.Kin_hua:
-                                Into_Dialogue("Kin_hua_Chat" + RandomDialogue.ToString());
+                                Into_Dialogue("Kin_hua_Chat_" + RandomDialogue.ToString());
                                 return;
                             case Stats.Ron_Xiu:
-                                Into_Dialogue("Ron_Xiu_Chat" + RandomDialogue.ToString());
+                                Into_Dialogue("Ron_Xiu_Chat_" + RandomDialogue.ToString());
                                 return;
                         }
                         //¥¼§¹«ÝÄò

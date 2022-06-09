@@ -6,7 +6,7 @@ using UnityEngine;
 public class VolumeDataCenter : ScriptableObject
 {
     public float All = 1f;
-    public float SoundEffect = 0.5f;
+    public float SoundEffect = 0.25f;
     public float BGM = 1f;
 
     public bool AutoSave = true;

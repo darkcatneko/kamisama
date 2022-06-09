@@ -9,7 +9,7 @@ using TMPro;
 public class MainBattleSystem : MonoBehaviour
 {
     public TextMeshProUGUI ManaCountText;
-    public Image ManaBar;private float TempMana;
+    public Image ManaBar;private float TempMana; public int TempHP;
     public int NowTurn;                                                 //计
     public BossClass ThisBoss;
     public int ManaTired = 0;                                           //痟骋
@@ -28,7 +28,8 @@ public class MainBattleSystem : MonoBehaviour
     public SkillDatabaseOBJ skillDatabaseOBJ;                           //м戈癟畐
     public List<GameObject> SkillButtons;                               //м秙
     public List<GameObject> EightTrimSpawnPoint;
-    public UnityEvent SkillEvent = new UnityEvent();                    //┷Α╰参
+    private UnityEvent SkillEvent = new UnityEvent();                    //┷Α╰参
+    public UnityEvent BossMoveSet = new UnityEvent();
     public UnityEvent BuffClear = new UnityEvent();
     //public List<int> SkillDamage;                                     ////端甡郎
     public string LastSkill;                                            //
@@ -60,6 +61,8 @@ public class MainBattleSystem : MonoBehaviour
         ThisBoss = sceneControllerOBJ.NextBoss.m_base;
         BattleUseStats = m_player.m_Player.Setup_battleInformation(m_player.m_Player);
         TempMana = BattleUseStats.Current_MP;
+        TempHP = BattleUseStats.Current_HP;
+        BossHealthUpdate.instance.TempBossHealth =Mathf.RoundToInt( ThisBoss.FindStat(Stats.HP));
         for (int i = 0; i < SkillButtons.Count; i++)
         {
             SkillButtonSetUp(i,m_player.SkillBackPack[i]);
@@ -73,6 +76,10 @@ public class MainBattleSystem : MonoBehaviour
         if (Input.mouseScrollDelta.y!=0)
         {
             ChangePageLever();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ThisBoss.CallBossDamage(10);
         }
         ManaUpdate();
     }
@@ -187,7 +194,7 @@ public class MainBattleSystem : MonoBehaviour
         PlayerAnimator.SetBool(battleAnimationContents.TheAnimateBePlayed,true);
         yield return new WaitForSeconds(battleAnimationContents.AnimationTime);
         PlayerAnimator.SetBool(battleAnimationContents.TheAnimateBePlayed, false);
-        yield return new WaitForSeconds(battleAnimationContents.BattleEffectTime);
+        yield return new WaitForSeconds(battleAnimationContents.BattleEffectTime);        
         battleAnimationContents.DamageDelt = new List<DamageNumber>();
         battleAnimationContents.NowDisplayDamage = 0;
         m_battleStatus = BattleStatus.PlayerTurn;
@@ -259,7 +266,8 @@ public class MainBattleSystem : MonoBehaviour
         if(m_battleStatus == BattleStatus.PlayerTurn)
         {
             m_battleStatus = BattleStatus.EnemyTurn;
-            //传ю阑
+            ThisBoss.BossAttack.Invoke();
+
             //check產琌
             //传產
             BackToPlayerTurn();
@@ -272,6 +280,7 @@ public class MainBattleSystem : MonoBehaviour
         BattleUseStats.Current_HP += value;
         DOTween.To(() => { return TempHP; }, x => TempHP = x, BattleUseStats.Current_HP, 1f);
     }
+    
     public void BackToPlayerTurn()
     {       
        NowTurn++;
@@ -306,7 +315,7 @@ public class MainBattleSystem : MonoBehaviour
         m_battleStatus = BattleStatus.PlayerTurn;
 
     }
-    
+
 }
 [System.Serializable]
 public class BattleAnimationContents

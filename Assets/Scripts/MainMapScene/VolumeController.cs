@@ -16,6 +16,10 @@ public class VolumeController : MonoBehaviour
    
     private void Start()
     {
+        if (Music == null)
+        {
+            Music = GameObject.Find("MainBGM").GetComponent<AudioSource>();
+        }
        StartVolume = Music.volume;
        AllBar.value  = m_VolumeDataCenter.All;
        BGM_Bar.value = m_VolumeDataCenter.BGM;

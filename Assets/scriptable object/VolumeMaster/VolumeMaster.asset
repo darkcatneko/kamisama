@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   All: 1
   SoundEffect: 0.5
-  BGM: 0.5
+  BGM: 0.25
   AutoSave: 1

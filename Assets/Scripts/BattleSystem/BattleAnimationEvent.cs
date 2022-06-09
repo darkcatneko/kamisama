@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class BattleAnimationEvent : MonoBehaviour
 {
     public Material BasicMat;
     private void Start()
     {
-        BasicMat = MainBattleSystem.instance.BossSprites[0].material;
+        BasicMat = MainBattleSystem.instance.BossSprites[0].material;       
     }
     public void GenBattleEffect()
     {
@@ -69,7 +70,9 @@ public class BattleAnimationEvent : MonoBehaviour
             DamageBlock.transform.Find("hun").gameObject.SetActive(false);
             DamageBlock.transform.Find("ten").gameObject.SetActive(false);
         }
-        MainBattleSystem.instance.ThisBoss.ChangeBossStats(Stats.HP, Mathf.RoundToInt(MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP) - Damage));
+        UnityEvent ev = new UnityEvent();
+        ev.AddListener(()=> { MainBattleSystem.instance.ThisBoss.CallBossDamage(Damage); });
+        ev.Invoke();
     }
     public void MonsterGetHit()
     {
