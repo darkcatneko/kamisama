@@ -6,10 +6,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "TaiwanOni", menuName = "Boss/DayBoss/TaiwanOni")]
 public class TaiwanOni : BossBase
 {
-    private void Awake()
-    {
-        m_base.ChangeBossStats(Stats.HP, m_base.BossMaxHealth);
-    }
+    
 
     public  void TaiwanOni_AttackPattern()
     {

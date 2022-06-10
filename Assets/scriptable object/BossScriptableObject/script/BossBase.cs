@@ -75,8 +75,16 @@ public class BossClass
     {
         BossHealthUpdate.instance.TempBossHealth =(int)MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP);
         ChangeBossStats(Stats.HP, Mathf.RoundToInt(FindStat(Stats.HP) - Damage));
-        DOTween.To(() => { return BossHealthUpdate.instance.TempBossHealth; }, x => BossHealthUpdate.instance.TempBossHealth = x, MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP), 0.5f);
+        DOTween.To(() => { return BossHealthUpdate.instance.TempBossHealth; }, x => BossHealthUpdate.instance.TempBossHealth = x, MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP), 0.5f).OnStepComplete
+            (()=>
+            {
+                DOTween.To(() => { return BossHealthUpdate.instance.TempWhite; }, x => BossHealthUpdate.instance.TempWhite = x, MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP), 0.7f);
+            }
+            );
     }
-
+    public BossClass Register(BossClass bb)
+    {
+        return bb;
+    }
 }
 
