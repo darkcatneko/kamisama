@@ -60,6 +60,7 @@ public class MainBattleSystem : MonoBehaviour
 
         //ThisBoss = sceneControllerOBJ.NextBoss.m_base;
         ThisBoss.Register(ThisBoss, sceneControllerOBJ.NextBoss.m_base);
+        Instantiate(sceneControllerOBJ.NextBoss.m_base.BossGameObjectPrefab);
         BattleUseStats = m_player.m_Player.Setup_battleInformation(m_player.m_Player);
         TempMana = BattleUseStats.Current_MP;
         TempHP = BattleUseStats.Current_HP;
