@@ -7496,10 +7496,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockHand_VFX_Animation
       objectReference: {fileID: 0}
-    - target: {fileID: 1377813990663723343, guid: 4d5ebb06595ae6b4ba690a7c18423024, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2583927267010422052, guid: 4d5ebb06595ae6b4ba690a7c18423024, type: 3}
       propertyPath: m_RootOrder
       value: 16
