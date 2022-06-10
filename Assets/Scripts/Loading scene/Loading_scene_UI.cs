@@ -15,14 +15,12 @@ public class Loading_scene_UI : MonoBehaviour
     //音量調整
     public Slider Sound;
     public AudioSource audioSource;
-    public float Volume;
     //是否啟用autosave
     public bool AutoSave = true;
-    public Toggle CheckBox;
+    //public Toggle CheckBox;
     //存檔櫃
     public SaveScriptableObject GameUseData;
     public SaveScriptableObject NewGameUseData;
-
     public Dialogue_Data_Object dialogueOBJ;
     public SceneControllerOBJ sceneOBJ;
     private void Awake()
@@ -41,20 +39,20 @@ public class Loading_scene_UI : MonoBehaviour
     void Update()
     {
         VolumeUpdate();
-        AutoSaveInformationUpdate();
+        //AutoSaveInformationUpdate();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ToMainScreen();
         }
     }
-    public void AutoSaveInformationUpdate()
-    {
-        AutoSave = CheckBox.isOn;
-    }
+    //public void AutoSaveInformationUpdate()
+    //{
+    //    AutoSave = CheckBox.isOn;
+    //}
     public void VolumeUpdate()
     {
-        Volume = Sound.value;
-        audioSource.volume = Volume;
+        _semaster.VolumeMaster.All = Sound.value;
+        audioSource.volume = _semaster.VolumeMaster.All;
     }
     public void NewGameButtonClicked()
     {
@@ -82,8 +80,14 @@ public class Loading_scene_UI : MonoBehaviour
     }
     public void SettingButtonClicked()
     {
-        Buttons.SetActive(false);
-        Setting.SetActive(true);
+        if (Setting.activeSelf == true)
+        {
+            Setting.SetActive(false);            
+        }
+        else
+        {
+            Setting.SetActive(true);
+        }
     }
     public void QuitButtonClicked()
     {
