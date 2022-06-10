@@ -9030,6 +9030,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.81666666
+    functionName: GenDamageNumber
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.8666667
     functionName: CamShakeHit
     data: 
@@ -9053,6 +9060,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.93333334
     functionName: MonsterGetHit
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.98333335
+    functionName: GenDamageNumber
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

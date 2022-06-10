@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2955f239969af74409a2cf76975ac392, type: 3}
   m_Name: GameUse
   m_EditorClassIdentifier: 
-  Newtogame: 1
+  Newtogame: 0
   savePath: /Gameuse.save
   SaveDate: 
   TimeSaveData:
@@ -21,11 +21,13 @@ MonoBehaviour:
     Get_Flag: 0
   m_Player:
     Level: 1
-    Mana_regen_speed: 0
+    Mana_regen_speed: 5
     Current_MP: 0
-    Current_HP: 0
-    MaxHP: 0
+    Current_HP: 10
+    MaxHP: 10
     Shield: 0
+    Regen: 0
+    Toxic: 0
     POW:
       m_stat: 0
       m_currentstat: 1
@@ -52,7 +54,7 @@ MonoBehaviour:
       m_currentstat: 1
     Love:
       m_stat: 7
-      m_currentstat: 1
+      m_currentstat: 11
     Yao_Wan:
       m_stat: 8
       m_currentstat: 1
@@ -65,12 +67,12 @@ MonoBehaviour:
     Ron_Xiu:
       m_stat: 11
       m_currentstat: 1
-  SkillBackPack: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  SkillBackPack: 01000000030000000400000005000000060000000700000008000000000000000000000000000000
   MapFlagCheck: 0000000000000000000000000000
   SkillUnlockCheck: 01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   Can_Get_Flag: 1
   FlagCount: 0
-  Now_Playing_Scene: 2
+  Now_Playing_Scene: 1
   Now_Watching_Plot: Opening
   Now_Watching_Sentence: 0
   Now_BackgroundPic: 
