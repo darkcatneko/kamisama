@@ -15,6 +15,10 @@ public class BattleAnimationEvent : MonoBehaviour
     {
         Instantiate(MainBattleSystem.instance.battleAnimationContents.BattleEffect, Vector3.zero, Quaternion.identity);
     }
+    public void GenBossBattleEffect(int Skill_Number)
+    {
+        Instantiate(MainBattleSystem.instance.sceneControllerOBJ.NextBoss.m_base.BossSkillPrefab[Skill_Number], Vector3.zero, Quaternion.identity);
+    }
     public void GenFieldEffect()
     {
         MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] = Instantiate(MainBattleSystem.instance.battleAnimationContents.FieldPrefab, MainBattleSystem.instance.EightTrimSpawnPoint[(int)MainBattleSystem.instance.NowFocusTrigrams].transform.position, Quaternion.identity);
@@ -77,6 +81,12 @@ public class BattleAnimationEvent : MonoBehaviour
     public void MonsterGetHit()
     {
         StartCoroutine("ChangeColor", MainBattleSystem.instance.BossSprites);
+        MainBattleSystem.instance.BossSprite.GetComponent<Animator>().SetTrigger("GetHit");
+    }
+    public void PlayerGetHit()
+    {
+        StartCoroutine("ChangeColor", MainBattleSystem.instance.PlayerSprite);
+        MainBattleSystem.instance.PlayerAnimator.SetTrigger("GetHit");
     }
     public void CamShake(float duration,float strength,int ratio)
     {
@@ -131,7 +141,7 @@ public class BattleAnimationEvent : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            CamShake(0.2f, 0.3f,30);
+            MainBattleSystem.instance.BossSprite.GetComponent<Animator>().SetTrigger("GetHit");
         }
         if (Input.GetKeyDown(KeyCode.P))
         {

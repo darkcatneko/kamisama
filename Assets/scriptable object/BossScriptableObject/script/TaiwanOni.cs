@@ -22,4 +22,5 @@ public class TaiwanOni : BossBase
                 return;
         }
     }
+    
 }
