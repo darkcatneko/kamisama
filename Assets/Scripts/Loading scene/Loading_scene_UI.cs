@@ -58,9 +58,9 @@ public class Loading_scene_UI : MonoBehaviour
     {
         GameUseData.EqualFunction(GameUseData, NewGameUseData);
         GameUseData.Save();
-        dialogueOBJ.The_NodePad_Be_read = "Opening";
+        dialogueOBJ.The_NodePad_Be_read = "BlackOpening";
         dialogueOBJ.WhichLineItRead = 0;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("OpeningDialogue");
     }
     public void SaveDataClicked()//¥¼¼g
     {

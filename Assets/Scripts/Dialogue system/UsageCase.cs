@@ -47,6 +47,7 @@ public class UsageCase : MonoBehaviour
         _playerSave.Now_Playing_Scene = 1;
         textAsset = FindNotePad(dialogueOBJ.The_NodePad_Be_read);
         msgSys.AddSpecialCharToFuncMap("IntoBattle", () => { IntoBattle(); });
+        msgSys.AddSpecialCharToFuncMap("First", () => { FirstDialogue(); });
         //背景BGM宣告
         msgSys.AddSpecialCharToFuncMap("normalBGM", () => { ChangeBgm("DialogueBgm/Lights"); });
         msgSys.AddSpecialCharToFuncMap("FunBGM", () => { ChangeBgm("DialogueBgm/Girls's_Lunch_Royalty"); });
@@ -156,6 +157,12 @@ public class UsageCase : MonoBehaviour
             Choice2_2.onClick.RemoveAllListeners();
             ChoicePanel_2.SetActive(false);
         });           
+    }
+    private void FirstDialogue()
+    {        
+        dialogueOBJ.The_NodePad_Be_read = "Opening";
+        dialogueOBJ.WhichLineItRead = 0;
+        SceneManager.LoadScene(1);
     }
     private void ChangeBgm(string _BGM)
     {

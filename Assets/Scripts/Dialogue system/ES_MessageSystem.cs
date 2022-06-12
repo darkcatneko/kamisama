@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using UnityEngine.SceneManagement;
 namespace RemptyTool.ES_MessageSystem
 {
     /// <summary>The messageSystem is made by Rempty EmptyStudio. 
@@ -87,6 +87,10 @@ namespace RemptyTool.ES_MessageSystem
             IsOnCmdEvent = true;
             IsWaitingForNextToGo = true;
             yield return new WaitUntil(() => IsWaitingForNextToGo == false);
+            if (SceneManager.GetActiveScene().name =="OpeningDialogue")
+            {
+                this.gameObject.GetComponent<SEmaster>().OnClickSE();
+            }            
             msgText = "";   //Erase the messages.
             IsOnCmdEvent = false;
             yield return null;

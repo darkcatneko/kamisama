@@ -873,6 +873,7 @@ MonoBehaviour:
   AutoSave: {fileID: 0}
   bossdata: {fileID: 11400000, guid: 720d29ee4310a7d4a983bb4c50b627d5, type: 2}
   BgmBlock: {fileID: 0}
+  m_SEmaster: {fileID: 507043653}
 --- !u!114 &507043651
 MonoBehaviour:
   m_ObjectHideFlags: 0
