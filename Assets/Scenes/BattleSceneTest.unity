@@ -7015,6 +7015,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8440920902208230506, guid: 863f134cd848e1a40aa34db27e41ec48, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8440920903508171996, guid: 863f134cd848e1a40aa34db27e41ec48, type: 3}
       propertyPath: m_Camera
       value: 
