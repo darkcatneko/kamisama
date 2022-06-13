@@ -97,7 +97,7 @@ public class BattleAnimationEvent : MonoBehaviour
     }
     public void PlayerGetHit()
     {
-        StartCoroutine("ChangeColor", MainBattleSystem.instance.PlayerSprite);
+        StartCoroutine("ChangeColor", MainBattleSystem.instance.PlayerSprites);
         MainBattleSystem.instance.PlayerAnimator.SetTrigger("GetHit");
     }
     public void CamShake(float duration,float strength,int ratio)
