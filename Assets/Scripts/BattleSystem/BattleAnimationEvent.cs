@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class BattleAnimationEvent : MonoBehaviour
 {
     public Material BasicMat;
+    public UnityEvent TheBossAttack = new UnityEvent();
+    public UnityEvent BossEndAnimation = new UnityEvent();
     private void Start()
     {
         BasicMat = MainBattleSystem.instance.BossSprites[0].material;       
@@ -77,6 +79,16 @@ public class BattleAnimationEvent : MonoBehaviour
         UnityEvent ev = new UnityEvent();
         ev.AddListener(()=> { MainBattleSystem.instance.ThisBoss.CallBossDamage(Damage); });
         ev.Invoke();
+    }
+    public void BossAttack()
+    {
+        TheBossAttack.Invoke();
+        TheBossAttack.RemoveAllListeners();
+    }
+    public void BossEnd()
+    {
+        BossEndAnimation.Invoke();
+        BossEndAnimation.RemoveAllListeners();
     }
     public void MonsterGetHit()
     {

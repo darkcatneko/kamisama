@@ -47,7 +47,8 @@ public class MainBattleSystem : MonoBehaviour
     }
     void Start()
     {
-        m_battleStatus = BattleStatus.ReadyFight;
+        m_battleStatus = BattleStatus.ReadyFight;        
+        BossSprite = Instantiate(sceneControllerOBJ.NextBoss.m_base.BossGameObjectPrefab);
         for (int i = 0; i < PlayerSprite.GetComponentsInChildren<SpriteRenderer>().Length; i++)
         {
             PlayerSprites.Add(PlayerSprite.GetComponentsInChildren<SpriteRenderer>()[i]);
@@ -59,8 +60,7 @@ public class MainBattleSystem : MonoBehaviour
         m_player.Load();
 
         //ThisBoss = sceneControllerOBJ.NextBoss.m_base;
-        ThisBoss.Register(ThisBoss, sceneControllerOBJ.NextBoss.m_base);
-        Instantiate(sceneControllerOBJ.NextBoss.m_base.BossGameObjectPrefab);
+        ThisBoss.Register(ThisBoss, sceneControllerOBJ.NextBoss.m_base);               
         BattleUseStats = m_player.m_Player.Setup_battleInformation(m_player.m_Player);
         TempMana = BattleUseStats.Current_MP;
         TempHP = BattleUseStats.Current_HP;
@@ -268,7 +268,7 @@ public class MainBattleSystem : MonoBehaviour
         if(m_battleStatus == BattleStatus.PlayerTurn)
         {
             m_battleStatus = BattleStatus.EnemyTurn;
-            ThisBoss.BossAttack.Invoke();
+           ThisBoss.BossAttack.Invoke();
 
             //check玩家是否死亡
             //換回玩家回合
