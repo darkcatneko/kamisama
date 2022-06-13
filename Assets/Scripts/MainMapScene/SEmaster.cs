@@ -45,6 +45,12 @@ public class SEmaster : MonoBehaviour
         Buttonse.GetComponent<AudioSource>().volume = VolumeMaster.All * VolumeMaster.SoundEffect;
         Buttonse.GetComponent<SimpleDestroy>().CallDestroy(Buttonse.GetComponent<AudioSource>().clip.length);
     }
+    public void OnClickSE()
+    {
+        GameObject Buttonse = Instantiate<GameObject>(Resources.Load<GameObject>("Onclick"), transform.position, Quaternion.identity);
+        Buttonse.GetComponent<AudioSource>().volume = VolumeMaster.All * VolumeMaster.SoundEffect;
+        Buttonse.GetComponent<SimpleDestroy>().CallDestroy(Buttonse.GetComponent<AudioSource>().clip.length);
+    }
 }
 
 

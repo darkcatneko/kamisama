@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class BattleAnimationEvent : MonoBehaviour
 {
     public Material BasicMat;
+    public UnityEvent TheBossAttack = new UnityEvent();
+    public UnityEvent BossEndAnimation = new UnityEvent();
     private void Start()
     {
         BasicMat = MainBattleSystem.instance.BossSprites[0].material;       
@@ -14,6 +16,10 @@ public class BattleAnimationEvent : MonoBehaviour
     public void GenBattleEffect()
     {
         Instantiate(MainBattleSystem.instance.battleAnimationContents.BattleEffect, Vector3.zero, Quaternion.identity);
+    }
+    public void GenBossBattleEffect(int Skill_Number)
+    {
+        Instantiate(MainBattleSystem.instance.sceneControllerOBJ.NextBoss.m_base.BossSkillPrefab[Skill_Number], Vector3.zero, Quaternion.identity);
     }
     public void GenFieldEffect()
     {
@@ -74,9 +80,25 @@ public class BattleAnimationEvent : MonoBehaviour
         ev.AddListener(()=> { MainBattleSystem.instance.ThisBoss.CallBossDamage(Damage); });
         ev.Invoke();
     }
+    public void BossAttack()
+    {
+        TheBossAttack.Invoke();
+        TheBossAttack.RemoveAllListeners();
+    }
+    public void BossEnd()
+    {
+        BossEndAnimation.Invoke();
+        BossEndAnimation.RemoveAllListeners();
+    }
     public void MonsterGetHit()
     {
         StartCoroutine("ChangeColor", MainBattleSystem.instance.BossSprites);
+        MainBattleSystem.instance.BossSprite.GetComponent<Animator>().SetTrigger("GetHit");
+    }
+    public void PlayerGetHit()
+    {
+        StartCoroutine("ChangeColor", MainBattleSystem.instance.PlayerSprite);
+        MainBattleSystem.instance.PlayerAnimator.SetTrigger("GetHit");
     }
     public void CamShake(float duration,float strength,int ratio)
     {
@@ -131,7 +153,7 @@ public class BattleAnimationEvent : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            CamShake(0.2f, 0.3f,30);
+            MainBattleSystem.instance.BossSprite.GetComponent<Animator>().SetTrigger("GetHit");
         }
         if (Input.GetKeyDown(KeyCode.P))
         {

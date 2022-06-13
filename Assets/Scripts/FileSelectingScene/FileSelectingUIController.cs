@@ -53,9 +53,9 @@ public class FileSelectingUIController : MonoBehaviour
                 GameUseData.Clear();
                 GameUseData.EqualFunction(GameUseData, NewGameUseData);
                 GameUseData.Save();
-                dialogueOBJ.The_NodePad_Be_read = "Opening";
+                dialogueOBJ.The_NodePad_Be_read = "BlackOpening";
                 dialogueOBJ.WhichLineItRead = 0;
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene("OpeningDialogue");
             }
             else
             {                

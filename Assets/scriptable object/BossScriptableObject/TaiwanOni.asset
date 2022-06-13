@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_base:
     BossID: 0
-    BossGameObjectPrefab: {fileID: 0}
+    BossGameObjectPrefab: {fileID: 1975193394827949427, guid: 36515ae5c466a9b4587a1c57cbcf423a, type: 3}
     BossPicture: {fileID: 0}
     BaseBlock: 0
     BossStats:
     - m_stat: 4
-      m_currentstat: 1
+      m_currentstat: 50
     - m_stat: 6
       m_currentstat: 5
     - m_stat: 5
@@ -28,6 +28,7 @@ MonoBehaviour:
       m_currentstat: 5
     - m_stat: 0
       m_currentstat: 5
+    BossSkillPrefab: []
     BossMaxHealth: 50
     BossAttack:
       m_PersistentCalls:

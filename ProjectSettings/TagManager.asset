@@ -49,3 +49,6 @@ TagManager:
   - name: Damage
     uniqueID: 1003855675
     locked: 0
+  - name: Front
+    uniqueID: 3535123755
+    locked: 0

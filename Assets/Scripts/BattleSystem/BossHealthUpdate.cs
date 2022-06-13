@@ -7,6 +7,7 @@ public class BossHealthUpdate : MonoBehaviour
 {
     public static BossHealthUpdate instance;
     public float TempBossHealth;
+    public float TempWhite;
     public Image BossFillTwo;
     private void Awake()
     {
@@ -15,5 +16,6 @@ public class BossHealthUpdate : MonoBehaviour
     private void Update()
     {         
         this.GetComponent<Slider>().value =TempBossHealth/MainBattleSystem.instance.ThisBoss.BossMaxHealth;
+        BossFillTwo.fillAmount = TempWhite / MainBattleSystem.instance.ThisBoss.BossMaxHealth;
     }
 }

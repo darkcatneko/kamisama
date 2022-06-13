@@ -18,6 +18,7 @@ public class BossClass
     public Sprite BossPicture;
     public float BaseBlock;
     public List<PlayerStats> BossStats;
+    public List<GameObject> BossSkillPrefab;
     public int BossMaxHealth;
     public UnityEvent BossAttack;
 
@@ -74,9 +75,26 @@ public class BossClass
     public void CallBossDamage(int Damage)
     {
         BossHealthUpdate.instance.TempBossHealth =(int)MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP);
+        BossHealthUpdate.instance.TempWhite = (int)MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP);
         ChangeBossStats(Stats.HP, Mathf.RoundToInt(FindStat(Stats.HP) - Damage));
-        DOTween.To(() => { return BossHealthUpdate.instance.TempBossHealth; }, x => BossHealthUpdate.instance.TempBossHealth = x, MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP), 0.5f);
+        DOTween.To(() => { return BossHealthUpdate.instance.TempBossHealth; }, x => BossHealthUpdate.instance.TempBossHealth = x, MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP), 0.5f).OnStepComplete
+            (()=>
+            {
+                DOTween.To(() => { return BossHealthUpdate.instance.TempWhite; }, x => BossHealthUpdate.instance.TempWhite = x, MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP), 0.7f);
+            }
+            );
     }
-
+    public void Register( BossClass This,BossClass bb)
+    {
+        This.BossID = bb.BossID;
+        This.BaseBlock = bb.BaseBlock;
+        This.BossStats = new List<PlayerStats>();
+        for (int i = 0; i < bb.BossStats.Count; i++)
+        {
+            this.BossStats.Add(new PlayerStats(bb.BossStats[i].m_stat, bb.BossStats[i].m_currentstat));
+        }
+        This.BossMaxHealth = bb.BossMaxHealth;
+        This.BossAttack = bb.BossAttack;
+    }
 }
 
