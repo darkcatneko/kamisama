@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_base:
     BossID: 0
-    BossGameObjectPrefab: {fileID: 3104211565803405217, guid: 863f134cd848e1a40aa34db27e41ec48, type: 3}
+    BossGameObjectPrefab: {fileID: 1975193394827949427, guid: 36515ae5c466a9b4587a1c57cbcf423a, type: 3}
     BossPicture: {fileID: 0}
     BaseBlock: 0
     BossStats:
