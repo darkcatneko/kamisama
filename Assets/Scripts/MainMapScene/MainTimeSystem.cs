@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainTimeSystem : MonoBehaviour
 {
@@ -82,6 +83,9 @@ public class TimeClass
                     else
                     {
                         Debug.Log("幹你娘給我去插旗子");
+                        MainSceneDataCenter.instance.dialogue_Data_Object.The_NodePad_Be_read = "BadEnd";
+                        MainSceneDataCenter.instance.dialogue_Data_Object.WhichLineItRead = 0;
+                        SceneManager.LoadScene("OpeningDialogue");
                     }
                 }
                 return;

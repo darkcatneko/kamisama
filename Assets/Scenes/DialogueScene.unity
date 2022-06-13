@@ -870,10 +870,9 @@ MonoBehaviour:
   dialogueOBJ: {fileID: 11400000, guid: f30d8c5f482616340929be19b1ec0cdb, type: 2}
   sceneOBJ: {fileID: 11400000, guid: 23e865d35ffb6fc4ba46d74dfca8f60e, type: 2}
   _playerSave: {fileID: 11400000, guid: beec8b3c85e5b9e46b73d58a15768ccf, type: 2}
-  AutoSave: {fileID: 0}
+  AutoSave: {fileID: 11400000, guid: 279cc9c8359398d4c8d95d238827a17f, type: 2}
   bossdata: {fileID: 11400000, guid: 720d29ee4310a7d4a983bb4c50b627d5, type: 2}
   BgmBlock: {fileID: 0}
-  m_SEmaster: {fileID: 507043653}
 --- !u!114 &507043651
 MonoBehaviour:
   m_ObjectHideFlags: 0
