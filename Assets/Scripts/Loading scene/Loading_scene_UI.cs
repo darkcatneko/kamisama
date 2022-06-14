@@ -56,6 +56,7 @@ public class Loading_scene_UI : MonoBehaviour
     }
     public void NewGameButtonClicked()
     {
+        dialogueOBJ.DeepClear();
         GameUseData.EqualFunction(GameUseData, NewGameUseData);
         GameUseData.Save();
         dialogueOBJ.The_NodePad_Be_read = "BlackOpening";

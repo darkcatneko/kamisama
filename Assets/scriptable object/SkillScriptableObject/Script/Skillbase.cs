@@ -44,7 +44,7 @@ public class Skillbase : MonoBehaviour
     {
         if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
         {            
-            MainBattleSystem.instance.MinusMana(5);//扣魔
+            MainBattleSystem.instance.MinusMana(2);//扣魔
             MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
             if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]!=null)//確認陣上是否有陣法
             {
@@ -61,12 +61,12 @@ public class Skillbase : MonoBehaviour
             MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<DamageNumber>();
             if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Gen)//輸出多個傷害值
             {
-                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber( GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 12f, 1f, (float)MainBattleSystem.instance.CritOrNot*0.1f),DamageType.Physics ));
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber( GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 6f, 1f, (float)MainBattleSystem.instance.CritOrNot*0.1f),DamageType.Physics ));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
             }
             else
             {
-                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 12f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 6f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
             }
 
@@ -79,7 +79,7 @@ public class Skillbase : MonoBehaviour
     {
         if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
         {
-            MainBattleSystem.instance.MinusMana(5);//扣魔
+            MainBattleSystem.instance.MinusMana(2);//扣魔
             MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
             if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
             {
@@ -96,12 +96,12 @@ public class Skillbase : MonoBehaviour
             MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<DamageNumber>();
             if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Li)//輸出多個傷害值
             {
-                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 2f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f),DamageType.Magic));
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 6f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f),DamageType.Magic));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
             }
             else
             {
-                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 2f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Magic));
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 6f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Magic));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
             }
 
@@ -129,13 +129,13 @@ public class Skillbase : MonoBehaviour
             MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<DamageNumber>();
             if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Kun)
             {
-                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.1f);
-                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.1f);
+                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.3f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.3f);
             }
             else
             {
-                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.1f*0.9f);
-                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.1f);
+                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.3f*0.9f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat * 0.3f);
             }
 
             Debug.Log("BBBBBB");
@@ -162,13 +162,13 @@ public class Skillbase : MonoBehaviour
             MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<DamageNumber>();
             if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Kan)
             {
-                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.2f);
-                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.2f);
+                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.1f);
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.1f);
             }
             else
             {
-                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.2f*0.9f); 
-                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.2f * 0.9f); 
+                MainBattleSystem.instance.BattleUseStats.Shield += Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.1f*0.9f); 
+                MainBattleSystem.instance.BuffAmount = Mathf.RoundToInt(MainBattleSystem.instance.BattleUseStats.MaxHP * 0.1f * 0.9f); 
             }
            
 
@@ -181,7 +181,7 @@ public class Skillbase : MonoBehaviour
     {
         if (MainBattleSystem.instance.m_battleStatus == BattleStatus.PlayerTurn)
         {
-            MainBattleSystem.instance.MinusMana(5);//扣魔
+            MainBattleSystem.instance.MinusMana(4);//扣魔
             MainBattleSystem.instance.m_battleStatus = BattleStatus.DamageStep;
             if (MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams] != null)//確認陣上是否有陣法
             {
@@ -201,11 +201,13 @@ public class Skillbase : MonoBehaviour
                 if (MainBattleSystem.instance.CritOrNot == moonblocks.OneUpOneDown)
                 {
                     MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.1f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 10f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f),DamageType.Physics));
+                    MainBattleSystem.instance.BattleUseStats.Current_HP += MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number;
                     Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
                 }
                 else
                 {
-                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.005f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 1f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.005f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 3f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                    MainBattleSystem.instance.BattleUseStats.Current_HP += MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number;
                     Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
                 }
             }
@@ -214,11 +216,13 @@ public class Skillbase : MonoBehaviour
                 if (MainBattleSystem.instance.CritOrNot == moonblocks.OneUpOneDown)
                 {
                     MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.1f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 10f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                    MainBattleSystem.instance.BattleUseStats.Current_HP += MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number;
                     Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
                 }
                 else
                 {
-                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.005f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 1f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.005f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 3f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                    MainBattleSystem.instance.BattleUseStats.Current_HP += MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number;
                     Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
                 }
             }

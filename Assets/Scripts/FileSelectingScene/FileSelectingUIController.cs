@@ -50,6 +50,7 @@ public class FileSelectingUIController : MonoBehaviour
             GameUseData.Save();
             if (GameUseData.Newtogame == true)
             {
+                dialogueOBJ.DeepClear();
                 GameUseData.Clear();
                 GameUseData.EqualFunction(GameUseData, NewGameUseData);
                 GameUseData.Save();
@@ -62,6 +63,7 @@ public class FileSelectingUIController : MonoBehaviour
                 switch (GameUseData.Now_Playing_Scene)
                 {
                     case 1:
+                        dialogueOBJ.DeepClear();
                         dialogueOBJ.The_NodePad_Be_read = GameUseData.Now_Watching_Plot;
                         dialogueOBJ.WhichLineItRead = GameUseData.Now_Watching_Sentence - 1;
                         dialogueOBJ.TheBackGroundPic = GameUseData.Now_BackgroundPic;

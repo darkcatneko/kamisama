@@ -1,0 +1,6 @@
+[MainTempleBGM][BG_Loli_Home][God_angry]「哈……汝還真是不知變通呢。」[w]
+[God_say]「提問。今天你要找地方躲藏起來，你會選擇植被稀少的原野，還是樹葉繁盛的大森林？」[w]
+[MainCharacter_nomal]「那當然是森林裡……啊！」[w]
+[God_happy_one]「沒錯，因為它們太過弱小，只能用人類來協助自己的躲藏……相反的，也很容易因此在鬆懈之時被發現到。」[w]
+[God_say]「所以啊，汝就從那些地方找起就是了。」[w]
+[MainCharacter_nomal]「了解了……幫助很大呢！」[w]
