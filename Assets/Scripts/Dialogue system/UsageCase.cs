@@ -46,6 +46,7 @@ public class UsageCase : MonoBehaviour
         _playerSave.Load();
         _playerSave.Now_Playing_Scene = 1;
         textAsset = FindNotePad(dialogueOBJ.The_NodePad_Be_read);
+        msgSys.AddSpecialCharToFuncMap("BadEnd", () => { SceneManager.LoadScene(0); });
         msgSys.AddSpecialCharToFuncMap("IntoBattle", () => { IntoBattle(); });
         msgSys.AddSpecialCharToFuncMap("First", () => { FirstDialogue(); });
         //背景BGM宣告

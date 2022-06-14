@@ -317,7 +317,16 @@ public class MainBattleSystem : MonoBehaviour
         m_battleStatus = BattleStatus.PlayerTurn;
 
     }
-    
+    public IEnumerator BossDie()
+    {
+        if (m_battleStatus == BattleStatus.BossDie)
+        {
+            Debug.Log("他死透了");
+            //Boss死亡動畫
+            //生成戰鬥勝利畫面
+            yield return null;
+        }
+    }
 
 }
 [System.Serializable]
@@ -340,6 +349,8 @@ public enum BattleStatus
     DamageStep,
     EnemyTurn,
     ChooseEightTrigram,
+    BossDie,
+    PlayerDie,
 }
 [System.Serializable]
 public enum moonblocks

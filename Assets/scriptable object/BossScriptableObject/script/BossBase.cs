@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
 using System;
+using UnityEngine.SceneManagement;
 
 public abstract class BossBase : ScriptableObject
 {
@@ -83,6 +84,11 @@ public class BossClass
                 DOTween.To(() => { return BossHealthUpdate.instance.TempWhite; }, x => BossHealthUpdate.instance.TempWhite = x, MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP), 0.7f);
             }
             );
+        if (MainBattleSystem.instance.ThisBoss.FindStat(Stats.HP)<=0)
+        {
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.BossDie;
+            MainBattleSystem.instance.StartCoroutine("BossDie");//boss³Q±þ¦º
+        }
     }
     public void Register( BossClass This,BossClass bb)
     {
