@@ -30,6 +30,7 @@ MonoBehaviour:
       m_currentstat: 5
     BossSkillPrefab:
     - {fileID: 8896144751992759957, guid: 80e79b4adcc48c041b06d7f9c3e28cf2, type: 3}
+    - {fileID: 4099218424216862149, guid: 076b2eff83629d942a696a03a7819eb4, type: 3}
     BossMaxHealth: 50
     BossAttack:
       m_PersistentCalls:
