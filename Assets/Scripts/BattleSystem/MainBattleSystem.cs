@@ -322,7 +322,7 @@ public class MainBattleSystem : MonoBehaviour
         if (m_battleStatus == BattleStatus.BossDie)
         {
             Debug.Log("他死透了");
-            //Boss死亡動畫
+            BossSprite.GetComponent<Animator>().SetBool("DIE", true);//Boss死亡動畫
             //生成戰鬥勝利畫面
             yield return null;
         }
