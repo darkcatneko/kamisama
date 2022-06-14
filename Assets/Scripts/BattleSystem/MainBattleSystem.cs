@@ -196,7 +196,7 @@ public class MainBattleSystem : MonoBehaviour
         PlayerAnimator.SetBool(battleAnimationContents.TheAnimateBePlayed,true);
         yield return new WaitForSeconds(battleAnimationContents.AnimationTime);
         PlayerAnimator.SetBool(battleAnimationContents.TheAnimateBePlayed, false);
-        yield return new WaitForSeconds(battleAnimationContents.BattleEffectTime);        
+        yield return new WaitForSeconds(battleAnimationContents.BattleEffectTime+1);        
         battleAnimationContents.DamageDelt = new List<DamageNumber>();
         battleAnimationContents.NowDisplayDamage = 0;
         m_battleStatus = BattleStatus.PlayerTurn;
@@ -271,8 +271,7 @@ public class MainBattleSystem : MonoBehaviour
            ThisBoss.BossAttack.Invoke();
 
             //check玩家是否死亡
-            //換回玩家回合
-            BackToPlayerTurn();
+            //換回玩家回合            
         }
     }
     public void ChangeHP(int value)

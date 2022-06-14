@@ -51,8 +51,9 @@ public class BossClass
         MainBattleSystem.instance.TempHP = MainBattleSystem.instance.BattleUseStats.Current_HP;
         PlayerHealthBarUpdate.instance.TempWhite = MainBattleSystem.instance.BattleUseStats.Current_HP;
         if (DefenceType ==  Stats.DEF)
-        {            
-            MainBattleSystem.instance.BattleUseStats.Current_HP -= Mathf.RoundToInt(FindStat(BossAttackType) * SkillDamage - (MainBattleSystem.instance.BattleUseStats.Shield + (MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat)));
+        {
+            int i = Mathf.RoundToInt(FindStat(BossAttackType) * SkillDamage - (MainBattleSystem.instance.BattleUseStats.Shield + (MainBattleSystem.instance.BattleUseStats.DEF.m_currentstat)));
+            MainBattleSystem.instance.BattleUseStats.Current_HP -= Mathf.Clamp(i,0,i);
             DOTween.To(() => { return MainBattleSystem.instance.TempHP; }, x => MainBattleSystem.instance.TempHP = x, MainBattleSystem.instance.BattleUseStats.Current_HP, 0.5f)
                 .OnStepComplete(()=> 
                 { 

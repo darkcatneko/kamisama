@@ -88,6 +88,15 @@ public class BattleAnimationEvent : MonoBehaviour
     public void BossEnd()
     {
         BossEndAnimation.Invoke();
+        if (MainBattleSystem.instance.BattleUseStats.Current_HP <=0)
+        {
+            MainBattleSystem.instance.m_battleStatus = BattleStatus.PlayerDie;
+            MainBattleSystem.instance.PlayerAnimator.SetTrigger("Die");
+        }
+        else
+        {
+            MainBattleSystem.instance.BackToPlayerTurn();
+        }        
         BossEndAnimation.RemoveAllListeners();
     }
     public void MonsterGetHit()
