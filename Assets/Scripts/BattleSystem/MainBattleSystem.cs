@@ -263,13 +263,19 @@ public class MainBattleSystem : MonoBehaviour
         }
         Debug.Log(CritOrNot.ToString());
     }
-    public void EndPlayerTurn()
+    public void EndPlayerTurnButton()
+    {
+        StartCoroutine("EndPlayerTurn");
+    }
+    public IEnumerator EndPlayerTurn()
     {
         if(m_battleStatus == BattleStatus.PlayerTurn)
         {
             m_battleStatus = BattleStatus.EnemyTurn;
-           ThisBoss.BossAttack.Invoke();
-
+            Instantiate(Resources.Load<GameObject>("BattleScene/UI/Boss'sTurn"));
+            yield return new WaitForSeconds(2f);
+            ThisBoss.BossAttack.Invoke();
+           
             //check玩家是否死亡
             //換回玩家回合            
         }
@@ -283,8 +289,9 @@ public class MainBattleSystem : MonoBehaviour
     }
     
     public void BackToPlayerTurn()
-    {       
-       NowTurn++;
+    {
+        Instantiate(Resources.Load<GameObject>("BattleScene/UI/Player'sTurn"));
+        NowTurn++;
         ChangeHP(BattleUseStats.Regen);
         TempMana = BattleUseStats.Current_MP;
         ManaTired = 0;

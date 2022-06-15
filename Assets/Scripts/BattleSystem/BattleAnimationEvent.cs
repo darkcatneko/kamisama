@@ -11,7 +11,9 @@ public class BattleAnimationEvent : MonoBehaviour
     public UnityEvent BossEndAnimation = new UnityEvent();
     private void Start()
     {
-        BasicMat = MainBattleSystem.instance.BossSprites[0].material;       
+        Debug.Log(this.gameObject.name);
+        BasicMat = MainBattleSystem.instance.BossSprites[0].material;
+        
     }
     public void GenBattleEffect()
     {
