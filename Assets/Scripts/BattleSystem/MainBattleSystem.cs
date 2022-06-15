@@ -5,9 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainBattleSystem : MonoBehaviour
 {
+    public Dialogue_Data_Object DialogueOBJ;
     public TextMeshProUGUI ManaCountText;
     public Image ManaBar;private float TempMana; public int TempHP;
     public int NowTurn;                                                 //回合數
@@ -329,9 +331,18 @@ public class MainBattleSystem : MonoBehaviour
         {
             Debug.Log("他死透了");
             BossSprite.GetComponent<Animator>().SetBool("DIE", true);//Boss死亡動畫
+            yield return new WaitForSeconds(1f);
+            Instantiate(Resources.Load("BattleScene/UI/Boss'sTurn 1"));
             //生成戰鬥勝利畫面
             yield return null;
         }
+    }
+    public void IntoDialogueScene(string _plot_name)
+    {
+        DialogueOBJ.The_NodePad_Be_read = _plot_name;
+        DialogueOBJ.WhichLineItRead = 0;
+        m_player.Save();
+        SceneManager.LoadScene(1);
     }
 
 }
