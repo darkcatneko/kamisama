@@ -385,8 +385,8 @@ public class Skillbase : MonoBehaviour
                 MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams].GetComponent<OnFieldDestroy>().CallDestroy();
                 Destroy(MainBattleSystem.instance.FieldSkills[(int)MainBattleSystem.instance.NowFocusTrigrams]);//移除場地效果
             }
-            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "KingKong"; //確認動作
-            MainBattleSystem.instance.LastSkill = "KingKong";//上一召紀錄使用
+            MainBattleSystem.instance.battleAnimationContents.TheAnimateBePlayed = "Kingkong"; //確認動作
+            MainBattleSystem.instance.LastSkill = "Kingkong";//上一召紀錄使用
             MainBattleSystem.instance.battleAnimationContents.AnimationTime = 1.5f;//確認動作時長
             MainBattleSystem.instance.battleAnimationContents.BattleEffect = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(10).AnimationPrefab;//確認生成特效
             MainBattleSystem.instance.battleAnimationContents.FieldPrefab = MainBattleSystem.instance.skillDatabaseOBJ.GetSkillInformation(10).FieldPrefab;//確認生成場地            
