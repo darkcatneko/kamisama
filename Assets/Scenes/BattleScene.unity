@@ -258,7 +258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &111437051
 Transform:
   m_ObjectHideFlags: 0
@@ -1066,6 +1066,7 @@ MonoBehaviour:
   Buffs: []
   CritOrNot: 3
   battleAnimationContents:
+    NowRegenNumber: 0
     NowDisplayDamage: 0
     TheAnimateBePlayed: 
     BattleEffect: {fileID: 0}
@@ -1073,6 +1074,7 @@ MonoBehaviour:
     AnimationTime: 0
     BattleEffectTime: 0
     DamageDelt: []
+    LifeSteal: 
   CanChangePage: 0
   sceneControllerOBJ: {fileID: 11400000, guid: 23e865d35ffb6fc4ba46d74dfca8f60e, type: 2}
 --- !u!114 &377580407

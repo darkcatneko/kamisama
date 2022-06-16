@@ -82,6 +82,20 @@ public class BattleAnimationEvent : MonoBehaviour
         ev.AddListener(()=> { MainBattleSystem.instance.ThisBoss.CallBossDamage(Damage); });
         ev.Invoke();
     }
+    public void PlayerRegen()
+    {
+        MainBattleSystem.instance.TempHP = MainBattleSystem.instance.BattleUseStats.Current_HP;
+        PlayerHealthBarUpdate.instance.TempWhite = MainBattleSystem.instance.BattleUseStats.Current_HP;
+        int LifeSteal = MainBattleSystem.instance.battleAnimationContents.LifeSteal[MainBattleSystem.instance.battleAnimationContents.NowRegenNumber];
+        MainBattleSystem.instance.battleAnimationContents.NowRegenNumber++;
+        MainBattleSystem.instance.BattleUseStats.Current_HP += LifeSteal;
+        MainBattleSystem.instance.BattleUseStats.Current_HP = Mathf.Clamp(MainBattleSystem.instance.BattleUseStats.Current_HP, MainBattleSystem.instance.BattleUseStats.Current_HP, MainBattleSystem.instance.BattleUseStats.MaxHP);
+        DOTween.To(() => { return PlayerHealthBarUpdate.instance.TempWhite; }, x => PlayerHealthBarUpdate.instance.TempWhite = x, MainBattleSystem.instance.BattleUseStats.Current_HP, 0.5f)
+            .OnStepComplete(() =>
+            {
+                DOTween.To(() => { return MainBattleSystem.instance.TempHP; }, x => MainBattleSystem.instance.TempHP = x, MainBattleSystem.instance.BattleUseStats.Current_HP, 1f);
+            });
+    }
     public void BossAttack()
     {
         TheBossAttack.Invoke();
