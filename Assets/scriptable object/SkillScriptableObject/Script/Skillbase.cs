@@ -23,6 +23,8 @@ public class Skillbase : MonoBehaviour
         SkillActionList.Add(9, Spring_Skill);
         SkillActionList.Add(10, KingKong_Skill);
         SkillActionList.Add(11, Moon_Skill);
+        SkillActionList.Add(12, Wind_Skill);
+        SkillActionList.Add(13, SunSet_Skill);
     }
     private void Start()
     {
