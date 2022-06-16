@@ -9,13 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2764962860703072266}
+  - component: {fileID: 867608253}
   m_Layer: 0
   m_Name: Moon_VFX_Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2764962860703072266
 Transform:
   m_ObjectHideFlags: 0
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &867608253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163740493056913316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cac30d293e61314ca2dc42d2abb21dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathtime: 1
 --- !u!1 &5255925606544748183
 GameObject:
   m_ObjectHideFlags: 0
@@ -9747,7 +9761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EffectsOnCollision:
-  - {fileID: 4748615299564591803}
+  - {fileID: 1143171959220181260, guid: 090470da4777e5045b5ddc0bd67fbd1f, type: 3}
   DestroyTimeDelay: 1
   UseWorldSpacePosition: 1
   Offset: 0.1
@@ -24505,11 +24519,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 090470da4777e5045b5ddc0bd67fbd1f, type: 3}
---- !u!1 &4748615299564591803 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1143171959220181260, guid: 090470da4777e5045b5ddc0bd67fbd1f, type: 3}
-  m_PrefabInstance: {fileID: 5637139644220556215}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4751030716575691335 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1140582649719386608, guid: 090470da4777e5045b5ddc0bd67fbd1f, type: 3}
