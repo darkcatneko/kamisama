@@ -141,6 +141,14 @@ public class UsageCase : MonoBehaviour
                 SetChoiceButtonFunction(Choice2_1, "「很多鬼魂……很多業績是吧……」", "1-3-A", 10);
                 SetChoiceButtonFunction(Choice2_2, "「我要過勞死了……」", "1-3-B", 0);
                 return;
+            case "2-1":
+                SetChoiceButtonFunction(Choice2_1, "「雖然會怕，但其實也還好就是了。」", "2-1-A", 10);
+                SetChoiceButtonFunction(Choice2_2, "「感覺實在是不太好。」", "2-1-B", 0);
+                return;
+            case "Loli_Home_day_2":
+                SetChoiceButtonFunction(Choice2_1, "「大聲喊出她的名字」", "Loli_Home_day_2_A", 10);
+                SetChoiceButtonFunction(Choice2_2, "「就這麼靜靜地看著」", "Loli_Home_day_2_B", 0);
+                return;
             default:
                 return;
         }
