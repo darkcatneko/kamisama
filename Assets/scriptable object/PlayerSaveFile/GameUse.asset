@@ -22,7 +22,7 @@ MonoBehaviour:
   m_Player:
     Level: 1
     Mana_regen_speed: 5
-    Current_MP: 0
+    Current_MP: 7
     Current_HP: 10
     MaxHP: 10
     Shield: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
       m_currentstat: 1
     INT:
       m_stat: 3
-      m_currentstat: 1
+      m_currentstat: 99
     HP:
       m_stat: 4
       m_currentstat: 1
@@ -67,7 +67,7 @@ MonoBehaviour:
     Ron_Xiu:
       m_stat: 11
       m_currentstat: 1
-  SkillBackPack: 0a0000000b0000000c0000000d0000000e0000000f00000010000000110000001200000013000000
+  SkillBackPack: 0a0000000b0000000c0000000d0000000e0000000f00000010000000110000000800000013000000
   MapFlagCheck: 0000000000000000000000000000
   SkillUnlockCheck: 01000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   Can_Get_Flag: 1
