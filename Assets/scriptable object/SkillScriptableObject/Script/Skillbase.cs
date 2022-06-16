@@ -200,14 +200,14 @@ public class Skillbase : MonoBehaviour
             {
                 if (MainBattleSystem.instance.CritOrNot == moonblocks.OneUpOneDown)
                 {
-                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.1f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 10f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f),DamageType.Physics));
-                    MainBattleSystem.instance.BattleUseStats.Current_HP += MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number;
+                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.1f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 25f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f),DamageType.Physics));
+                    MainBattleSystem.instance.battleAnimationContents.LifeSteal.Add(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number * 2);                    
                     Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
                 }
                 else
                 {
-                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.005f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 3f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
-                    MainBattleSystem.instance.BattleUseStats.Current_HP += MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number;
+                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.005f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 6f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                    MainBattleSystem.instance.battleAnimationContents.LifeSteal.Add(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number * 2);
                     Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
                 }
             }
@@ -215,14 +215,14 @@ public class Skillbase : MonoBehaviour
             {
                 if (MainBattleSystem.instance.CritOrNot == moonblocks.OneUpOneDown)
                 {
-                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.1f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 10f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
-                    MainBattleSystem.instance.BattleUseStats.Current_HP += MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number;
+                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.1f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 25f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                    MainBattleSystem.instance.battleAnimationContents.LifeSteal.Add(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number * 2);
                     Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
                 }
                 else
                 {
-                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.005f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 3f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
-                    MainBattleSystem.instance.BattleUseStats.Current_HP += MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number;
+                    MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.005f, MainBattleSystem.instance.BattleUseStats.SPI.m_currentstat, 6f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                    MainBattleSystem.instance.battleAnimationContents.LifeSteal.Add(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0].Number * 2);
                     Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
                 }
             }
@@ -253,16 +253,16 @@ public class Skillbase : MonoBehaviour
             MainBattleSystem.instance.battleAnimationContents.DamageDelt = new List<DamageNumber>();
             if (MainBattleSystem.instance.NowFocusTrigrams == EightTrigrams.Zhen)//¿é¥X¦h­Ó¶Ë®`­È
             {
-                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 1f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f),DamageType.Physics));
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 6f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f),DamageType.Physics));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
-                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.03f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 3f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.03f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 8f, 1f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[1]);
             }
             else
             {
-                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 1f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.02f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 6f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[0]);
-                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.03f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 3f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
+                MainBattleSystem.instance.battleAnimationContents.DamageDelt.Add(new DamageNumber(GetDamage(0.03f, MainBattleSystem.instance.BattleUseStats.ATK.m_currentstat, 8f, 0.9f, (float)MainBattleSystem.instance.CritOrNot * 0.1f), DamageType.Physics));
                 Debug.Log(MainBattleSystem.instance.battleAnimationContents.DamageDelt[1]);
             }
             MainBattleSystem.instance.ManaTired++;

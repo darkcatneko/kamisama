@@ -30,6 +30,7 @@ public class MainTimeSystem : MonoBehaviour
     }
     public void ReloadFlags()
     {
+        MainSceneDataCenter.instance.Player_save.FlagCount = 0;
         foreach (var item in FlagPrefabs)
         {
             Destroy(item);

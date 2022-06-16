@@ -91,6 +91,7 @@ public class BossClass
             MainBattleSystem.instance.StartCoroutine("BossDie");//boss³Q±þ¦º
         }
     }
+    
     public void Register( BossClass This,BossClass bb)
     {
         This.BossID = bb.BossID;
